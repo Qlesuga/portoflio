@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import { type MouseEvent } from "react";
+import { useRef, useState, type MouseEvent } from "react";
 
 interface Position {
   x: number;
@@ -18,50 +17,41 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
   initialPosition = { x: 100, y: 100 },
 }) => {
   const [position, setPosition] = useState<Position>(initialPosition);
-  const [dragging, setDragging] = useState<boolean>(false);
-  const [rel, setRel] = useState<Position | null>(null);
+  const dragging = useRef(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const rel = useRef<Position>({ x: 0, y: 0 });
   const windowRef = useRef<HTMLDivElement | null>(null);
 
-  const onMouseDown = (e: MouseEvent<HTMLDivElement>) => {
-    if (e.button !== 0) return;
+  const onMouseMove = (e: MouseEvent | globalThis.MouseEvent) => {
+    if (!dragging.current) return;
+    setPosition({
+      x: e.clientX - rel.current.x,
+      y: e.clientY - rel.current.y,
+    });
+  };
 
-    if (!windowRef.current) return;
+  const onMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+    if (e.button !== 0 || !windowRef.current) return;
 
     const rect = windowRef.current.getBoundingClientRect();
-    setDragging(true);
-    setRel({
+    setIsDragging(true);
+    dragging.current = true;
+    rel.current = {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
-    });
-    e.preventDefault();
-  };
-  const onMouseMove = (e: MouseEvent<Document>) => {
-    if (!dragging || !rel) return;
+    };
 
-    setPosition({
-      x: e.clientX - rel.x,
-      y: e.clientY - rel.y,
-    });
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
     e.preventDefault();
   };
 
   const onMouseUp = () => {
-    setDragging(false);
+    setIsDragging(false);
+    dragging.current = false;
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("mouseup", onMouseUp);
   };
-
-  useEffect(() => {
-    if (dragging) {
-      document.addEventListener("mousemove", onMouseMove as any);
-      document.addEventListener("mouseup", onMouseUp);
-    } else {
-      document.removeEventListener("mousemove", onMouseMove as any);
-      document.removeEventListener("mouseup", onMouseUp);
-    }
-    return () => {
-      document.removeEventListener("mousemove", onMouseMove as any);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-  }, [dragging, rel]);
 
   return (
     <div
@@ -76,7 +66,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
         borderRadius: 6,
         background: "#eee",
         userSelect: "none",
-        cursor: dragging ? "grabbing" : "grab",
+        cursor: isDragging ? "grabbing" : "grab",
         boxShadow: "2px 2px 10px rgba(0,0,0,0.3)",
       }}
     >
