@@ -1,4 +1,8 @@
-const DesktopIcon: React.FC = () => {
+interface DesktopIconProps {
+  createDraggableWindow: () => void;
+}
+
+const DesktopIcon: React.FC<DesktopIconProps> = ({ createDraggableWindow }) => {
   return (
     <>
       <div
@@ -9,6 +13,7 @@ const DesktopIcon: React.FC = () => {
           userSelect: "none",
           margin: 10,
         }}
+        onClick={createDraggableWindow}
       >
         <div
           style={{
@@ -20,7 +25,7 @@ const DesktopIcon: React.FC = () => {
             borderRadius: 6,
           }}
         />
-        <div style={{ fontSize: 12, marginTop: 4 }}>My App</div>
+        <div style={{ fontSize: 12, marginTop: 4 }}>Voices</div>
       </div>
     </>
   );

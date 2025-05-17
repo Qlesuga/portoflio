@@ -36,7 +36,6 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
     dragging.current = true;
     setIsDragging(true);
     if (zIndex.current > currentZIndex) {
-      console.log(zIndex.current);
       zIndex.current = zIndex.current + 1;
       setCurrentZIndex(zIndex.current);
     }

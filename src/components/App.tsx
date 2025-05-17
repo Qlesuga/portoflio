@@ -1,23 +1,40 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import DesktopIcon from "./DesktopIcon";
 import DraggableWindow from "./DraggableWindow";
 
+interface WindowConfig {
+  id: number;
+  initZIndex: number;
+}
+
 export default function App() {
   const zIndex = useRef(0);
+  const nextId = useRef(1);
+  const [windows, setWindows] = useState<WindowConfig[]>([]);
+
   const createDraggableWindow = () => {
-    zIndex.current = zIndex.current + 1;
-    return (
-      <DraggableWindow title=":3" initZIndex={zIndex.current} zIndex={zIndex}>
-        <p>test</p>
-      </DraggableWindow>
-    );
+    setWindows((prev) => [
+      ...prev,
+      {
+        id: nextId.current++,
+        initZIndex: zIndex.current++,
+      },
+    ]);
   };
+
   return (
-    <div>
-      <DesktopIcon />
-      {createDraggableWindow()}
-      {createDraggableWindow()}
-      {createDraggableWindow()}
+    <div id="root">
+      <DesktopIcon createDraggableWindow={createDraggableWindow} />
+      {windows.map((win) => (
+        <DraggableWindow
+          key={win.id}
+          title={`Window ${win.id}`}
+          initZIndex={win.initZIndex}
+          zIndex={zIndex}
+        >
+          <p>Window #{win.id}</p>
+        </DraggableWindow>
+      ))}
     </div>
   );
 }
