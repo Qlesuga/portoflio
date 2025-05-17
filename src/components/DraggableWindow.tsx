@@ -9,6 +9,8 @@ interface Position {
 interface DraggableWindowProps {
   title: string;
   children: React.ReactNode;
+  zIndex: React.RefObject<number>;
+  initZIndex: number;
   initialPosition?: Position;
 }
 
@@ -16,21 +18,28 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
   title,
   children,
   initialPosition = { x: 100, y: 100 },
+  zIndex,
+  initZIndex,
 }) => {
   const [position, setPosition] = useState<Position>(initialPosition);
   const [isDragging, setIsDragging] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-
+  const [currentZIndex, setCurrentZIndex] = useState(initZIndex);
   const dragging = useRef(false);
   const rel = useRef<Position>({ x: 0, y: 0 });
   const windowRef = useRef<HTMLDivElement | null>(null);
 
   const onMouseDown = (e: MouseEvent<HTMLDivElement>) => {
-    if (e.button !== 0 || !windowRef.current) return;
+    if (e.button !== 0 || !windowRef.current || isDragging) return;
 
     const rect = windowRef.current.getBoundingClientRect();
     dragging.current = true;
     setIsDragging(true);
+    if (zIndex.current > currentZIndex) {
+      console.log(zIndex.current);
+      zIndex.current = zIndex.current + 1;
+      setCurrentZIndex(zIndex.current);
+    }
     rel.current = {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
@@ -78,7 +87,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
         userSelect: "none",
         cursor: isDragging ? "grabbing" : "grab",
         boxShadow: "2px 2px 10px rgba(0,0,0,0.3)",
-        zIndex: 10,
+        zIndex: currentZIndex,
       }}
     >
       <div
