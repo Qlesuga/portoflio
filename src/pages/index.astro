@@ -1,16 +1,10 @@
 ---
 import DraggableWindow from '../components/DraggableWindow.tsx';
+import DesktopIcon from "../components/DesktopIcon.tsx"
+import App from "../components/App.tsx"
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <DraggableWindow title="Draggable Window" client:load>
-    <p>This is a draggable window.</p>
-  </DraggableWindow>
-  <DraggableWindow initialPosition={{x:500,y:300}} title="Draggable Window" client:load>
-    <div>
-      <p>This is a draggable window.</p>
-      <p>It can be moved around the screen.</p>
-    </div>
-  </DraggableWindow>
+ <App client:load/>
 </Layout>
