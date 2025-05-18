@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { type MouseEvent } from "react";
+import DesktopIcon from "./DesktopIcon";
 
 interface Position {
   x: number;

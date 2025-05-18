@@ -24,7 +24,10 @@ export default function App() {
 
   return (
     <div id="root">
-      <DesktopIcon createDraggableWindow={createDraggableWindow} />
+      <DesktopIcon
+        name="FamilyLynk"
+        createDraggableWindow={createDraggableWindow}
+      />
       {windows.map((win) => (
         <DraggableWindow
           key={win.id}
