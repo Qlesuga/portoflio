@@ -28,6 +28,10 @@ export default function App() {
         name="FamilyLynk"
         createDraggableWindow={createDraggableWindow}
       />
+      <DesktopIcon
+        name="Projects"
+        createDraggableWindow={createDraggableWindow}
+      />
       {windows.map((win) => (
         <DraggableWindow
           key={win.id}
