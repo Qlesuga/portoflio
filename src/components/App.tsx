@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import DesktopIcon from "./DesktopIcon";
 import DraggableWindow from "./DraggableWindow";
+import TopBar from "./Topbar";
 
 interface WindowConfig {
   id: number;
@@ -24,6 +25,7 @@ export default function App() {
 
   return (
     <div id="root">
+      <TopBar />
       <DesktopIcon
         name="Projects"
         icon="src/assets/folder_code.svg"
