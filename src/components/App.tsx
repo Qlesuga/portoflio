@@ -25,11 +25,13 @@ export default function App() {
   return (
     <div id="root">
       <DesktopIcon
-        name="FamilyLynk"
+        name="Projects"
+        icon="src/assets/folder_code.svg"
         createDraggableWindow={createDraggableWindow}
       />
       <DesktopIcon
         name="Projects"
+        icon="src/assets/folder.svg"
         createDraggableWindow={createDraggableWindow}
       />
       {windows.map((win) => (
