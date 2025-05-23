@@ -5,6 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import "./topbar.css";
 
 const TopBar: React.FC = () => {
   const [date, setDate] = useState(new Date());
@@ -26,29 +27,20 @@ const TopBar: React.FC = () => {
       minute: "numeric",
     });
   return (
-    <div
-      style={{
-        width: "100%",
-        height: 50,
-        gap: 16,
-        backgroundColor: "#333",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "row",
-      }}
-    >
-      <div>
+    <div className="topbar">
+      <div className="topbar_borders"></div>
+      <div className="topbar_element">
         <FontAwesomeIcon icon={faCalendarDays} />
         {formatDate(date)}
       </div>
-      <div>
+      <div className="topbar_element" style={{ paddingTop: 6 }}>
         <FontAwesomeIcon icon={faPowerOff} />
       </div>
-      <div>
+      <div className="topbar_element">
         {formatTime(date)}
         <FontAwesomeIcon icon={faClock} />
       </div>
+      <div className="topbar_borders"></div>
     </div>
   );
 };
