@@ -1,8 +1,4 @@
-import {
-  faCalendarDays,
-  faClock,
-  faPowerOff,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCalendarDays, faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import "./topbar.css";
@@ -33,8 +29,8 @@ const TopBar: React.FC = () => {
         <FontAwesomeIcon icon={faCalendarDays} />
         {formatDate(date)}
       </div>
-      <div className="topbar_element" style={{ paddingTop: 6 }}>
-        <FontAwesomeIcon icon={faPowerOff} />
+      <div className="topbar_element" style={{ cursor: "pointer" }}>
+        <span>EN</span>
       </div>
       <div className="topbar_element">
         {formatTime(date)}

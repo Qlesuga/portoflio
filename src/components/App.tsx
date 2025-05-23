@@ -6,6 +6,7 @@ import TopBar from "./Topbar";
 interface WindowConfig {
   id: number;
   initZIndex: number;
+  children: React.ReactNode;
 }
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
       {
         id: nextId.current++,
         initZIndex: zIndex.current++,
+        children: <p>Window #{nextId.current}</p>,
       },
     ]);
   };
@@ -32,7 +34,7 @@ export default function App() {
         createDraggableWindow={createDraggableWindow}
       />
       <DesktopIcon
-        name="Projects"
+        name=":3"
         icon="src/assets/folder.svg"
         createDraggableWindow={createDraggableWindow}
       />
@@ -43,7 +45,7 @@ export default function App() {
           initZIndex={win.initZIndex}
           zIndex={zIndex}
         >
-          <p>Window #{win.id}</p>
+          {win.children}
         </DraggableWindow>
       ))}
     </div>
