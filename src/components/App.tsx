@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import DesktopIcon from "./DesktopIcon";
 import DraggableWindow from "./DraggableWindow";
 import TopBar from "./Topbar";
+import BottomBar from "./BottomBar";
 
 interface WindowConfig {
   id: number;
@@ -26,18 +27,27 @@ export default function App() {
   };
 
   return (
-    <div id="root">
+    <div id="root" style={{ height: "100vh" }}>
       <TopBar />
-      <DesktopIcon
-        name="Projects"
-        icon="src/assets/folder_code.svg"
-        createDraggableWindow={createDraggableWindow}
-      />
-      <DesktopIcon
-        name=":3"
-        icon="src/assets/folder.svg"
-        createDraggableWindow={createDraggableWindow}
-      />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          height: "calc(100% - 70px)",
+        }}
+      >
+        <DesktopIcon
+          name="Projects"
+          icon="src/assets/folder_code.svg"
+          createDraggableWindow={createDraggableWindow}
+        />
+        <DesktopIcon
+          name=":3"
+          icon="src/assets/folder.svg"
+          createDraggableWindow={createDraggableWindow}
+        />
+      </div>
+      <BottomBar />
       {windows.map((win) => (
         <DraggableWindow
           key={win.id}
