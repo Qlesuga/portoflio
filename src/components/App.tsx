@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DesktopIcon from "./DesktopIcon";
 import DraggableWindow from "./DraggableWindow";
 import TopBar from "./Topbar";
@@ -25,6 +25,20 @@ export default function App() {
       },
     ]);
   };
+
+  useEffect(() => {
+    const handleClick = () => {
+      const audio = new Audio("/src/assets/click.mp3");
+      audio.volume = 0.05;
+      audio.play();
+    };
+
+    document.addEventListener("mousedown", handleClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, []);
 
   return (
     <div id="root" style={{ height: "100vh" }}>
