@@ -49,6 +49,9 @@ const BottomBar: React.FC = () => {
 
   const handleItemClick = (itemId: string) => {
     console.log(`Clicked on ${itemId}`);
+    if (itemId === "github") {
+      window.open("https://www.github.com/Qlesuga", "_blank");
+    }
   };
 
   return (
