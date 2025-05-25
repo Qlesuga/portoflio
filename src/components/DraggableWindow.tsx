@@ -22,8 +22,6 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
   initialPosition = { x: 100, y: 100 },
   zIndex,
   initZIndex,
-  initHeight = 300,
-  initWidth = 300,
 }) => {
   const [position, setPosition] = useState<Position>(initialPosition);
   const [isDragging, setIsDragging] = useState(false);
@@ -82,8 +80,6 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
         position: "absolute",
         left: position.x,
         top: position.y,
-        width: initWidth,
-        height: initHeight,
         border: "2px solid #444",
         borderRadius: 12,
         background: "#eee",

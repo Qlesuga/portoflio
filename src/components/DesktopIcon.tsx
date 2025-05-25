@@ -1,5 +1,5 @@
 interface DesktopIconProps {
-  createDraggableWindow: () => void;
+  createDraggableWindow: (title: string, children: React.ReactNode) => void;
   name: string;
   icon: string;
 }
@@ -35,7 +35,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
              1px  1px 0 black;",
           color: "white",
         }}
-        onClick={createDraggableWindow}
+        onClick={() => createDraggableWindow("test", <p>test</p>)}
       >
         <img width={48} height={48} src={icon} />
         <span style={{ fontSize: "16px", textAlign: "center" }}>{name}</span>

@@ -6,23 +6,22 @@ import BottomBar from "./BottomBar";
 import ContactPage from "./ContactPage";
 
 interface WindowConfig {
-  id: number;
+  title: string;
   initZIndex: number;
   children: React.ReactNode;
 }
 
 export default function App() {
   const zIndex = useRef(0);
-  const nextId = useRef(1);
   const [windows, setWindows] = useState<WindowConfig[]>([]);
 
-  const createDraggableWindow = () => {
+  const createDraggableWindow = (title: string, children: React.ReactNode) => {
     setWindows((prev) => [
       ...prev,
       {
-        id: nextId.current++,
+        title: title,
         initZIndex: zIndex.current++,
-        children: <p>Window #{nextId.current}</p>,
+        children: children,
       },
     ]);
   };
@@ -61,21 +60,12 @@ export default function App() {
           icon="src/assets/folder.svg"
           createDraggableWindow={createDraggableWindow}
         />
-        <DraggableWindow
-          title="Contact Form"
-          initZIndex={zIndex.current++}
-          zIndex={zIndex}
-          initWidth={1024}
-          initHeight={600}
-        >
-          <ContactPage />
-        </DraggableWindow>
       </div>
-      <BottomBar />
+      <BottomBar createDraggableWindow={createDraggableWindow} />
       {windows.map((win) => (
         <DraggableWindow
-          key={win.id}
-          title={`Window ${win.id}`}
+          key={win.initZIndex}
+          title={win.title}
           initZIndex={win.initZIndex}
           zIndex={zIndex}
         >

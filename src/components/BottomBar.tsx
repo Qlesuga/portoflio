@@ -2,6 +2,7 @@ import type React from "react";
 import { useState } from "react";
 import { Mail, User, Github, ChartNoAxesColumn, MailOpen } from "lucide-react";
 import "./bottomBar.css";
+import ContactPage from "./ContactPage";
 
 interface NavItem {
   id: string;
@@ -44,13 +45,19 @@ const navItems: NavItem[] = [
   },
 ];
 
-const BottomBar: React.FC = () => {
+interface BottomBarProps {
+  createDraggableWindow: (title: string, children: React.ReactNode) => void;
+}
+
+export default function BottomBar({ createDraggableWindow }: BottomBarProps) {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const handleItemClick = (itemId: string) => {
     console.log(`Clicked on ${itemId}`);
     if (itemId === "github") {
       window.open("https://www.github.com/Qlesuga", "_blank");
+    } else if (itemId === "contact") {
+      createDraggableWindow("Contact Form", <ContactPage />);
     }
   };
 
@@ -104,6 +111,4 @@ const BottomBar: React.FC = () => {
       </nav>
     </div>
   );
-};
-
-export default BottomBar;
+}
