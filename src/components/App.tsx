@@ -33,7 +33,7 @@ export default function App() {
         style={{
           display: "flex",
           flexDirection: "column",
-          height: "calc(100% - 70px)",
+          height: "calc(100% - 120px)",
         }}
       >
         <DesktopIcon
