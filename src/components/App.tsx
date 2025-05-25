@@ -3,7 +3,6 @@ import DesktopIcon from "./DesktopIcon";
 import DraggableWindow from "./DraggableWindow";
 import TopBar from "./Topbar";
 import BottomBar from "./BottomBar";
-import ContactPage from "./ContactPage";
 
 interface WindowConfig {
   title: string;
@@ -56,7 +55,7 @@ export default function App() {
           createDraggableWindow={createDraggableWindow}
         />
         <DesktopIcon
-          name=":3"
+          name="Cwelowe Arkusze Styów"
           icon="src/assets/folder.svg"
           createDraggableWindow={createDraggableWindow}
         />
