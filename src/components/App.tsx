@@ -3,6 +3,7 @@ import DesktopIcon from "./DesktopIcon";
 import DraggableWindow from "./DraggableWindow";
 import TopBar from "./Topbar";
 import BottomBar from "./BottomBar";
+import ContactPage from "./ContactPage";
 
 interface WindowConfig {
   id: number;
@@ -60,6 +61,15 @@ export default function App() {
           icon="src/assets/folder.svg"
           createDraggableWindow={createDraggableWindow}
         />
+        <DraggableWindow
+          title="Contact Form"
+          initZIndex={zIndex.current++}
+          zIndex={zIndex}
+          initWidth={1024}
+          initHeight={600}
+        >
+          <ContactPage />
+        </DraggableWindow>
       </div>
       <BottomBar />
       {windows.map((win) => (

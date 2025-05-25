@@ -12,6 +12,8 @@ interface DraggableWindowProps {
   zIndex: React.RefObject<number>;
   initZIndex: number;
   initialPosition?: Position;
+  initHeight?: number;
+  initWidth?: number;
 }
 
 const DraggableWindow: React.FC<DraggableWindowProps> = ({
@@ -20,6 +22,8 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
   initialPosition = { x: 100, y: 100 },
   zIndex,
   initZIndex,
+  initHeight = 300,
+  initWidth = 300,
 }) => {
   const [position, setPosition] = useState<Position>(initialPosition);
   const [isDragging, setIsDragging] = useState(false);
@@ -74,17 +78,16 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
   return (
     <div
       ref={windowRef}
-      onMouseDown={onMouseDown}
       style={{
         position: "absolute",
         left: position.x,
         top: position.y,
-        width: 300,
+        width: initWidth,
+        height: initHeight,
         border: "2px solid #444",
-        borderRadius: 6,
+        borderRadius: 12,
         background: "#eee",
         userSelect: "none",
-        cursor: isDragging ? "grabbing" : "grab",
         boxShadow: "2px 2px 10px rgba(0,0,0,0.3)",
         zIndex: currentZIndex,
       }}
@@ -93,14 +96,17 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
         style={{
           background: "#333",
           color: "white",
+          height: 20,
           padding: "8px 10px",
-          borderTopLeftRadius: 6,
-          borderTopRightRadius: 6,
+          borderTopLeftRadius: 8,
+          borderTopRightRadius: 8,
           fontWeight: "bold",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          cursor: isDragging ? "grabbing" : "grab",
         }}
+        onMouseDown={onMouseDown}
       >
         <span>{title}</span>
         <button
@@ -122,7 +128,15 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
           ×
         </button>
       </div>
-      <div style={{ padding: 10 }}>{children}</div>
+      <div
+        style={{
+          width: "100%",
+          height: "calc(100% - 36px)",
+          borderRadius: "0 0 8px 8px",
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 };
