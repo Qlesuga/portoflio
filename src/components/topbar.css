@@ -11,12 +11,14 @@
 }
 
 .topbar_borders {
-  color: #000;
+  color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
   font-size: 23px;
 }
 
 .topbar_element {
-  background-color: #000;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
   padding: 4px 8px;
   display: flex;
   font-size: 14px;
