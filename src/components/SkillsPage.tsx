@@ -4,53 +4,73 @@ const Balls = [
   {
     amount: 5,
     color: "red",
-    radrius: 200,
+    radius: 200,
   },
   {
     amount: 3,
     color: "blue",
-    raddius: 150,
+    radius: 150,
   },
 ];
 
 export default function SkillsPage() {
-  const calculateBallPositions = (Amount: number, index: number) => {
+  const calculateBallPositions = (
+    Amount: number,
+    index: number,
+    radius: number,
+  ) => {
     const theta = (2 * Math.PI * index) / Amount;
-    const x = 200 + 200 * Math.cos(theta);
-    const y = 200 + 200 * Math.sin(theta);
+    const x = radius + radius * Math.cos(theta);
+    const y = radius + radius * Math.sin(theta);
     return [x, y];
   };
-  const N = 5;
   return (
     <div className="skills-container">
       <h1 className="skills-title">Skills</h1>
       <div
-        className="ball"
         style={{
-          height: 400,
-          width: 400,
-          border: "3px red solid",
-          boxSizing: "border-box",
-          position: "absolute",
-          marginLeft: 50,
+          width: 500,
+          height: 500,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        {[...Array(N)].map((_, i) => {
-          const [x, y] = calculateBallPositions(N, i);
-          console.log(`Ball ${i}: x=${x}, y=${y}`);
+        {Balls.map((ball) => {
           return (
             <div
-              key={`${x}-${y}`}
               className="ball"
               style={{
+                height: ball.radius * 2,
+                width: ball.radius * 2,
+                border: `3px ${ball.color} solid`,
+                boxSizing: "border-box",
                 position: "absolute",
-                left: x - 20,
-                top: y - 20,
-                width: 40,
-                height: 40,
-                backgroundColor: "red",
+                marginLeft: 50,
               }}
-            />
+            >
+              {[...Array(ball.amount)].map((_, i) => {
+                const [x, y] = calculateBallPositions(
+                  ball.amount,
+                  i,
+                  ball.radius,
+                );
+                return (
+                  <div
+                    key={`${ball.color}-${i}`}
+                    className="ball"
+                    style={{
+                      position: "absolute",
+                      left: x - 20,
+                      top: y - 20,
+                      width: 40,
+                      height: 40,
+                      backgroundColor: ball.color,
+                    }}
+                  />
+                );
+              })}
+            </div>
           );
         })}
       </div>
