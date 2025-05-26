@@ -11,6 +11,11 @@ const Balls = [
     color: "blue",
     radius: 150,
   },
+  {
+    amount: 2,
+    color: "green",
+    radius: 50,
+  },
 ];
 
 export default function SkillsPage() {
@@ -24,6 +29,7 @@ export default function SkillsPage() {
     const y = radius + radius * Math.sin(theta);
     return [x, y];
   };
+
   return (
     <div className="skills-container">
       <h1 className="skills-title">Skills</h1>
@@ -34,9 +40,10 @@ export default function SkillsPage() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          transform: "rotate(50%)",
         }}
       >
-        {Balls.map((ball) => {
+        {Balls.map((ball, i) => {
           return (
             <div
               className="ball"
@@ -46,18 +53,18 @@ export default function SkillsPage() {
                 border: `3px ${ball.color} solid`,
                 boxSizing: "border-box",
                 position: "absolute",
-                marginLeft: 50,
+                animation: `${i % 2 == 0 ? "spin-reverse" : "spin"} 5s linear infinite`,
               }}
             >
-              {[...Array(ball.amount)].map((_, i) => {
+              {[...Array(ball.amount)].map((_, j) => {
                 const [x, y] = calculateBallPositions(
                   ball.amount,
-                  i,
+                  j,
                   ball.radius,
                 );
                 return (
                   <div
-                    key={`${ball.color}-${i}`}
+                    key={`${ball.color}-${j}`}
                     className="ball"
                     style={{
                       position: "absolute",
