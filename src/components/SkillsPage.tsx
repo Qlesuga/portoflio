@@ -30,6 +30,11 @@ export default function SkillsPage() {
     return [x, y];
   };
 
+  const ROTATE_SPEED = 2;
+  const calculateSpinSpeed = (radius) => {
+    return (2 * Math.PI * radius) / 100 / ROTATE_SPEED;
+  };
+
   return (
     <div className="skills-container">
       <h1 className="skills-title">Skills</h1>
@@ -44,8 +49,10 @@ export default function SkillsPage() {
         }}
       >
         {Circles.map((circle, i) => {
+          const rotationSpeed = calculateSpinSpeed(circle.radius);
           return (
             <div
+              key={`circle-${i}`}
               className="ball"
               style={{
                 height: circle.radius * 2,
@@ -53,7 +60,7 @@ export default function SkillsPage() {
                 border: `3px ${circle.color} solid`,
                 boxSizing: "border-box",
                 position: "absolute",
-                animation: `${i % 2 == 0 ? "spin-reverse" : "spin"} 5s linear infinite`,
+                animation: `${i % 2 == 0 ? "spin-reverse" : "spin"} ${rotationSpeed}s linear infinite`,
               }}
             >
               {[...Array(circle.amount)].map((_, j) => {
@@ -64,7 +71,7 @@ export default function SkillsPage() {
                 );
                 return (
                   <div
-                    key={`${circle.color}-${j}`}
+                    key={`ball-${i}-${j}`}
                     className="ball"
                     style={{
                       position: "absolute",
