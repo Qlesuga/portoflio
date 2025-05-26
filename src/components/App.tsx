@@ -3,6 +3,7 @@ import DesktopIcon from "./DesktopIcon";
 import DraggableWindow from "./DraggableWindow";
 import TopBar from "./Topbar";
 import BottomBar from "./BottomBar";
+import SkillsPage from "./SkillsPage";
 
 interface WindowConfig {
   title: string;
@@ -39,6 +40,9 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    createDraggableWindow("Skills", <SkillsPage />);
+  }, []);
   return (
     <div id="root" style={{ height: "100vh" }}>
       <TopBar />

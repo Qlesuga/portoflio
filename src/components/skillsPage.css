@@ -1,0 +1,14 @@
+.skills-container {
+  height: 580px;
+  width: 1024px;
+  border-radius: 0 0 9px 9px;
+  margin: 0 auto;
+  font-family: Robot, sans-serif;
+  background-color: #121212;
+  overflow: scroll;
+  color: white;
+}
+
+.ball {
+  border-radius: 100%;
+}
