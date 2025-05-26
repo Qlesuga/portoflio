@@ -1,6 +1,6 @@
 import "./skillsPage.css";
 
-const Balls = [
+const Circles = [
   {
     amount: 5,
     color: "red",
@@ -43,28 +43,28 @@ export default function SkillsPage() {
           transform: "rotate(50%)",
         }}
       >
-        {Balls.map((ball, i) => {
+        {Circles.map((circle, i) => {
           return (
             <div
               className="ball"
               style={{
-                height: ball.radius * 2,
-                width: ball.radius * 2,
-                border: `3px ${ball.color} solid`,
+                height: circle.radius * 2,
+                width: circle.radius * 2,
+                border: `3px ${circle.color} solid`,
                 boxSizing: "border-box",
                 position: "absolute",
                 animation: `${i % 2 == 0 ? "spin-reverse" : "spin"} 5s linear infinite`,
               }}
             >
-              {[...Array(ball.amount)].map((_, j) => {
+              {[...Array(circle.amount)].map((_, j) => {
                 const [x, y] = calculateBallPositions(
-                  ball.amount,
+                  circle.amount,
                   j,
-                  ball.radius,
+                  circle.radius,
                 );
                 return (
                   <div
-                    key={`${ball.color}-${j}`}
+                    key={`${circle.color}-${j}`}
                     className="ball"
                     style={{
                       position: "absolute",
@@ -72,7 +72,7 @@ export default function SkillsPage() {
                       top: y - 20,
                       width: 40,
                       height: 40,
-                      backgroundColor: ball.color,
+                      backgroundColor: circle.color,
                     }}
                   />
                 );
