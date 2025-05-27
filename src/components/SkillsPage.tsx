@@ -50,13 +50,16 @@ export default function SkillsPage() {
     return [x, y];
   };
 
-  const ROTATE_SPEED = 2;
+  const ROTATE_SPEED = 0.75;
   const calculateSpinSpeed = (radius: number) => {
     return (2 * Math.PI * radius) / 100 / ROTATE_SPEED;
   };
 
   return (
-    <div className="skills-container">
+    <div
+      className="skills-container"
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <h1 className="skills-title">Skills</h1>
       <div
         style={{
