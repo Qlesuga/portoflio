@@ -2,19 +2,39 @@ import "./skillsPage.css";
 
 const Circles = [
   {
-    amount: 5,
+    title: "Proficient Programming Languages",
     color: "red",
-    radius: 200,
+    radius: 100,
+    skills: ["Typescript", "Javascript", "Python"],
   },
   {
-    amount: 3,
+    title: "Familiar Programming Languages",
     color: "blue",
     radius: 150,
+    skills: ["C", "C#", "Kotlin", "Lua", "Zig", "Rust"],
   },
   {
-    amount: 2,
+    title: "Libraries/Frameworks",
     color: "green",
-    radius: 50,
+    radius: 200,
+    skills: ["React", "Node.js", "Flask", "FastAPI", "NextJS", "Tailwind"],
+  },
+  {
+    title: "Software/Tools",
+    color: "purple",
+    radius: 250,
+    skills: [
+      "Git",
+      "GitHub Actions",
+      "Docker",
+      "Redis",
+      "MongoDB",
+      "PostgreSQL",
+      "MS SQL",
+      "Figma",
+      "Linux",
+      "Prisma",
+    ],
   },
 ];
 
@@ -31,7 +51,7 @@ export default function SkillsPage() {
   };
 
   const ROTATE_SPEED = 2;
-  const calculateSpinSpeed = (radius) => {
+  const calculateSpinSpeed = (radius: number) => {
     return (2 * Math.PI * radius) / 100 / ROTATE_SPEED;
   };
 
@@ -63,9 +83,9 @@ export default function SkillsPage() {
                 animation: `${i % 2 == 0 ? "spin-reverse" : "spin"} ${rotationSpeed}s linear infinite`,
               }}
             >
-              {[...Array(circle.amount)].map((_, j) => {
+              {circle.skills.map((ball, j) => {
                 const [x, y] = calculateBallPositions(
-                  circle.amount,
+                  circle.skills.length,
                   j,
                   circle.radius,
                 );
@@ -80,13 +100,32 @@ export default function SkillsPage() {
                       width: 40,
                       height: 40,
                       backgroundColor: circle.color,
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
                     }}
-                  />
+                  >
+                    {ball}
+                  </div>
                 );
               })}
             </div>
           );
         })}
+        <div
+          style={{
+            backgroundColor: "black",
+            width: 120,
+            height: 120,
+            borderRadius: "50%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+          }}
+        >
+          Programmer Core
+        </div>
       </div>
     </div>
   );
