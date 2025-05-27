@@ -11,7 +11,7 @@ const Circles = [
     title: "Familiar Programming Languages",
     color: "blue",
     radius: 150,
-    skills: ["C", "C#", "Kotlin", "Lua", "Zig", "Rust"],
+    skills: ["C", "C#", "Kotlin", "Zig", "Rust"],
   },
   {
     title: "Libraries/Frameworks",
@@ -103,6 +103,7 @@ export default function SkillsPage() {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
+                      animation: `${i % 2 == 0 ? "spin" : "spin-reverse"} ${rotationSpeed}s linear infinite`,
                     }}
                   >
                     {ball}
