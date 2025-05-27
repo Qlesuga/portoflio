@@ -1,6 +1,13 @@
 import "./skillsPage.css";
 
-const Circles = [
+interface Circle {
+  title: string;
+  color: string;
+  radius: number;
+  skills: string[];
+}
+
+const Circles: Circle[] = [
   {
     title: "Proficient Programming Languages",
     color: "red",
@@ -63,8 +70,8 @@ export default function SkillsPage() {
       <h1 className="skills-title">Skills</h1>
       <div
         style={{
-          width: 500,
-          height: 500,
+          width: 600,
+          height: 600,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
