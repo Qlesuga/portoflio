@@ -10,25 +10,25 @@ interface Circle {
 const Circles: Circle[] = [
   {
     title: "Proficient Programming Languages",
-    color: "red",
+    color: "239, 68, 68",
     radius: 100,
     skills: ["Typescript", "Javascript", "Python"],
   },
   {
     title: "Familiar Programming Languages",
-    color: "blue",
+    color: "59, 130, 246",
     radius: 150,
     skills: ["C", "C#", "Kotlin", "Zig", "Rust"],
   },
   {
     title: "Libraries/Frameworks",
-    color: "green",
+    color: "16, 185, 129",
     radius: 200,
     skills: ["React", "Node.js", "Flask", "FastAPI", "NextJS", "Tailwind"],
   },
   {
     title: "Software/Tools",
-    color: "purple",
+    color: "139, 92, 246",
     radius: 250,
     skills: [
       "Git",
@@ -70,6 +70,39 @@ export default function SkillsPage() {
       <h1 className="skills-title">Skills</h1>
       <div
         style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-evenly",
+          alignItems: "center",
+        }}
+      >
+        {Circles.map((circle) => {
+          return (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 8,
+                width: 250,
+              }}
+              key={circle.title}
+            >
+              <div
+                className="ball"
+                style={{
+                  width: 12,
+                  height: 12,
+                  background: `rgb(${circle.color})`,
+                }}
+              />
+              <p>{circle.title}</p>
+            </div>
+          );
+        })}
+      </div>
+      <div
+        style={{
           width: 600,
           height: 600,
           display: "flex",
@@ -87,7 +120,7 @@ export default function SkillsPage() {
               style={{
                 height: circle.radius * 2,
                 width: circle.radius * 2,
-                border: `3px ${circle.color} solid`,
+                border: `2px rgba(${circle.color},0.3) dashed`,
                 boxSizing: "border-box",
                 position: "absolute",
                 animation: `${i % 2 == 0 ? "spin-reverse" : "spin"} ${rotationSpeed}s linear infinite`,
@@ -109,7 +142,7 @@ export default function SkillsPage() {
                       top: y - 20,
                       width: 40,
                       height: 40,
-                      backgroundColor: circle.color,
+                      backgroundColor: `rgb(${circle.color})`,
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
