@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Mail, User, Github, ChartNoAxesColumn, MailOpen } from "lucide-react";
 import "./bottomBar.css";
 import ContactPage from "./ContactPage";
+import SkillsPage from "./SkillsPage";
 
 interface NavItem {
   id: string;
@@ -58,6 +59,8 @@ export default function BottomBar({ createDraggableWindow }: BottomBarProps) {
       window.open("https://www.github.com/Qlesuga", "_blank");
     } else if (itemId === "contact") {
       createDraggableWindow("Contact Form", <ContactPage />);
+    } else if (itemId === "skills") {
+      createDraggableWindow("Sklls", <SkillsPage />);
     }
   };
 
