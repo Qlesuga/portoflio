@@ -2,6 +2,7 @@ import "./skillsPage.css";
 
 interface Circle {
   title: string;
+  description: string;
   color: string;
   radius: number;
   skills: string[];
@@ -10,26 +11,33 @@ interface Circle {
 const Circles: Circle[] = [
   {
     title: "Proficient Programming Languages",
+    description:
+      "Languages I've used in larger projects with hands-on experience",
     color: "239, 68, 68",
     radius: 100,
     skills: ["Typescript", "Javascript", "Python"],
   },
   {
     title: "Familiar Programming Languages",
+    description: "Languages I’ve played around with in smaller projects",
     color: "59, 130, 246",
-    radius: 150,
+    radius: 165,
     skills: ["C", "C#", "Kotlin", "Zig", "Rust"],
   },
   {
     title: "Libraries/Frameworks",
+    description:
+      "Stuff I use to build things on the web—front-end, back-end, styling, you name it",
     color: "16, 185, 129",
-    radius: 200,
+    radius: 230,
     skills: ["React", "Node.js", "Flask", "FastAPI", "NextJS", "Tailwind"],
   },
   {
     title: "Software/Tools",
+    description:
+      "Tools I use all the time—whether it’s for coding, designing, running apps, or managing data",
     color: "139, 92, 246",
-    radius: 250,
+    radius: 285,
     skills: [
       "Git",
       "GitHub Actions",
@@ -83,34 +91,83 @@ export default function SkillsPage() {
           style={{
             display: "flex",
             flexDirection: "column",
+            gap: 8,
             justifyContent: "center",
             alignItems: "center",
+            width: 500,
           }}
         >
-          {Circles.map((circle) => {
-            return (
+          {Circles.map((circle) => (
+            <div
+              key={circle.title}
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "1rem",
+                padding: "1rem",
+                borderRadius: "12px",
+                background: "rgba(255, 255, 255, 0.02)",
+                border: "1px solid rgba(255, 255, 255, 0.05)",
+                backdropFilter: "blur(10px)",
+                transition: "all 0.3s ease",
+                cursor: "pointer",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = `rgba(${circle.color}, 0.1)`;
+                e.currentTarget.style.borderColor = `rgba(${circle.color}, 0.3)`;
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255, 255, 255, 0.02)";
+                e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.05)";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
               <div
                 style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: 8,
-                  width: 250,
+                  width: "16px",
+                  height: "16px",
+                  borderRadius: "50%",
+                  background: `rgb(${circle.color})`,
+                  boxShadow: `0 0 10px rgba(${circle.color}, 0.5)`,
+                  flexShrink: 0,
+                  marginTop: "2px",
                 }}
-                key={circle.title}
-              >
-                <div
-                  className="ball"
+              />
+              <div>
+                <h3
                   style={{
-                    width: 12,
-                    height: 12,
-                    background: `rgb(${circle.color})`,
+                    fontSize: "1.1rem",
+                    fontWeight: "600",
+                    marginTop: 0,
+                    marginBottom: "0.25rem",
+                    color: "#fff",
                   }}
-                />
-                <p style={{ width: "calc(100% - 20px)" }}>{circle.title}</p>
+                >
+                  {circle.title}
+                </h3>
+                <p
+                  style={{
+                    fontSize: "0.9rem",
+                    color: "#aaa",
+                    lineHeight: "1.4",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  {circle.description}
+                </p>
+                <div
+                  style={{
+                    fontSize: "0.8rem",
+                    color: "#666",
+                  }}
+                >
+                  {circle.skills.length} skill
+                  {circle.skills.length > 1 ? "s" : ""}
+                </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
         <div
           style={{
