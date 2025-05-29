@@ -19,11 +19,16 @@ interface DraggableWindowProps {
 const DraggableWindow: React.FC<DraggableWindowProps> = ({
   title,
   children,
-  initialPosition = { x: 100, y: 100 },
+  initialPosition,
   zIndex,
   initZIndex,
 }) => {
-  const [position, setPosition] = useState<Position>(initialPosition);
+  const [position, setPosition] = useState<Position>(
+    initialPosition || {
+      x: window.screen.width / 8,
+      y: window.screen.height / 20,
+    },
+  );
   const [isDragging, setIsDragging] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [currentZIndex, setCurrentZIndex] = useState(initZIndex);
