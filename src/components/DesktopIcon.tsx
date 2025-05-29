@@ -32,7 +32,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
              1px  0px 0 black, \
              -1px  1px 0 black, \
              0px  1px 0 black, \
-             1px  1px 0 black;",
+             1px  1px 0 black",
           color: "white",
         }}
         onClick={() => createDraggableWindow("test", <p>test</p>)}

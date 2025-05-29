@@ -3,6 +3,8 @@ import DesktopIcon from "./DesktopIcon";
 import DraggableWindow from "./DraggableWindow";
 import TopBar from "./Topbar";
 import BottomBar from "./BottomBar";
+import { useTranslation } from "react-i18next";
+import "../i18n.js";
 
 interface WindowConfig {
   title: string;
@@ -11,6 +13,7 @@ interface WindowConfig {
 }
 
 export default function App() {
+  const { t } = useTranslation();
   const zIndex = useRef(0);
   const [windows, setWindows] = useState<WindowConfig[]>([]);
 
@@ -49,6 +52,7 @@ export default function App() {
           height: "calc(100% - 120px)",
         }}
       >
+        <h1>{t("test")}</h1>
         <DesktopIcon
           name="Projects"
           icon="src/assets/folder_code.svg"
