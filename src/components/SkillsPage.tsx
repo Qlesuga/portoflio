@@ -13,14 +13,14 @@ const Circles: Circle[] = [
     title: "Proficient Programming Languages",
     description:
       "Languages I've used in larger projects with hands-on experience",
-    color: "239, 68, 68",
+    color: "220, 38, 38",
     radius: 100,
     skills: ["Typescript", "Javascript", "Python"],
   },
   {
     title: "Familiar Programming Languages",
     description: "Languages I’ve played around with in smaller projects",
-    color: "59, 130, 246",
+    color: "37, 99, 235",
     radius: 165,
     skills: ["C", "C#", "Kotlin", "Zig", "Rust"],
   },
@@ -28,7 +28,7 @@ const Circles: Circle[] = [
     title: "Libraries/Frameworks",
     description:
       "Stuff I use to build things on the web—front-end, back-end, styling, you name it",
-    color: "16, 185, 129",
+    color: "5, 150, 105",
     radius: 230,
     skills: ["React", "Node.js", "Flask", "FastAPI", "NextJS", "Tailwind"],
   },
@@ -36,16 +36,15 @@ const Circles: Circle[] = [
     title: "Software/Tools",
     description:
       "Tools I use all the time—whether it’s for coding, designing, running apps, or managing data",
-    color: "139, 92, 246",
-    radius: 285,
+    color: "109, 40, 217",
+    radius: 295,
     skills: [
       "Git",
-      "GitHub Actions",
       "Docker",
       "Redis",
       "MongoDB",
-      "PostgreSQL",
-      "MS SQL",
+      "PGSQL",
+      "MSSQL",
       "Figma",
       "Linux",
       "Prisma",
@@ -53,7 +52,16 @@ const Circles: Circle[] = [
   },
 ];
 
+const BALL_SIZE = 54;
+
 export default function SkillsPage() {
+  const getFontSize = (text: string) => {
+    if (text.length <= 5) return "0.9rem";
+    if (text.length <= 8) return "0.7rem";
+    if (text.length <= 12) return "0.55rem";
+    return "0.6rem";
+  };
+
   const calculateBallPositions = (
     Amount: number,
     index: number,
@@ -65,7 +73,7 @@ export default function SkillsPage() {
     return [x, y];
   };
 
-  const BALL_ORBIT_SPEED = 0.3;
+  const BALL_ORBIT_SPEED = 0.2;
   const calculateSpinSpeed = (radius: number) => {
     return (2 * Math.PI * radius) / 100 / BALL_ORBIT_SPEED;
   };
@@ -73,13 +81,19 @@ export default function SkillsPage() {
   return (
     <div
       className="skills-container"
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
     >
       <h1 className="skills-title" style={{ marginBottom: 0 }}>
         Skills
       </h1>
       <div
         style={{
+          minWidth: 1280,
+          minHeight: 640,
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-around",
@@ -171,12 +185,15 @@ export default function SkillsPage() {
         </div>
         <div
           style={{
-            width: 600,
-            height: 600,
+            width: 670,
+            height: 670,
+            top: -15,
+            left: -15,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             position: "relative",
+            overflow: "hidden",
           }}
         >
           {Circles.map((circle, i) => {
@@ -206,7 +223,7 @@ export default function SkillsPage() {
                     animation: `${i % 2 == 0 ? "spin" : "spin-reverse"} ${orbitSpeed}s linear infinite`,
                   }}
                 />
-                {circle.skills.map((ball, j) => {
+                {circle.skills.map((skill, j) => {
                   const [x, y] = calculateBallPositions(
                     circle.skills.length,
                     j,
@@ -218,19 +235,25 @@ export default function SkillsPage() {
                       className="ball"
                       style={{
                         position: "absolute",
-                        left: x - 20,
-                        top: y - 20,
-                        width: 40,
-                        height: 40,
+                        left: x - BALL_SIZE / 2,
+                        top: y - BALL_SIZE / 2,
+                        width: BALL_SIZE,
+                        height: BALL_SIZE,
+                        fontSize: getFontSize(skill),
+                        textShadow:
+                          "0 1px 3px rgba(0,0,0,0.8), 0 0 5px rgba(0,0,0,0.5)",
+                        fontWeight: "700",
                         backgroundColor: `rgb(${circle.color})`,
                         boxShadow: `0 0 20px rgba(${circle.color}, 0.5)`,
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
+                        textAlign: "center",
+                        flexDirection: "column",
                         animation: `${i % 2 == 0 ? "spin" : "spin-reverse"} ${rotationSpeed}s linear infinite`,
                       }}
                     >
-                      {ball}
+                      {skill}
                     </div>
                   );
                 })}
@@ -239,8 +262,8 @@ export default function SkillsPage() {
           })}
           <div
             style={{
-              width: "120px",
-              height: "120px",
+              width: 120,
+              height: 120,
               borderRadius: "50%",
               display: "flex",
               justifyContent: "center",
