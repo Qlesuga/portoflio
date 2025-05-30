@@ -2,9 +2,27 @@ import { faCalendarDays, faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import "./topbar.css";
+import { useTranslation } from "react-i18next";
+
+const langs = {
+  en: "pl",
+  pl: "en",
+};
+
+type AvaiableLangs = keyof typeof langs;
 
 const TopBar: React.FC = () => {
   const [date, setDate] = useState(new Date());
+  const { i18n } = useTranslation();
+  const [selectedLanguage, setSelectedLanguage] = useState<AvaiableLangs>(
+    (i18n.resolvedLanguage as AvaiableLangs) || "en",
+  );
+
+  const changeLanguage = () => {
+    const newLang = langs[selectedLanguage] as AvaiableLangs;
+    i18n.changeLanguage(newLang);
+    setSelectedLanguage(newLang);
+  };
 
   useEffect(() => {
     const timer = setInterval(() => setDate(new Date()), 250);
@@ -30,7 +48,14 @@ const TopBar: React.FC = () => {
         {formatDate(date)}
       </div>
       <div className="topbar_element" style={{ cursor: "pointer" }}>
-        <span>EN</span>
+        <span
+          style={{
+            textTransform: "uppercase",
+          }}
+          onClick={changeLanguage}
+        >
+          {selectedLanguage}
+        </span>
       </div>
       <div className="topbar_element">
         {formatTime(date)}
