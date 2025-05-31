@@ -1,7 +1,9 @@
 import { useState, type ChangeEvent } from "react";
 import "./contactPage.css";
+import { useTranslation } from "react-i18next";
 
 export default function ContactPage() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,19 +25,16 @@ export default function ContactPage() {
   return (
     <div className="contact-container">
       <div className="contact-content">
-        <h1 className="contact-title">Contact Form</h1>
+        <h1 className="contact-title">{t("contact.title")}</h1>
 
-        <p className="contact-description">
-          Have a question or want to get in touch? Fill out the form below or
-          contact me directly, and I will get back to you as soon as possible.
-        </p>
+        <p className="contact-description">{t("contact.description")}</p>
 
         <p className="contact-email">Email: test@test.test</p>
 
         <div className="form-container">
           <div>
             <div className="form-field">
-              <div className="form-label">Name:</div>
+              <div className="form-label">{t("contact.form.nameLabel")}:</div>
               <input
                 type="text"
                 name="name"
@@ -57,7 +56,9 @@ export default function ContactPage() {
             </div>
 
             <div className="form-field">
-              <div className="form-label">Message:</div>
+              <div className="form-label">
+                {t("contact.form.messageLabel")}:
+              </div>
               <textarea
                 name="message"
                 value={formData.message}
@@ -68,7 +69,7 @@ export default function ContactPage() {
             </div>
 
             <button onClick={handleSubmit} className="submit-button">
-              Send Message
+              {t("contact.form.sendMessage")}
             </button>
           </div>
         </div>
