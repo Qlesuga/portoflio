@@ -1,8 +1,8 @@
+import { useTranslation } from "react-i18next";
 import "./skillsPage.css";
 
 interface Circle {
-  title: string;
-  description: string;
+  translationKey: string;
   color: string;
   radius: number;
   skills: string[];
@@ -10,32 +10,25 @@ interface Circle {
 
 const Circles: Circle[] = [
   {
-    title: "Proficient Programming Languages",
-    description:
-      "Languages I've used in larger projects with hands-on experience",
+    translationKey: "skills.proficient",
     color: "220, 38, 38",
     radius: 100,
     skills: ["Typescript", "Javascript", "Python"],
   },
   {
-    title: "Familiar Programming Languages",
-    description: "Languages I’ve played around with in smaller projects",
+    translationKey: "skills.familiar",
     color: "37, 99, 235",
     radius: 165,
     skills: ["C", "C#", "Kotlin", "Zig", "Rust"],
   },
   {
-    title: "Libraries/Frameworks",
-    description:
-      "Stuff I use to build things on the web—front-end, back-end, styling, you name it",
+    translationKey: "skills.libaries",
     color: "5, 150, 105",
     radius: 230,
     skills: ["React", "Node.js", "Flask", "FastAPI", "NextJS", "Tailwind"],
   },
   {
-    title: "Software/Tools",
-    description:
-      "Tools I use all the time—whether it’s for coding, designing, running apps, or managing data",
+    translationKey: "skills.tools",
     color: "109, 40, 217",
     radius: 295,
     skills: [
@@ -55,6 +48,7 @@ const Circles: Circle[] = [
 const BALL_SIZE = 54;
 
 export default function SkillsPage() {
+  const { t } = useTranslation();
   const getFontSize = (text: string) => {
     if (text.length <= 5) return "0.9rem";
     if (text.length <= 8) return "0.7rem";
@@ -88,7 +82,7 @@ export default function SkillsPage() {
       }}
     >
       <h1 className="skills-title" style={{ marginBottom: 0 }}>
-        Skills
+        {t("skills.title")}
       </h1>
       <div
         style={{
@@ -113,7 +107,7 @@ export default function SkillsPage() {
         >
           {Circles.map((circle) => (
             <div
-              key={circle.title}
+              key={circle.translationKey}
               style={{
                 display: "flex",
                 alignItems: "flex-start",
@@ -158,7 +152,7 @@ export default function SkillsPage() {
                     color: "#fff",
                   }}
                 >
-                  {circle.title}
+                  {t(`${circle.translationKey}.title`)}
                 </h3>
                 <p
                   style={{
@@ -168,7 +162,7 @@ export default function SkillsPage() {
                     marginBottom: "0.5rem",
                   }}
                 >
-                  {circle.description}
+                  {t(`${circle.translationKey}.description`)}
                 </p>
                 <div
                   style={{
