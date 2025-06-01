@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import DesktopIcon from "./DesktopIcon";
 import DraggableWindow from "./DraggableWindow";
 import TopBar from "./Topbar";
@@ -36,6 +36,13 @@ export default function App() {
   const selectIcon = (name: string) => {
     const iconIndex = icons.findIndex((icon) => icon.name === name);
     setSelectedIcon(iconIndex);
+  };
+
+  const deselectIcon = (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (target.id === "desktop") {
+      setSelectedIcon(null);
+    }
   };
 
   const createDraggableWindow = (title: string, children: React.ReactNode) => {
@@ -102,6 +109,8 @@ export default function App() {
           flexDirection: "column",
           height: "calc(100% - 120px)",
         }}
+        id="desktop"
+        onMouseDown={deselectIcon}
       >
         {icons.map((icon, i) => (
           <DesktopIcon
