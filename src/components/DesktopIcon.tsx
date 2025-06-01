@@ -17,8 +17,8 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
     <>
       <div
         style={{
-          width: 80,
-          height: 80,
+          width: 90,
+          height: 90,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -27,7 +27,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
           textAlign: "center",
           cursor: "pointer",
           userSelect: "none",
-          padding: 8,
+          padding: 4,
           textShadow:
             "-1px -1px 0 black, \
              0px -1px 0 black, \
@@ -48,10 +48,15 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
         <img width={48} height={48} src={icon} />
         <span
           style={{
-            height: "calc(100% - 48)",
+            height: "calc(100% - 48px)",
+            width: "100%",
             fontSize: "16px",
             textAlign: "center",
             overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
           }}
         >
           {name}
