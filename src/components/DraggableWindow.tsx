@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { type MouseEvent } from "react";
+import { useTranslation } from "react-i18next";
 
 interface Position {
   x: number;
@@ -7,7 +8,7 @@ interface Position {
 }
 
 interface DraggableWindowProps {
-  title: string;
+  titleID: string;
   children: React.ReactNode;
   zIndex: React.RefObject<number>;
   initZIndex: number;
@@ -17,7 +18,7 @@ interface DraggableWindowProps {
 }
 
 const DraggableWindow: React.FC<DraggableWindowProps> = ({
-  title,
+  titleID,
   children,
   initialPosition,
   zIndex,
@@ -29,6 +30,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
       y: window.screen.height / 20,
     },
   );
+  const { t } = useTranslation();
   const [isDragging, setIsDragging] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [currentZIndex, setCurrentZIndex] = useState(initZIndex);
@@ -109,7 +111,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
         }}
         onMouseDown={onMouseDown}
       >
-        <span>{title}</span>
+        <span>{t(`${titleID}.title`)}</span>
         <button
           onClick={(e) => {
             e.stopPropagation();

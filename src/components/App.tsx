@@ -65,7 +65,7 @@ export default function App() {
       {windows.map((win) => (
         <DraggableWindow
           key={win.initZIndex}
-          title={win.title}
+          titleID={win.title}
           initZIndex={win.initZIndex}
           zIndex={zIndex}
         >

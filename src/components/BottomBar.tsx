@@ -58,9 +58,9 @@ export default function BottomBar({ createDraggableWindow }: BottomBarProps) {
     if (itemId === "github") {
       window.open("https://www.github.com/Qlesuga", "_blank");
     } else if (itemId === "contact") {
-      createDraggableWindow("Contact Form", <ContactPage />);
+      createDraggableWindow("contact", <ContactPage />);
     } else if (itemId === "skills") {
-      createDraggableWindow("Sklls", <SkillsPage />);
+      createDraggableWindow("skills", <SkillsPage />);
     }
   };
 
