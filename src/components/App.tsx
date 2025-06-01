@@ -14,6 +14,7 @@ interface WindowConfig {
 type icon = {
   name: string;
   icon: string;
+  isSelected?: boolean;
 };
 
 const icons: icon[] = [
@@ -30,6 +31,12 @@ const icons: icon[] = [
 export default function App() {
   const zIndex = useRef(0);
   const [windows, setWindows] = useState<WindowConfig[]>([]);
+  const [selectedIcon, setSelectedIcon] = useState<number | null>(null);
+
+  const selectIcon = (name: string) => {
+    const iconIndex = icons.findIndex((icon) => icon.name === name);
+    setSelectedIcon(iconIndex);
+  };
 
   const createDraggableWindow = (title: string, children: React.ReactNode) => {
     setWindows((prev) => [
@@ -96,12 +103,14 @@ export default function App() {
           height: "calc(100% - 120px)",
         }}
       >
-        {icons.map((icon) => (
+        {icons.map((icon, i) => (
           <DesktopIcon
+            key={`icon-${icon.name}`}
             name={icon.name}
             icon={icon.icon}
             createDraggableWindow={createDraggableWindow}
-            key={icon.name}
+            selectIcon={selectIcon}
+            isSelected={selectedIcon === i}
           />
         ))}
       </div>
