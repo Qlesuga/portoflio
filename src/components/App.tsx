@@ -27,16 +27,46 @@ export default function App() {
   };
 
   useEffect(() => {
-    const handleClick = () => {
-      const audio = new Audio("/src/assets/click.mp3");
-      audio.volume = 0.05;
-      audio.play();
+    let mouseDownTime: number | null = null;
+    let playMouseIn = true;
+    const CLICK_THRESHOLD = 100; // ms
+    const VOLUME = 0.05;
+
+    const handleMouseDown = () => {
+      mouseDownTime = Date.now();
+      playMouseIn = true;
+
+      setTimeout(() => {
+        if (playMouseIn && mouseDownTime !== null) {
+          const audio = new Audio("/src/assets/click_in.wav");
+          audio.volume = VOLUME;
+          audio.play();
+        }
+      }, CLICK_THRESHOLD);
     };
 
-    document.addEventListener("mousedown", handleClick);
+    const handleMouseUp = () => {
+      if (mouseDownTime) {
+        const clickDuration = Date.now() - mouseDownTime;
+        if (clickDuration <= CLICK_THRESHOLD) {
+          playMouseIn = false;
+          const audio = new Audio("/src/assets/click.mp3");
+          audio.volume = VOLUME;
+          audio.play();
+        } else {
+          const audio = new Audio("/src/assets/click_out.wav");
+          audio.volume = VOLUME;
+          audio.play();
+        }
+      }
+      mouseDownTime = null;
+    };
+    document.addEventListener("mousedown", handleMouseDown);
+    document.addEventListener("mouseup", handleMouseUp);
 
     return () => {
-      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("mousedown", handleMouseDown);
+      document.removeEventListener("mouseup", handleMouseUp);
     };
   }, []);
 
