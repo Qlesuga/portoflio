@@ -11,6 +11,22 @@ interface WindowConfig {
   children: React.ReactNode;
 }
 
+type icon = {
+  name: string;
+  icon: string;
+};
+
+const icons: icon[] = [
+  {
+    name: "Projects",
+    icon: "src/assets/folder_code.svg",
+  },
+  {
+    name: "Cwelowe Arkusze Styów",
+    icon: "src/assets/folder.svg",
+  },
+];
+
 export default function App() {
   const zIndex = useRef(0);
   const [windows, setWindows] = useState<WindowConfig[]>([]);
@@ -80,16 +96,14 @@ export default function App() {
           height: "calc(100% - 120px)",
         }}
       >
-        <DesktopIcon
-          name="Projects"
-          icon="src/assets/folder_code.svg"
-          createDraggableWindow={createDraggableWindow}
-        />
-        <DesktopIcon
-          name="Cwelowe Arkusze Styów"
-          icon="src/assets/folder.svg"
-          createDraggableWindow={createDraggableWindow}
-        />
+        {icons.map((icon) => (
+          <DesktopIcon
+            name={icon.name}
+            icon={icon.icon}
+            createDraggableWindow={createDraggableWindow}
+            key={icon.name}
+          />
+        ))}
       </div>
       <BottomBar createDraggableWindow={createDraggableWindow} />
       {windows.map((win) => (
