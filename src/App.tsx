@@ -20,11 +20,11 @@ type icon = {
 const icons: icon[] = [
   {
     name: "Projects",
-    icon: "../assets/folder_code.svg",
+    icon: "public/folder_code.svg",
   },
   {
     name: "Arkusze Styów CSS",
-    icon: "../assets/folder.svg",
+    icon: "public/folder.svg",
   },
 ];
 
