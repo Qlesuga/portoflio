@@ -29,7 +29,8 @@ const icons: icon[] = [
 ];
 
 export default function App() {
-  const zIndex = useRef(0);
+  const windowsZIndex = useRef(1000);
+  const iconsZIndex = useRef(1);
   const [windows, setWindows] = useState<WindowConfig[]>([]);
   const [selectedIcon, setSelectedIcon] = useState<number | null>(null);
 
@@ -50,7 +51,7 @@ export default function App() {
       ...prev,
       {
         title: title,
-        initZIndex: zIndex.current++,
+        initZIndex: windowsZIndex.current++,
         children: children,
       },
     ]);
@@ -120,6 +121,7 @@ export default function App() {
             createDraggableWindow={createDraggableWindow}
             selectIcon={selectIcon}
             isSelected={selectedIcon === i}
+            initZIndex={iconsZIndex.current++}
           />
         ))}
       </div>
@@ -129,7 +131,7 @@ export default function App() {
           key={win.initZIndex}
           titleID={win.title}
           initZIndex={win.initZIndex}
-          zIndex={zIndex}
+          zIndex={windowsZIndex}
         >
           {win.children}
         </DraggableWindow>

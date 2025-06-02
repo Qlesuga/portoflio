@@ -11,6 +11,7 @@ interface DesktopIconProps {
   name: string;
   icon: string;
   isSelected?: boolean;
+  initZIndex: number;
 }
 
 const DesktopIcon: React.FC<DesktopIconProps> = ({
@@ -19,6 +20,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
   icon,
   selectIcon,
   isSelected = false,
+  initZIndex,
 }) => {
   const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
   const initialPosition = useRef<Position | null>(null);
@@ -26,6 +28,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
   const dragging = useRef(false);
   const rel = useRef<Position>({ x: 0, y: 0 });
   const windowRef = useRef<HTMLDivElement | null>(null);
+  const [currentZIndex, setCurrentZIndex] = useState(initZIndex);
 
   const onMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     if (
@@ -35,6 +38,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
       isDragging
     )
       return;
+    setCurrentZIndex(1000);
     const rect = windowRef.current.getBoundingClientRect();
     dragging.current = true;
     setIsDragging(true);
@@ -58,6 +62,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
   const onMouseUp = () => {
     dragging.current = false;
     setIsDragging(false);
+    setCurrentZIndex(initZIndex);
     document.removeEventListener("mousemove", onMouseMove);
     document.removeEventListener("mouseup", onMouseUp);
   };
@@ -101,6 +106,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
         backgroundColor: isSelected
           ? "rgba(255, 255, 255, 0.2)"
           : "transparent",
+        zIndex: currentZIndex,
       }}
       onDoubleClick={() => createDraggableWindow("test", <p>test</p>)}
       onMouseDown={(e) => {
