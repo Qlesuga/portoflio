@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, type MouseEvent } from "react";
-import DesktopIcon from "./DesktopIcon";
-import DraggableWindow from "./DraggableWindow";
-import TopBar from "./Topbar";
-import BottomBar from "./BottomBar";
+import DesktopIcon from "./components/DesktopIcon.js";
+import DraggableWindow from "./components/DraggableWindow.js";
+import TopBar from "./components/Topbar.js";
+import BottomBar from "./components/BottomBar.js";
 import "../i18n.js";
 
 interface WindowConfig {
