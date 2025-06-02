@@ -23,7 +23,7 @@ const icons: icon[] = [
     icon: "src/assets/folder_code.svg",
   },
   {
-    name: "Cwelowe Arkusze Styów",
+    name: "Arkusze Styów CSS",
     icon: "src/assets/folder.svg",
   },
 ];

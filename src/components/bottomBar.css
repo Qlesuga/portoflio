@@ -1,5 +1,6 @@
 .bottom-bar {
   position: fixed;
+  z-index: 1000;
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
