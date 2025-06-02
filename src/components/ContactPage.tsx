@@ -10,7 +10,9 @@ export default function ContactPage() {
     message: "",
   });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
