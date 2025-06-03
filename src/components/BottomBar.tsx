@@ -22,7 +22,7 @@ const navItems: NavItem[] = [
   },
   {
     id: "projects",
-    icon: "/public/folder_code.svg",
+    icon: "/folder_code.svg",
     label: "Projects",
   },
   {
