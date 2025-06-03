@@ -42,7 +42,13 @@ const TopBar: React.FC = () => {
     });
   return (
     <div className="topbar">
-      <div className="topbar_borders"></div>
+      <div
+        style={{
+          backgroundColor: "rgba(0, 0, 0, 0.6)",
+          borderBottomLeftRadius: "100%",
+          width: 12,
+        }}
+      />
       <div className="topbar_element">
         <FontAwesomeIcon icon={faCalendarDays} />
         {formatDate(date)}
@@ -61,7 +67,13 @@ const TopBar: React.FC = () => {
         {formatTime(date)}
         <FontAwesomeIcon icon={faClock} />
       </div>
-      <div className="topbar_borders"></div>
+      <div
+        style={{
+          backgroundColor: "rgba(0, 0, 0, 0.6)",
+          borderBottomRightRadius: "100%",
+          width: 12,
+        }}
+      />
     </div>
   );
 };
