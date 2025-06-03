@@ -20,11 +20,11 @@ type icon = {
 const icons: icon[] = [
   {
     name: "Projects",
-    icon: "public/folder_code.svg",
+    icon: "/folder_code.svg",
   },
   {
     name: "Arkusze Styów CSS",
-    icon: "public/folder.svg",
+    icon: "/folder.svg",
   },
 ];
 
@@ -69,7 +69,7 @@ export default function App() {
 
       setTimeout(() => {
         if (playMouseIn && mouseDownTime !== null) {
-          const audio = new Audio("/src/assets/click_in.wav");
+          const audio = new Audio("/click_in.wav");
           audio.volume = VOLUME;
           audio.play();
         }
@@ -81,11 +81,11 @@ export default function App() {
         const clickDuration = Date.now() - mouseDownTime;
         if (clickDuration <= CLICK_THRESHOLD) {
           playMouseIn = false;
-          const audio = new Audio("/src/assets/click.mp3");
+          const audio = new Audio("/click.mp3");
           audio.volume = VOLUME;
           audio.play();
         } else {
-          const audio = new Audio("/src/assets/click_out.wav");
+          const audio = new Audio("/click_out.wav");
           audio.volume = VOLUME;
           audio.play();
         }
