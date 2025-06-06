@@ -18,9 +18,9 @@ const TopBar: React.FC = () => {
     (i18n.resolvedLanguage as AvaiableLangs) || "en",
   );
 
-  const changeLanguage = () => {
+  const changeLanguage = async () => {
     const newLang = langs[selectedLanguage] as AvaiableLangs;
-    i18n.changeLanguage(newLang);
+    await i18n.changeLanguage(newLang);
     setSelectedLanguage(newLang);
   };
 

@@ -1,9 +1,12 @@
+"use client";
+
 import { useEffect, useRef, useState, type MouseEvent } from "react";
-import DesktopIcon from "./components/DesktopIcon.js";
-import DraggableWindow from "./components/DraggableWindow.js";
-import TopBar from "./components/Topbar.js";
-import BottomBar from "./components/BottomBar.js";
-import "../i18n.js";
+import DesktopIcon from "./_components/DesktopIcon.tsx";
+import DraggableWindow from "./_components/DraggableWindow.tsx";
+import TopBar from "./_components/Topbar.tsx";
+import BottomBar from "./_components/BottomBar.tsx";
+import "./i18n.js";
+import "./index.css";
 
 interface WindowConfig {
   title: string;
@@ -71,7 +74,9 @@ export default function App() {
         if (playMouseIn && mouseDownTime !== null) {
           const audio = new Audio("/click_in.wav");
           audio.volume = VOLUME;
-          audio.play();
+          audio.play().catch(() => {
+            return;
+          });
         }
       }, CLICK_THRESHOLD);
     };
@@ -83,11 +88,15 @@ export default function App() {
           playMouseIn = false;
           const audio = new Audio("/click.mp3");
           audio.volume = VOLUME;
-          audio.play();
+          audio.play().catch(() => {
+            return;
+          });
         } else {
           const audio = new Audio("/click_out.wav");
           audio.volume = VOLUME;
-          audio.play();
+          audio.play().catch(() => {
+            return;
+          });
         }
       }
       mouseDownTime = null;
