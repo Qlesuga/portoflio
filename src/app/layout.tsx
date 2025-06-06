@@ -13,13 +13,11 @@ export const metadata: Metadata = {
 const roboto = Roboto({
   subsets: ["latin"],
   variable: "--font-roboto",
-  weight: ["100", "300", "400", "500", "700", "800", "900"],
 });
 
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
-  weight: ["100", "300", "400", "500", "700", "800"],
 });
 
 export default function RootLayout({
@@ -27,6 +25,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="darkreader-lock" />
+        <script src="https://hcaptcha.com/1/api.js" async defer />
+      </head>
       <body className={`${roboto.variable} ${jetbrains.variable}`}>
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>

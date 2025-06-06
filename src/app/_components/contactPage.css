@@ -1,6 +1,6 @@
 .contact-container {
-  height: 564px;
   width: 1024px;
+  max-height: 644px;
   border-radius: 0 0 9px 9px;
   margin: 0 auto;
   font-family: Robot, sans-serif;
@@ -41,10 +41,7 @@
   border: 1px solid #333;
   display: flex;
   flex-direction: column;
-}
-
-.form-field {
-  margin-bottom: 20px;
+  gap: 16px;
 }
 
 .form-label {
