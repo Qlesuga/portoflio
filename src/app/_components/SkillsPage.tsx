@@ -56,16 +56,16 @@ export default function SkillsPage() {
     return "0.6rem";
   };
 
-  const calculateBallPositions = (
+  function calculateBallPositions(
     Amount: number,
     index: number,
     radius: number,
-  ) => {
+  ) {
     const theta = (2 * Math.PI * index) / Amount;
     const x = radius + radius * Math.cos(theta);
     const y = radius + radius * Math.sin(theta);
-    return [x, y];
-  };
+    return { x: x, y: y };
+  }
 
   const BALL_ORBIT_SPEED = 0.2;
   const calculateSpinSpeed = (radius: number) => {
@@ -218,7 +218,7 @@ export default function SkillsPage() {
                   }}
                 />
                 {circle.skills.map((skill, j) => {
-                  const [x, y] = calculateBallPositions(
+                  const { x, y } = calculateBallPositions(
                     circle.skills.length,
                     j,
                     circle.radius,

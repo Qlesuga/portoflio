@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 
 interface Position {
@@ -115,7 +116,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
       }}
       onMouseUp={onMouseUp}
     >
-      <img width={48} height={48} src={icon} />
+      <Image alt={name} width={48} height={48} src={icon} />
       <span
         style={{
           height: "calc(100% - 48px)",

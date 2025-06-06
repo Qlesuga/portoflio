@@ -4,6 +4,7 @@ import { Mail, User, Github, ChartNoAxesColumn, MailOpen } from "lucide-react";
 import "./bottomBar.css";
 import ContactPage from "./ContactPage";
 import SkillsPage from "./SkillsPage";
+import Image from "next/image";
 
 interface NavItem {
   id: string;
@@ -89,7 +90,7 @@ export default function BottomBar({ createDraggableWindow }: BottomBarProps) {
                     }}
                   >
                     {isPath ? (
-                      <img
+                      <Image
                         src={Icon}
                         alt={item.label}
                         className="nav-icon"

@@ -25,7 +25,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
   initZIndex,
 }) => {
   const [position, setPosition] = useState<Position>(
-    initialPosition || {
+    initialPosition ?? {
       x: window.screen.width / 8,
       y: window.screen.height / 20,
     },
