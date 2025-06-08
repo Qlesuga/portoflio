@@ -22,13 +22,16 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
 
   const handleImageLoad = (e: SyntheticEvent<HTMLImageElement, Event>) => {
     const { naturalWidth, naturalHeight } = e.currentTarget;
-    setImageSize({ width: naturalWidth, height: naturalHeight });
-  };
-
-  useEffect(() => {
-    const scale = getFitScale(imageSize.width, imageSize.height);
+    const scale = getFitScale(naturalWidth, naturalHeight);
+    console.log(naturalHeight);
+    console.log(scale);
+    console.log(scale * naturalHeight);
+    setImageSize({
+      width: naturalWidth * scale,
+      height: naturalHeight * scale,
+    });
     setImageScale(scale);
-  }, [imageSize]);
+  };
 
   return (
     <div
@@ -47,8 +50,8 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
           height: "calc(100% - 20px)",
           width: "100%",
           display: "flex",
-          justifyContent: "start",
-          alignItems: "start",
+          justifyContent: "center",
+          alignItems: "center",
           overflow: "scroll",
         }}
       >
@@ -59,7 +62,6 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
           width={imageSize.width}
           height={imageSize.height}
           onLoad={handleImageLoad}
-          style={{ scale: imageScale }}
         />
       </div>
       <div style={{ width: "100%", height: 20 }}>
