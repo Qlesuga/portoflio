@@ -7,6 +7,7 @@ import TopBar from "./_components/Topbar.tsx";
 import BottomBar from "./_components/BottomBar.tsx";
 import "./i18n.js";
 import "./index.css";
+import { ImageWindow } from "./_components/ImageWindow.tsx";
 
 interface WindowConfig {
   title: string;
@@ -136,6 +137,13 @@ export default function App() {
         ))}
       </div>
       <BottomBar createDraggableWindow={createDraggableWindow} />
+      <DraggableWindow
+        titleID="ImageViewer"
+        initZIndex={1000}
+        zIndex={windowsZIndex}
+      >
+        <ImageWindow imageSrc="/default.png" />
+      </DraggableWindow>
       {windows.map((win) => (
         <DraggableWindow
           key={win.initZIndex}
