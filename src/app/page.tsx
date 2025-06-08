@@ -130,7 +130,8 @@ export default function App() {
             createDraggableWindow={createDraggableWindow}
             selectIcon={selectIcon}
             isSelected={selectedIcon === i}
-            initZIndex={iconsZIndex.current++}
+            initZIndex={i}
+            zIndex={iconsZIndex}
           />
         ))}
       </div>

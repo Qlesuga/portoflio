@@ -13,6 +13,7 @@ interface DesktopIconProps {
   icon: string;
   isSelected?: boolean;
   initZIndex: number;
+  zIndex: React.RefObject<number>;
 }
 
 const DesktopIcon: React.FC<DesktopIconProps> = ({
@@ -22,6 +23,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
   selectIcon,
   isSelected = false,
   initZIndex,
+  zIndex,
 }) => {
   const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
   const initialPosition = useRef<Position | null>(null);
@@ -39,7 +41,10 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
       isDragging
     )
       return;
-    setCurrentZIndex(1000);
+    if (currentZIndex != zIndex.current) {
+      zIndex.current = zIndex.current + 1;
+      setCurrentZIndex(zIndex.current);
+    }
     const rect = windowRef.current.getBoundingClientRect();
     dragging.current = true;
     setIsDragging(true);
@@ -63,7 +68,6 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
   const onMouseUp = () => {
     dragging.current = false;
     setIsDragging(false);
-    setCurrentZIndex(initZIndex);
     document.removeEventListener("mousemove", onMouseMove);
     document.removeEventListener("mouseup", onMouseUp);
   };
@@ -81,12 +85,11 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
       ref={windowRef}
       style={{
         width: 90,
-        height: 90,
+        maxHeight: 90,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        gap: 6,
         textAlign: "center",
         cursor: "pointer",
         userSelect: "none",
@@ -119,7 +122,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
       <Image alt={name} width={48} height={48} src={icon} />
       <span
         style={{
-          height: "calc(100% - 48px)",
+          maxHeight: "calc(100% - 48px)",
           width: "100%",
           fontSize: "16px",
           textAlign: "center",
