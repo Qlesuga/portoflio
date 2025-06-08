@@ -89,7 +89,7 @@ export default function App() {
     let mouseDownTime: number | null = null;
     let playMouseIn = true;
     const CLICK_THRESHOLD = 100; // ms
-    const VOLUME = 0.05;
+    const VOLUME = 0.1;
 
     const handleMouseDown = () => {
       mouseDownTime = Date.now();
@@ -111,7 +111,7 @@ export default function App() {
         const clickDuration = Date.now() - mouseDownTime;
         if (clickDuration <= CLICK_THRESHOLD) {
           playMouseIn = false;
-          const audio = new Audio("/click.mp3");
+          const audio = new Audio("/click.wav");
           audio.volume = VOLUME;
           audio.play().catch(() => {
             return;
