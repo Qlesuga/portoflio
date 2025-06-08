@@ -49,6 +49,12 @@ i18n
               sendMessage: "Send Message",
             },
           },
+          imageViewer: {
+            title: "Image Viewer",
+            imageSize: "image size",
+            resizedImageSize: "resized image size",
+            scale: "scale",
+          },
         },
       },
       pl: {
@@ -85,6 +91,12 @@ i18n
               messageLabel: "Wiadomość",
               sendMessage: "Wyślij Wiadomość",
             },
+          },
+          imageViewer: {
+            title: "Przeglądarka obrazów",
+            imageSize: "rozmiar obrazu",
+            resizedImageSize: "rozmiar przeskalowanego obrazu",
+            scale: "skala",
           },
         },
       },

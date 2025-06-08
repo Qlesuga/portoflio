@@ -138,7 +138,7 @@ export default function App() {
       </div>
       <BottomBar createDraggableWindow={createDraggableWindow} />
       <DraggableWindow
-        titleID="ImageViewer"
+        titleID="imageViewer"
         initZIndex={1000}
         zIndex={windowsZIndex}
       >

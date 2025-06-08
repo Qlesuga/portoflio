@@ -1,4 +1,5 @@
 import { useEffect, useState, type SyntheticEvent } from "react";
+import { useTranslation } from "react-i18next";
 
 interface ImageWindowProps {
   imageSrc: string;
@@ -12,6 +13,7 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
     width: 1,
     height: 1,
   });
+  const { t } = useTranslation();
 
   function getFitScale(
     imageWidth: number,
@@ -82,12 +84,16 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
       >
         <span>{imageSrc.slice(1)}</span>
         <span>
-          image size: {nativeImageSize.width} x {nativeImageSize.height}
+          {t("imageViewer.imageSize")}: {nativeImageSize.width} x{" "}
+          {nativeImageSize.height}
         </span>
         <span>
-          resized image size: {imageSize.width} x {imageSize.height}
+          {t("imageViewer.resizedImageSize")}: {imageSize.width} x{" "}
+          {imageSize.height}
         </span>
-        <span>scale: {imageScale}%</span>
+        <span>
+          {t("imageViewer.scale")}: {imageScale}%
+        </span>
       </div>
     </div>
   );
