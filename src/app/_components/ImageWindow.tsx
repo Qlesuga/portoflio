@@ -8,12 +8,16 @@ interface ImageWindowProps {
 export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
   const [imageScale, setImageScale] = useState(1);
   const [imageSize, setImageSize] = useState({ width: 1, height: 1 });
+  const [nativeImageSize, setNativeImageSize] = useState({
+    width: 1,
+    height: 1,
+  });
 
   function getFitScale(
     imageWidth: number,
     imageHeight: number,
     containerWidth = 900,
-    containerHeight = 560,
+    containerHeight = 558,
   ) {
     const scaleX = containerWidth / imageWidth;
     const scaleY = containerHeight / imageHeight;
@@ -23,9 +27,10 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
   const handleImageLoad = (e: SyntheticEvent<HTMLImageElement, Event>) => {
     const { naturalWidth, naturalHeight } = e.currentTarget;
     const scale = getFitScale(naturalWidth, naturalHeight);
-    console.log(naturalHeight);
-    console.log(scale);
-    console.log(scale * naturalHeight);
+    setNativeImageSize({
+      width: naturalWidth,
+      height: naturalHeight,
+    });
     setImageSize({
       width: naturalWidth * scale,
       height: naturalHeight * scale,
@@ -43,11 +48,12 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
         flexDirection: "column",
         backgroundColor: "#121212",
         color: "white",
+        borderRadius: "inherit",
       }}
     >
       <div
         style={{
-          height: "calc(100% - 20px)",
+          height: "calc(100% - 24px)",
           width: "100%",
           display: "flex",
           justifyContent: "center",
@@ -64,8 +70,24 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
           onLoad={handleImageLoad}
         />
       </div>
-      <div style={{ width: "100%", height: 20 }}>
-        {imageSize.width} x {imageSize.height} {imageScale}%
+      <div
+        style={{
+          width: "100%",
+          height: 24,
+          borderTop: "1px solid #2b2b2b",
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}
+      >
+        <span>{imageSrc.slice(1)}</span>
+        <span>
+          image size: {nativeImageSize.width} x {nativeImageSize.height}
+        </span>
+        <span>
+          resized image size: {imageSize.width} x {imageSize.height}
+        </span>
+        <span>scale: {imageScale}%</span>
       </div>
     </div>
   );
