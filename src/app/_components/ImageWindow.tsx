@@ -40,6 +40,23 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
     setImageScale(scale);
   };
 
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    e.preventDefault();
+
+    let scale = 0;
+    if (e.deltaY < 0) {
+      scale = imageScale * 1.1;
+    } else {
+      scale = imageScale / 1.1;
+    }
+
+    setImageScale(scale);
+    setImageSize({
+      width: nativeImageSize.width * scale,
+      height: nativeImageSize.height * scale,
+    });
+  };
+
   return (
     <div
       style={{
@@ -62,6 +79,7 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
           alignItems: "center",
           overflow: "scroll",
         }}
+        onWheel={handleWheel}
       >
         {/*eslint-disable-next-line @next/next/no-img-element*/}
         <img
@@ -88,11 +106,11 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
           {nativeImageSize.height}
         </span>
         <span>
-          {t("imageViewer.resizedImageSize")}: {imageSize.width} x{" "}
-          {imageSize.height}
+          {t("imageViewer.resizedImageSize")}: {imageSize.width.toFixed(0)} x{" "}
+          {imageSize.height.toFixed(0)}
         </span>
         <span>
-          {t("imageViewer.scale")}: {imageScale}%
+          {t("imageViewer.scale")}: {imageScale.toFixed(2)}%
         </span>
       </div>
     </div>
