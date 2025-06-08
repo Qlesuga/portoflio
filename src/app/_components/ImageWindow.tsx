@@ -28,7 +28,7 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
 
   const handleImageLoad = (e: SyntheticEvent<HTMLImageElement, Event>) => {
     const { naturalWidth, naturalHeight } = e.currentTarget;
-    const scale = getFitScale(naturalWidth, naturalHeight);
+    const scale = Math.min(1, getFitScale(naturalWidth, naturalHeight));
     setNativeImageSize({
       width: naturalWidth,
       height: naturalHeight,

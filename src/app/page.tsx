@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, type MouseEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type MouseEvent,
+  type ReactNode,
+} from "react";
 import DesktopIcon from "./_components/DesktopIcon.tsx";
 import DraggableWindow from "./_components/DraggableWindow.tsx";
 import TopBar from "./_components/Topbar.tsx";
@@ -18,17 +24,35 @@ interface WindowConfig {
 type icon = {
   name: string;
   icon: string;
+  titleID: string;
+  component: ReactNode;
   isSelected?: boolean;
 };
 
 const icons: icon[] = [
   {
     name: "Projects",
+    titleID: "projekt",
     icon: "/folder_code.svg",
+    component: <p>projekt</p>,
   },
   {
     name: "Arkusze Styów CSS",
+    titleID: "style",
     icon: "/folder.svg",
+    component: <p>style</p>,
+  },
+  {
+    name: "wallpaper.png",
+    titleID: "imageViewer",
+    icon: "/default.png",
+    component: <ImageWindow imageSrc="/default.png" />,
+  },
+  {
+    name: "smoleg.png",
+    titleID: "imageViewer",
+    icon: "/smoleg.png",
+    component: <ImageWindow imageSrc="/smoleg.png" />,
   },
 ];
 
@@ -127,6 +151,8 @@ export default function App() {
           <DesktopIcon
             key={`icon-${icon.name}`}
             name={icon.name}
+            titleID={icon.titleID}
+            component={icon.component}
             icon={icon.icon}
             createDraggableWindow={createDraggableWindow}
             selectIcon={selectIcon}
@@ -137,13 +163,6 @@ export default function App() {
         ))}
       </div>
       <BottomBar createDraggableWindow={createDraggableWindow} />
-      <DraggableWindow
-        titleID="imageViewer"
-        initZIndex={1000}
-        zIndex={windowsZIndex}
-      >
-        <ImageWindow imageSrc="/default.png" />
-      </DraggableWindow>
       {windows.map((win) => (
         <DraggableWindow
           key={win.initZIndex}

@@ -1,5 +1,11 @@
 import Image from "next/image";
-import { useEffect, useRef, useState, type MouseEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type MouseEvent,
+  type ReactNode,
+} from "react";
 
 interface Position {
   x: number;
@@ -11,6 +17,8 @@ interface DesktopIconProps {
   selectIcon: (name: string) => void;
   name: string;
   icon: string;
+  titleID: string;
+  component: ReactNode;
   isSelected?: boolean;
   initZIndex: number;
   zIndex: React.RefObject<number>;
@@ -21,6 +29,8 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
   name,
   icon,
   selectIcon,
+  component,
+  titleID,
   isSelected = false,
   initZIndex,
   zIndex,
@@ -97,6 +107,8 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
         top: position.y,
         left: position.x,
         padding: 4,
+        paddingTop: 8,
+        gap: 2,
         textShadow:
           "-1px -1px 0 black, \
              0px -1px 0 black, \
@@ -112,17 +124,26 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
           : "transparent",
         zIndex: currentZIndex,
       }}
-      onDoubleClick={() => createDraggableWindow("test", <p>test</p>)}
+      onDoubleClick={() => createDraggableWindow(titleID, component)}
       onMouseDown={(e) => {
         selectIcon(name);
         onMouseDown(e);
       }}
       onMouseUp={onMouseUp}
     >
-      <Image alt={name} width={48} height={48} src={icon} />
+      {/*eslint-disable-next-line @next/next/no-img-element*/}
+      <img
+        alt={name}
+        height={36}
+        src={icon}
+        style={{
+          objectFit: "contain",
+          maxHeight: 36,
+        }}
+      />
       <span
         style={{
-          maxHeight: "calc(100% - 48px)",
+          maxHeight: "calc(100% - 36px)",
           width: "100%",
           fontSize: "16px",
           textAlign: "center",
