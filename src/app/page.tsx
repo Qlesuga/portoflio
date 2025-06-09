@@ -14,6 +14,7 @@ import BottomBar from "./_components/BottomBar.tsx";
 import "./i18n.js";
 import "./index.css";
 import { ImageWindow } from "./_components/ImageWindow.tsx";
+import { TextEditor } from "./_components/TextEditor.tsx";
 
 interface WindowConfig {
   title: string;
@@ -41,6 +42,12 @@ const icons: icon[] = [
     titleID: "style",
     icon: "/folder.svg",
     component: <p>style</p>,
+  },
+  {
+    name: "inspiration.txt",
+    titleID: "textEditor",
+    icon: "/file.png",
+    component: <TextEditor />,
   },
   {
     name: "wallpaper.png",
