@@ -44,10 +44,10 @@ const icons: icon[] = [
     component: <p>style</p>,
   },
   {
-    name: "inspiration.txt",
+    name: "readme.txt",
     titleID: "textEditor",
     icon: "/file.png",
-    component: <TextEditor />,
+    component: <TextEditor fileID="readme" />,
   },
   {
     name: "wallpaper.png",
@@ -95,7 +95,7 @@ export default function App() {
   useEffect(() => {
     let mouseDownTime: number | null = null;
     let playMouseIn = true;
-    const CLICK_THRESHOLD = 100; // ms
+    const CLICK_THRESHOLD = 150; // ms
     const VOLUME = 0.1;
 
     const handleMouseDown = () => {

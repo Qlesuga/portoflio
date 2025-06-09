@@ -55,6 +55,9 @@ i18n
             resizedImageSize: "resized image size",
             scale: "scale",
           },
+          textEditor: {
+            title: "Text Editor",
+          },
         },
       },
       pl: {
@@ -97,6 +100,9 @@ i18n
             imageSize: "rozmiar obrazu",
             resizedImageSize: "rozmiar przeskalowanego obrazu",
             scale: "skala",
+          },
+          textEditor: {
+            title: "Edytor Tekstu",
           },
         },
       },
