@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   useEffect,
   useRef,
@@ -143,15 +142,10 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
       />
       <span
         style={{
-          maxHeight: "calc(100% - 36px)",
           width: "100%",
           fontSize: "16px",
           textAlign: "center",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          display: "-webkit-box",
-          WebkitLineClamp: 2,
-          WebkitBoxOrient: "vertical",
+          wordBreak: "break-word",
         }}
       >
         {name}

@@ -37,7 +37,7 @@ const icons: icon[] = [
     component: <p>projekt</p>,
   },
   {
-    name: "Arkusze Styów CSS",
+    name: "Arkusze Stylów CSS",
     titleID: "style",
     icon: "/folder.svg",
     component: <p>style</p>,
