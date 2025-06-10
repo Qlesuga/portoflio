@@ -15,6 +15,7 @@ import "./i18n.js";
 import "./index.css";
 import { ImageWindow } from "./_components/ImageWindow.tsx";
 import { TextEditor } from "./_components/TextEditor.tsx";
+import { PasswordProtected } from "./_components/PasswordProtected.tsx";
 
 interface WindowConfig {
   title: string;
@@ -45,9 +46,13 @@ const icons: icon[] = [
   },
   {
     name: "priavte",
-    titleID: "style",
+    titleID: "private",
     icon: "/folder.svg",
-    component: <div></div>,
+    component: (
+      <PasswordProtected passwordID="PriavteFolder">
+        <p>test</p>
+      </PasswordProtected>
+    ),
   },
   {
     name: "readme.txt",
