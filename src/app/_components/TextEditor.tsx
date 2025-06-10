@@ -1,9 +1,42 @@
 import { useRef, useState, type ChangeEvent } from "react";
 
-type FilesIDs = "readme";
+type FilesIDs = "readme" | "password" | "notesToSelf" | "browserHistory";
 
 const textFiles: Record<FilesIDs, string> = {
-  readme: "readme",
+  readme:
+    "\
+Welcome to my portfolio!\n\
+Please enjoy, and explore as much as you would like.\n\
+  ",
+  password: "Qles123",
+  browserHistory:
+    "\
+19:03 – how to center a div\n\
+19:07 – why isn't my css working\n\
+19:08 – css not working even though it should be working\n\
+19:29 – difference between == and === and what is life\n\
+19:30 – how to center a div\n\
+19:55 – react is not reacting\n\
+20:00 – how to center a div\n\
+20:02 – undo git force push\n\
+20:32 – recursion vs existential crisis\n\
+22:42 – learn rust without crying\n\
+23:00 – how to center a div\n\
+23:09 – how to explain tech debt to non-tech\n\
+23:58 – how to center a div\n\
+  ",
+  notesToSelf:
+    "\
+1. Never use password managers they just complicate things\n\
+2. Push to production on friday dawn\n\
+3. console.log is best debbuging method\n\
+4. Works on my firefox\n\
+5. Removed Herobrine\n\
+6. Cake in fact isn't a lie\n\
+7. I should try terraria\n\
+7. I should try minecraft\n\
+8. Pull out the arrow from the knee, it bothers me while adventuring\
+",
 };
 
 interface TextEditorProps {

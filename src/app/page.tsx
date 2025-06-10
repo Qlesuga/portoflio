@@ -44,10 +44,34 @@ const icons: icon[] = [
     component: <p>style</p>,
   },
   {
+    name: "priavte",
+    titleID: "style",
+    icon: "/folder.svg",
+    component: <div></div>,
+  },
+  {
     name: "readme.txt",
     titleID: "textEditor",
     icon: "/file.png",
     component: <TextEditor fileID="readme" />,
+  },
+  {
+    name: "browser history.txt",
+    titleID: "textEditor",
+    icon: "/file.png",
+    component: <TextEditor fileID="browserHistory" />,
+  },
+  {
+    name: "password.txt",
+    titleID: "textEditor",
+    icon: "/file.png",
+    component: <TextEditor fileID="password" />,
+  },
+  {
+    name: "notes.txt",
+    titleID: "textEditor",
+    icon: "/file.png",
+    component: <TextEditor fileID="notesToSelf" />,
   },
   {
     name: "wallpaper.png",
