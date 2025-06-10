@@ -106,8 +106,6 @@ export function PasswordProtected({
             cursor: "pointer",
             transition: "background-color 0.2s ease",
           }}
-          onMouseEnter={(e) => (e.target.style.backgroundColor = "#005a9e")}
-          onMouseLeave={(e) => (e.target.style.backgroundColor = "#007acc")}
           type="submit"
         >
           OK

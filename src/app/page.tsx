@@ -18,7 +18,8 @@ import { TextEditor } from "./_components/TextEditor.tsx";
 import { PasswordProtected } from "./_components/PasswordProtected.tsx";
 
 interface WindowConfig {
-  title: string;
+  titleID: string;
+  title?: string;
   initZIndex: number;
   children: React.ReactNode;
 }
@@ -27,6 +28,7 @@ type icon = {
   name: string;
   icon: string;
   titleID: string;
+  title?: string;
   component: ReactNode;
   isSelected?: boolean;
 };
@@ -47,6 +49,7 @@ const icons: icon[] = [
   {
     name: "priavte",
     titleID: "private",
+    title: "/home/qles/private",
     icon: "/folder.svg",
     component: (
       <PasswordProtected passwordID="PriavteFolder">
@@ -110,10 +113,15 @@ export default function App() {
     }
   };
 
-  const createDraggableWindow = (title: string, children: React.ReactNode) => {
+  const createDraggableWindow = (
+    titleID: string,
+    children: React.ReactNode,
+    title: string | undefined = undefined,
+  ) => {
     setWindows((prev) => [
       ...prev,
       {
+        titleID: titleID,
         title: title,
         initZIndex: windowsZIndex.current++,
         children: children,
@@ -188,6 +196,7 @@ export default function App() {
             key={`icon-${icon.name}`}
             name={icon.name}
             titleID={icon.titleID}
+            title={icon.title}
             component={icon.component}
             icon={icon.icon}
             createDraggableWindow={createDraggableWindow}
@@ -202,7 +211,8 @@ export default function App() {
       {windows.map((win) => (
         <DraggableWindow
           key={win.initZIndex}
-          titleID={win.title}
+          titleID={win.titleID}
+          title={win.title}
           initZIndex={win.initZIndex}
           zIndex={windowsZIndex}
         >

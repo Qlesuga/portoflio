@@ -12,11 +12,16 @@ interface Position {
 }
 
 interface DesktopIconProps {
-  createDraggableWindow: (title: string, children: React.ReactNode) => void;
+  createDraggableWindow: (
+    titleID: string,
+    children: React.ReactNode,
+    title: string | undefined,
+  ) => void;
   selectIcon: (name: string) => void;
   name: string;
   icon: string;
   titleID: string;
+  title?: string;
   component: ReactNode;
   isSelected?: boolean;
   initZIndex: number;
@@ -30,6 +35,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
   selectIcon,
   component,
   titleID,
+  title,
   isSelected = false,
   initZIndex,
   zIndex,
@@ -123,7 +129,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
           : "transparent",
         zIndex: currentZIndex,
       }}
-      onDoubleClick={() => createDraggableWindow(titleID, component)}
+      onDoubleClick={() => createDraggableWindow(titleID, component, title)}
       onMouseDown={(e) => {
         selectIcon(name);
         onMouseDown(e);

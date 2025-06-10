@@ -9,6 +9,7 @@ interface Position {
 
 interface DraggableWindowProps {
   titleID: string;
+  title?: string;
   children: React.ReactNode;
   zIndex: React.RefObject<number>;
   initZIndex: number;
@@ -19,6 +20,7 @@ interface DraggableWindowProps {
 
 const DraggableWindow: React.FC<DraggableWindowProps> = ({
   titleID,
+  title,
   children,
   initialPosition,
   zIndex,
@@ -111,7 +113,8 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
         }}
         onMouseDown={onMouseDown}
       >
-        <span>{t(`${titleID}.title`)}</span>
+        {/*eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing*/}
+        <span>{title ? title : t(`${titleID}.title`)}</span>
         <button
           onClick={(e) => {
             e.stopPropagation();
