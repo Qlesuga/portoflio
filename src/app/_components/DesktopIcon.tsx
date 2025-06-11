@@ -1,10 +1,12 @@
 import {
+  useContext,
   useEffect,
   useRef,
   useState,
   type MouseEvent,
   type ReactNode,
 } from "react";
+import { CreateWindowContex } from "../page";
 
 interface Position {
   x: number;
@@ -12,11 +14,6 @@ interface Position {
 }
 
 interface DesktopIconProps {
-  createDraggableWindow: (
-    titleID: string,
-    children: React.ReactNode,
-    title: string | undefined,
-  ) => void;
   selectIcon: (name: string) => void;
   name: string;
   icon: string;
@@ -29,7 +26,6 @@ interface DesktopIconProps {
 }
 
 const DesktopIcon: React.FC<DesktopIconProps> = ({
-  createDraggableWindow,
   name,
   icon,
   selectIcon,
@@ -47,6 +43,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
   const rel = useRef<Position>({ x: 0, y: 0 });
   const windowRef = useRef<HTMLDivElement | null>(null);
   const [currentZIndex, setCurrentZIndex] = useState(initZIndex);
+  const createDraggableWindow = useContext(CreateWindowContex);
 
   const onMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     if (

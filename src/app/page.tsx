@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  createContext,
   useEffect,
   useRef,
   useState,
@@ -92,6 +93,18 @@ const icons: icon[] = [
   },
 ];
 
+const CreateWindowContex = createContext(
+  (
+    titleID: string,
+    children: React.ReactNode,
+    title: string | undefined = undefined,
+  ) => {
+    console.log(titleID, children, title);
+    return;
+  },
+);
+export { CreateWindowContex };
+
 export default function App() {
   const windowsZIndex = useRef(1000);
   const iconsZIndex = useRef(1);
@@ -177,45 +190,46 @@ export default function App() {
   }, []);
 
   return (
-    <div id="root" style={{ height: "100vh" }}>
-      <TopBar />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "calc(100% - 120px)",
-        }}
-        id="desktop"
-        onMouseDown={deselectIcon}
-      >
-        {icons.map((icon, i) => (
-          <DesktopIcon
-            key={`icon-${icon.name}`}
-            name={icon.name}
-            titleID={icon.titleID}
-            title={icon.title}
-            component={icon.component}
-            icon={icon.icon}
-            createDraggableWindow={createDraggableWindow}
-            selectIcon={selectIcon}
-            isSelected={selectedIcon === i}
-            initZIndex={i}
-            zIndex={iconsZIndex}
-          />
+    <CreateWindowContex.Provider value={createDraggableWindow}>
+      <div id="root" style={{ height: "100vh" }}>
+        <TopBar />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            height: "calc(100% - 120px)",
+          }}
+          id="desktop"
+          onMouseDown={deselectIcon}
+        >
+          {icons.map((icon, i) => (
+            <DesktopIcon
+              key={`icon-${icon.name}`}
+              name={icon.name}
+              titleID={icon.titleID}
+              title={icon.title}
+              component={icon.component}
+              icon={icon.icon}
+              selectIcon={selectIcon}
+              isSelected={selectedIcon === i}
+              initZIndex={i}
+              zIndex={iconsZIndex}
+            />
+          ))}
+        </div>
+        <BottomBar />
+        {windows.map((win) => (
+          <DraggableWindow
+            key={win.initZIndex}
+            titleID={win.titleID}
+            title={win.title}
+            initZIndex={win.initZIndex}
+            zIndex={windowsZIndex}
+          >
+            {win.children}
+          </DraggableWindow>
         ))}
       </div>
-      <BottomBar createDraggableWindow={createDraggableWindow} />
-      {windows.map((win) => (
-        <DraggableWindow
-          key={win.initZIndex}
-          titleID={win.titleID}
-          title={win.title}
-          initZIndex={win.initZIndex}
-          zIndex={windowsZIndex}
-        >
-          {win.children}
-        </DraggableWindow>
-      ))}
-    </div>
+    </CreateWindowContex.Provider>
   );
 }

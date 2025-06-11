@@ -1,10 +1,11 @@
 import type React from "react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Mail, User, Github, ChartNoAxesColumn, MailOpen } from "lucide-react";
 import "./bottomBar.css";
 import ContactPage from "./ContactPage";
 import SkillsPage from "./SkillsPage";
 import Image from "next/image";
+import { CreateWindowContex } from "../page";
 
 interface NavItem {
   id: string;
@@ -47,12 +48,9 @@ const navItems: NavItem[] = [
   },
 ];
 
-interface BottomBarProps {
-  createDraggableWindow: (title: string, children: React.ReactNode) => void;
-}
-
-export default function BottomBar({ createDraggableWindow }: BottomBarProps) {
+export default function BottomBar() {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const createDraggableWindow = useContext(CreateWindowContex);
 
   const handleItemClick = (itemId: string) => {
     console.log(`Clicked on ${itemId}`);
