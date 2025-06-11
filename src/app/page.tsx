@@ -16,6 +16,7 @@ import "./index.css";
 import { ImageWindow } from "./_components/ImageWindow.tsx";
 import { TextEditor } from "./_components/TextEditor.tsx";
 import { PasswordProtected } from "./_components/PasswordProtected.tsx";
+import { Folder } from "./_components/Folder.tsx";
 
 interface WindowConfig {
   titleID: string;
@@ -41,19 +42,15 @@ const icons: icon[] = [
     component: <p>projekt</p>,
   },
   {
-    name: "Arkusze Stylów CSS",
-    titleID: "style",
-    icon: "/folder.svg",
-    component: <p>style</p>,
-  },
-  {
     name: "priavte",
     titleID: "private",
-    title: "/home/qles/private",
+    title: "private",
     icon: "/folder.svg",
     component: (
       <PasswordProtected passwordID="PriavteFolder">
-        <p>test</p>
+        <Folder path="/home/klu/Desktop/private">
+          <div>test</div>
+        </Folder>
       </PasswordProtected>
     ),
   },

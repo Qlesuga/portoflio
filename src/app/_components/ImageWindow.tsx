@@ -1,4 +1,4 @@
-import { useEffect, useState, type SyntheticEvent } from "react";
+import { useState, type SyntheticEvent } from "react";
 import { useTranslation } from "react-i18next";
 
 interface ImageWindowProps {
