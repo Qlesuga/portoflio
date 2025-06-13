@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { type MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -28,8 +28,8 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
 }) => {
   const [position, setPosition] = useState<Position>(
     initialPosition ?? {
-      x: window.screen.width / 8,
-      y: window.screen.height / 20,
+      x: -10000,
+      y: -10000,
     },
   );
   const { t } = useTranslation();
@@ -79,6 +79,23 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
   const handleClose = () => {
     setIsVisible(false);
   };
+
+  useEffect(() => {
+    const rect = windowRef.current?.getBoundingClientRect();
+    if (!rect) return;
+
+    const { width: componentWidth, height: componentHeigh } = rect;
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    const center = {
+      x: screenWidth / 2 - componentWidth / 2,
+      y: screenHeight / 2 - componentHeigh / 2,
+    };
+    console.log(center);
+    console.log(screenWidth, "x", screenHeight);
+    setPosition(center);
+  }, []);
 
   if (!isVisible) return null;
 
