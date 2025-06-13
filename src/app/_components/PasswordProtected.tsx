@@ -30,6 +30,7 @@ export function PasswordProtected({
   const submitPassword = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (passwordInput.current?.value == unlockPassword) {
+      passwordStates[passwordID].unlocked = true;
       setIsUnlocked(true);
       return;
     }
