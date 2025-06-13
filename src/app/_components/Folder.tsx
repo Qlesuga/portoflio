@@ -1,11 +1,55 @@
+import { useState } from "react";
+import { TextEditor } from "./TextEditor";
+import FolderIcon from "./FolderIcon";
+import { ImageWindow } from "./ImageWindow";
+
+type icon = {
+  name: string;
+  icon: string;
+  titleID: string;
+  title?: string;
+  component: React.ReactNode;
+  isSelected?: boolean;
+};
+
 type AvaiablePaths = "/home/klu/Desktop/private";
+
+const Folders: Record<AvaiablePaths, icon[]> = {
+  "/home/klu/Desktop/private": [
+    {
+      name: "browser history.txt",
+      titleID: "textEditor",
+      icon: "/file.png",
+      component: <TextEditor fileID="browserHistory" />,
+    },
+    {
+      name: "notes.txt",
+      titleID: "textEditor",
+      icon: "/file.png",
+      component: <TextEditor fileID="notesToSelf" />,
+    },
+    {
+      name: "smoleg.png",
+      titleID: "imageViewer",
+      icon: "/smoleg.png",
+      component: <ImageWindow imageSrc="/smoleg.png" />,
+    },
+  ],
+};
 
 interface FolderProps {
   path: AvaiablePaths;
-  children: React.ReactNode;
 }
 
-export function Folder({ path, children }: FolderProps) {
+export function Folder({ path }: FolderProps) {
+  const [icons] = useState(Folders[path]);
+  const [selectedIcon, setSelectedIcon] = useState<number | null>(null);
+
+  const selectIcon = (name: string) => {
+    const iconIndex = icons.findIndex((icon) => icon.name === name);
+    setSelectedIcon(iconIndex);
+  };
+
   return (
     <div
       style={{
@@ -44,10 +88,23 @@ export function Folder({ path, children }: FolderProps) {
         style={{
           backgroundColor: "#121212",
           height: "calc(100% - 40px)",
-          padding: 16,
+          padding: 8,
+          display: "flex",
+          flexDirection: "row",
         }}
       >
-        {children}
+        {icons.map((icon, i) => (
+          <FolderIcon
+            key={`icon-${icon.name}`}
+            name={icon.name}
+            titleID={icon.titleID}
+            title={icon.title}
+            component={icon.component}
+            icon={icon.icon}
+            selectIcon={selectIcon}
+            isSelected={selectedIcon === i}
+          />
+        ))}
       </div>
     </div>
   );

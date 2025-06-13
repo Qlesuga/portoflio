@@ -49,7 +49,7 @@ const icons: icon[] = [
     icon: "/folder.svg",
     component: (
       <PasswordProtected passwordID="PriavteFolder">
-        <Folder path="/home/klu/Desktop/private">test</Folder>
+        <Folder path="/home/klu/Desktop/private" />
       </PasswordProtected>
     ),
   },
@@ -60,34 +60,16 @@ const icons: icon[] = [
     component: <TextEditor fileID="readme" />,
   },
   {
-    name: "browser history.txt",
-    titleID: "textEditor",
-    icon: "/file.png",
-    component: <TextEditor fileID="browserHistory" />,
-  },
-  {
     name: "password.txt",
     titleID: "textEditor",
     icon: "/file.png",
     component: <TextEditor fileID="password" />,
   },
   {
-    name: "notes.txt",
-    titleID: "textEditor",
-    icon: "/file.png",
-    component: <TextEditor fileID="notesToSelf" />,
-  },
-  {
     name: "wallpaper.png",
     titleID: "imageViewer",
     icon: "/default.png",
     component: <ImageWindow imageSrc="/default.png" />,
-  },
-  {
-    name: "smoleg.png",
-    titleID: "imageViewer",
-    icon: "/smoleg.png",
-    component: <ImageWindow imageSrc="/smoleg.png" />,
   },
 ];
 
