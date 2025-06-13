@@ -114,6 +114,8 @@ export default function SkillsPage() {
                 gap: "1rem",
                 padding: "1rem",
                 borderRadius: "12px",
+                width: 500,
+                boxSizing: "border-box",
                 background: "rgba(255, 255, 255, 0.02)",
                 border: "1px solid rgba(255, 255, 255, 0.05)",
                 backdropFilter: "blur(10px)",

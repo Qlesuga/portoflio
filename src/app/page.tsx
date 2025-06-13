@@ -39,7 +39,7 @@ const icons: icon[] = [
   {
     name: "Projects",
     titleID: "projekt",
-    icon: "/folder_code.svg",
+    icon: "/folder_code.png",
     component: <p>projekt</p>,
   },
   {
