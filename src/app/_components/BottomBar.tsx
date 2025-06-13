@@ -5,7 +5,7 @@ import "./bottomBar.css";
 import ContactPage from "./ContactPage";
 import SkillsPage from "./SkillsPage";
 import Image from "next/image";
-import { CreateWindowContex } from "../page";
+import { CreateWindowContex } from "../context";
 
 interface NavItem {
   id: string;

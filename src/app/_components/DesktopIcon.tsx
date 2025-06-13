@@ -6,7 +6,7 @@ import {
   type MouseEvent,
   type ReactNode,
 } from "react";
-import { CreateWindowContex } from "../page";
+import { CreateWindowContex } from "../context";
 
 interface Position {
   x: number;

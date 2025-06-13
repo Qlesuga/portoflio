@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  createContext,
   useEffect,
   useRef,
   useState,
@@ -18,6 +17,7 @@ import { ImageWindow } from "./_components/ImageWindow.tsx";
 import { TextEditor } from "./_components/TextEditor.tsx";
 import { PasswordProtected } from "./_components/PasswordProtected.tsx";
 import { Folder } from "./_components/Folder.tsx";
+import { CreateWindowContex } from "./context.ts";
 
 interface WindowConfig {
   titleID: string;
@@ -49,9 +49,7 @@ const icons: icon[] = [
     icon: "/folder.svg",
     component: (
       <PasswordProtected passwordID="PriavteFolder">
-        <Folder path="/home/klu/Desktop/private">
-          <div>test</div>
-        </Folder>
+        <Folder path="/home/klu/Desktop/private">test</Folder>
       </PasswordProtected>
     ),
   },
@@ -92,18 +90,6 @@ const icons: icon[] = [
     component: <ImageWindow imageSrc="/smoleg.png" />,
   },
 ];
-
-const CreateWindowContex = createContext(
-  (
-    titleID: string,
-    children: React.ReactNode,
-    title: string | undefined = undefined,
-  ) => {
-    console.log(titleID, children, title);
-    return;
-  },
-);
-export { CreateWindowContex };
 
 export default function App() {
   const windowsZIndex = useRef(1000);
