@@ -52,6 +52,7 @@ export function PasswordProtected({
         width: 280,
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
         border: "1px solid #333",
+        borderRadius: "0 0 9px 9px",
       }}
       onSubmit={submitPassword}
     >

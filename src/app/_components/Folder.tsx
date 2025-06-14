@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TextEditor } from "./TextEditor";
 import FolderIcon from "./FolderIcon";
 import { ImageWindow } from "./ImageWindow";
+import ProjectDescription from "./ProjectDescription";
 
 type icon = {
   name: string;
@@ -44,9 +45,10 @@ const Folders: Record<AvaiablePaths, icon[]> = {
     },
     {
       name: "familylynk",
-      titleID: "imageViewer",
+      titleID: "",
+      title: "Projectpedia - familylynk",
       icon: "/familylynk.svg",
-      component: <ImageWindow imageSrc="/familylynk.svg" />,
+      component: <ProjectDescription projectID="familylynk" />,
     },
     {
       name: "bajojajo sr",
@@ -111,6 +113,7 @@ export function Folder({ path }: FolderProps) {
           padding: 8,
           display: "flex",
           flexDirection: "row",
+          borderRadius: "0 0 9px 9px",
         }}
       >
         {icons.map((icon, i) => (
