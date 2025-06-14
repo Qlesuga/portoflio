@@ -1,4 +1,11 @@
 import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "~/components/ui/carousel";
 
 type ProjectInfo = {
   name: string;
@@ -47,7 +54,7 @@ const Projects: Record<ProjectID, ProjectInfo> = {
       { name: "react-toastify", color: "5, 150, 105" },
       { name: "Docker", color: "109, 40, 217" },
     ],
-    images: ["familylynk/image1"],
+    images: ["/familylynk/image1.png", "/default.png"],
   },
 };
 
@@ -103,7 +110,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
       <div
         style={{
           float: "right",
-          width: "300px",
+          width: "325px",
           backgroundColor: "#333",
           border: "1px solid #a2a9b1",
           margin: "0 0 20px 20px",
@@ -123,44 +130,36 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
         >
           Project Information
         </h3>
-        <div
+        <Carousel
+          opts={{
+            loop: true,
+          }}
           style={{
             display: "flex",
-            flexDirection: "row",
+            justifyContent: "center",
             alignItems: "center",
-            gap: 4,
           }}
         >
-          <button
-            style={{
-              borderRadius: 100,
-              backgroundColor: "rgba(0,0,0,0.2)",
-              color: "white",
-              border: "1px solid rgba(0,0,0,0.5)",
-              padding: "0 4px",
-            }}
-          >
-            {"<"}
-          </button>
-          <Image
-            src="/familylynk/image1.png"
-            layout="responsive"
-            height={50}
-            width={50}
-            alt="image"
+          <CarouselContent>
+            {project.images.map((image) => {
+              return (
+                <CarouselItem key={image}>
+                  <Image
+                    src={image}
+                    layout="responsive"
+                    height={50}
+                    width={50}
+                    alt="image"
+                  />
+                </CarouselItem>
+              );
+            })}
+          </CarouselContent>
+          <CarouselPrevious
+            style={{ marginLeft: 30, backgroundColor: "#222" }}
           />
-          <button
-            style={{
-              borderRadius: 100,
-              backgroundColor: "rgba(0,0,0,0.2)",
-              color: "white",
-              border: "1px solid rgba(0,0,0,0.5)",
-              padding: "0 4px",
-            }}
-          >
-            {">"}
-          </button>
-        </div>
+          <CarouselNext style={{ marginRight: 30, backgroundColor: "#222" }} />
+        </Carousel>
         <div style={{ marginTop: 4 }}>
           {project.information.map((info) => {
             return (

@@ -96,7 +96,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
     <div
       ref={windowRef}
       style={{
-        width: 100,
+        width: 110,
         maxHeight: 90,
         display: "flex",
         flexDirection: "column",

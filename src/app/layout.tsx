@@ -29,7 +29,7 @@ export default function RootLayout({
         <meta name="darkreader-lock" />
         <script src="https://hcaptcha.com/1/api.js" async defer />
       </head>
-      <body className={`${roboto.variable} ${jetbrains.variable}`}>
+      <body className={`${roboto.variable} ${jetbrains.variable} dark`}>
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
