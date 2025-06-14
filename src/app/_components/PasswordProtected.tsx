@@ -66,6 +66,7 @@ export function PasswordProtected({
 
       <input
         ref={passwordInput}
+        autoFocus
         type="password"
         style={{
           padding: 12,

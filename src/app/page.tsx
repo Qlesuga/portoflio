@@ -18,6 +18,7 @@ import { TextEditor } from "./_components/TextEditor.tsx";
 import { PasswordProtected } from "./_components/PasswordProtected.tsx";
 import { Folder } from "./_components/Folder.tsx";
 import { CreateWindowContex } from "./context.ts";
+import ProjectDescription from "./_components/ProjectDescription.tsx";
 
 interface WindowConfig {
   titleID: string;
@@ -37,10 +38,10 @@ type icon = {
 
 const icons: icon[] = [
   {
-    name: "Projects",
-    titleID: "projekt",
+    name: "projects",
+    titleID: "projects",
     icon: "/folder_code.png",
-    component: <p>projekt</p>,
+    component: <Folder path="/home/klu/Desktop/projects" />,
   },
   {
     name: "priavte",
@@ -186,6 +187,13 @@ export default function App() {
           ))}
         </div>
         <BottomBar />
+        <DraggableWindow
+          titleID="test"
+          zIndex={windowsZIndex}
+          initZIndex={1000}
+        >
+          <ProjectDescription projectID="familylynk" />
+        </DraggableWindow>
         {windows.map((win) => (
           <DraggableWindow
             key={win.initZIndex}

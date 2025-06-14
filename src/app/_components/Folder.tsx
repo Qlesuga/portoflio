@@ -12,7 +12,7 @@ type icon = {
   isSelected?: boolean;
 };
 
-type AvaiablePaths = "/home/klu/Desktop/private";
+type AvaiablePaths = "/home/klu/Desktop/private" | "/home/klu/Desktop/projects";
 
 const Folders: Record<AvaiablePaths, icon[]> = {
   "/home/klu/Desktop/private": [
@@ -30,6 +30,26 @@ const Folders: Record<AvaiablePaths, icon[]> = {
     },
     {
       name: "smoleg.png",
+      titleID: "imageViewer",
+      icon: "/smoleg.png",
+      component: <ImageWindow imageSrc="/smoleg.png" />,
+    },
+  ],
+  "/home/klu/Desktop/projects": [
+    {
+      name: "jajowall",
+      titleID: "imageViewer",
+      icon: "/smoleg.png",
+      component: <ImageWindow imageSrc="/smoleg.png" />,
+    },
+    {
+      name: "familylynk",
+      titleID: "imageViewer",
+      icon: "/familylynk.svg",
+      component: <ImageWindow imageSrc="/familylynk.svg" />,
+    },
+    {
+      name: "bajojajo sr",
       titleID: "imageViewer",
       icon: "/smoleg.png",
       component: <ImageWindow imageSrc="/smoleg.png" />,
