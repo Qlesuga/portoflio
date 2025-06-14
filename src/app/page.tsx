@@ -18,7 +18,6 @@ import { TextEditor } from "./_components/TextEditor.tsx";
 import { PasswordProtected } from "./_components/PasswordProtected.tsx";
 import { Folder } from "./_components/Folder.tsx";
 import { CreateWindowContex } from "./context.ts";
-import ProjectDescription from "./_components/ProjectDescription.tsx";
 
 interface WindowConfig {
   titleID: string;
@@ -53,12 +52,6 @@ const icons: icon[] = [
         <Folder path="/home/klu/Desktop/private" />
       </PasswordProtected>
     ),
-  },
-  {
-    name: "readme.txt",
-    titleID: "textEditor",
-    icon: "/file.png",
-    component: <TextEditor fileID="readme" />,
   },
   {
     name: "password.txt",
@@ -187,13 +180,6 @@ export default function App() {
           ))}
         </div>
         <BottomBar />
-        <DraggableWindow
-          titleID="test"
-          zIndex={windowsZIndex}
-          initZIndex={1000}
-        >
-          <ProjectDescription projectID="familylynk" />
-        </DraggableWindow>
         {windows.map((win) => (
           <DraggableWindow
             key={win.initZIndex}

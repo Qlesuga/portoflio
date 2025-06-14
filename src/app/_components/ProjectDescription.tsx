@@ -12,7 +12,7 @@ type ProjectInfo = {
   shortDescription: string;
   description: string;
   techStack: { name: string; color: string }[];
-  information: { category: string; value: string }[];
+  information: { category: string; value: string | React.ReactNode }[];
   images: string[];
 };
 
@@ -32,6 +32,28 @@ const Projects: Record<ProjectID, ProjectInfo> = {
       {
         category: "type",
         value: "Web Application",
+      },
+      {
+        category: "website link",
+        value: (
+          <a
+            style={{ textDecoration: "underline" }}
+            href="https://hakhiros.vercel.app/"
+          >
+            hakhiros.vercel.app
+          </a>
+        ),
+      },
+      {
+        category: "source code",
+        value: (
+          <a
+            style={{ textDecoration: "underline" }}
+            href="https://github.com/Yndh/FamiLynk"
+          >
+            github.com/Yndh/FamiLynk
+          </a>
+        ),
       },
       {
         category: "started",
@@ -71,7 +93,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
         lineHeight: "1.6",
         padding: "16px",
         paddingTop: 4,
-        height: "550px",
+        height: "650px",
         width: "1000px",
         overflow: "scroll",
         borderRadius: "0 0 9px 9px",
@@ -134,11 +156,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
           opts={{
             loop: true,
           }}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
+          style={{ height: 170 }}
         >
           <CarouselContent>
             {project.images.map((image) => {
@@ -188,7 +206,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
         </div>
       </div>
 
-      <div style={{ borderBottom: "1px solid #a2a9b1" }}>
+      <div style={{ borderBottom: "1px solid #a2a9b1", paddingBottom: 12 }}>
         <p>{project.description}</p>
       </div>
       <div>
