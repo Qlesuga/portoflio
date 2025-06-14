@@ -118,7 +118,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
         style={{
           background: "#333",
           color: "white",
-          height: 20,
+          height: 36,
           padding: "8px 10px",
           borderTopLeftRadius: 8,
           borderTopRightRadius: 8,

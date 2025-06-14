@@ -85,6 +85,8 @@ export default function BottomBar() {
                     className={`icon-container ${isHovered ? "hovered" : ""}`}
                     style={{
                       border: `${isPath ? "None" : "2px solid rgba(255, 255, 255, 0.2)"}`,
+                      width: 36,
+                      height: 36,
                     }}
                   >
                     {isPath ? (
