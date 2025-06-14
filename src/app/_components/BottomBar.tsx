@@ -6,6 +6,7 @@ import ContactPage from "./ContactPage";
 import SkillsPage from "./SkillsPage";
 import Image from "next/image";
 import { CreateWindowContex } from "../context";
+import { Folder } from "./Folder";
 
 interface NavItem {
   id: string;
@@ -53,13 +54,18 @@ export default function BottomBar() {
   const createDraggableWindow = useContext(CreateWindowContex);
 
   const handleItemClick = (itemId: string) => {
-    console.log(`Clicked on ${itemId}`);
     if (itemId === "github") {
       window.open("https://www.github.com/Qlesuga", "_blank");
     } else if (itemId === "contact") {
       createDraggableWindow("contact", <ContactPage />);
     } else if (itemId === "skills") {
       createDraggableWindow("skills", <SkillsPage />);
+    } else if (itemId == "projects") {
+      createDraggableWindow(
+        "",
+        <Folder path="/home/klu/Desktop/projects" />,
+        "File Viewer - projects",
+      );
     }
   };
 

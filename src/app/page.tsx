@@ -38,7 +38,8 @@ type icon = {
 const icons: icon[] = [
   {
     name: "projects",
-    titleID: "projects",
+    titleID: "",
+    title: "File Viewer - projects",
     icon: "/folder_code.png",
     component: <Folder path="/home/klu/Desktop/projects" />,
   },
