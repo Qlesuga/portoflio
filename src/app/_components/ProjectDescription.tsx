@@ -6,6 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "~/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 type ProjectInfo = {
   name: string;
@@ -218,6 +219,11 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
             opts={{
               loop: true,
             }}
+            plugins={[
+              Autoplay({
+                delay: 5000,
+              }),
+            ]}
             style={{ height: 170 }}
           >
             <CarouselContent>
