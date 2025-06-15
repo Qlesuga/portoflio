@@ -16,7 +16,7 @@ type ProjectInfo = {
   images: string[];
 };
 
-type ProjectID = "familylynk";
+type ProjectID = "familylynk" | "jajowall";
 
 const Projects: Record<ProjectID, ProjectInfo> = {
   familylynk: {
@@ -63,6 +63,10 @@ const Projects: Record<ProjectID, ProjectInfo> = {
         category: "ended",
         value: "2023",
       },
+      {
+        category: "team size",
+        value: "4",
+      },
     ],
     techStack: [
       { name: "TypeScript", color: "220, 38, 38" },
@@ -76,7 +80,56 @@ const Projects: Record<ProjectID, ProjectInfo> = {
       { name: "react-toastify", color: "5, 150, 105" },
       { name: "Docker", color: "109, 40, 217" },
     ],
-    images: ["/familylynk/image1.png", "/default.png"],
+    images: [
+      "/familylynk/image1.png",
+      "/familylynk/image2.png",
+      "/familylynk/image3.png",
+      "/familylynk/image4.png",
+      "/familylynk/image5.png",
+    ],
+  },
+  jajowall: {
+    name: "JajoWall",
+    shortDescription: "wallpaper manipulator",
+    description:
+      "JajoWall is simple wallpaper manager that allows user to set .mp4/.gif files as wallpaper with audio support. Nothing more, nothing less",
+    information: [
+      {
+        category: "status",
+        value: "Archived",
+      },
+      {
+        category: "type",
+        value: "Desktop Application",
+      },
+      {
+        category: "source code",
+        value: (
+          <a
+            style={{ textDecoration: "underline" }}
+            href="https://github.com/Qlesuga/jajowall"
+          >
+            github.com/Qlesuga/jajowall
+          </a>
+        ),
+      },
+      {
+        category: "started",
+        value: "2023",
+      },
+      {
+        category: "ended",
+        value: "2023",
+      },
+    ],
+    techStack: [
+      { name: "python", color: "220, 38, 38" },
+      { name: "PyQt6", color: "5, 150, 105" },
+      { name: "windowsAPI", color: "5, 150, 105" },
+      { name: "pywin32", color: "5, 150, 105" },
+      { name: "opencv", color: "5, 150, 105" },
+    ],
+    images: ["/jajowall.gif"],
   },
 };
 
@@ -152,32 +205,44 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
         >
           Project Information
         </h3>
-        <Carousel
-          opts={{
-            loop: true,
-          }}
-          style={{ height: 170 }}
-        >
-          <CarouselContent>
-            {project.images.map((image) => {
-              return (
-                <CarouselItem key={image}>
-                  <Image
-                    src={image}
-                    layout="responsive"
-                    height={50}
-                    width={50}
-                    alt="image"
-                  />
-                </CarouselItem>
-              );
-            })}
-          </CarouselContent>
-          <CarouselPrevious
-            style={{ marginLeft: 30, backgroundColor: "#222" }}
+        {project.images.length == 1 ? (
+          <Image
+            src={project.images[0] ?? ""}
+            layout="responsive"
+            height={50}
+            width={50}
+            alt="image"
           />
-          <CarouselNext style={{ marginRight: 30, backgroundColor: "#222" }} />
-        </Carousel>
+        ) : (
+          <Carousel
+            opts={{
+              loop: true,
+            }}
+            style={{ height: 170 }}
+          >
+            <CarouselContent>
+              {project.images.map((image) => {
+                return (
+                  <CarouselItem key={image}>
+                    <Image
+                      src={image}
+                      layout="responsive"
+                      height={50}
+                      width={50}
+                      alt="image"
+                    />
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+            <CarouselPrevious
+              style={{ marginLeft: 30, backgroundColor: "#222" }}
+            />
+            <CarouselNext
+              style={{ marginRight: 30, backgroundColor: "#222" }}
+            />
+          </Carousel>
+        )}
         <div style={{ marginTop: 4 }}>
           {project.information.map((info) => {
             return (
