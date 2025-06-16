@@ -3,6 +3,11 @@ import "./contactPage.css";
 import { useTranslation } from "react-i18next";
 import { api } from "~/trpc/react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import i18n from "../i18n";
+import { Toaster } from "~/components/ui/sonner";
+import { toast } from "sonner";
+import type { AppRouter } from "~/server/api/root";
+import type { TRPCClientError } from "@trpc/client";
 
 export default function ContactPage() {
   const { t } = useTranslation();
@@ -13,14 +18,7 @@ export default function ContactPage() {
     message: "",
   });
 
-  const sendEmail = api.email.sendEmial.useMutation({
-    onSuccess: (data) => {
-      console.log("Email sent successfully:", data);
-    },
-    onError: (error) => {
-      console.error("Error sending email:", error);
-    },
-  });
+  const sendEmail = api.email.sendEmial.useMutation();
 
   const handleChange = (
     e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
@@ -37,7 +35,24 @@ export default function ContactPage() {
       alert("Please complete the captcha.");
       return;
     }
-    sendEmail.mutate({ ...formData, captchaToken: captchaToken });
+
+    const status = sendEmail.mutateAsync({
+      ...formData,
+      captchaToken: captchaToken,
+      language: i18n.language,
+    });
+
+    let loading = "Submitting...";
+    if (i18n.language == "pl") {
+      loading = "Wysyłanie...";
+    }
+
+    toast.promise(status, {
+      loading: loading,
+      success: (res) => res.message,
+      error: (err: TRPCClientError<AppRouter>) => `${err.message}`,
+    });
+
     console.log("Captcha token:", captchaToken);
     setFormData({ name: "", email: "", message: "" });
   };
@@ -49,7 +64,7 @@ export default function ContactPage() {
 
         <p className="contact-description">{t("contact.description")}</p>
 
-        <p className="contact-email">Email: qlesmail@proton.me</p>
+        <p className="contact-email pb-4">Email: contact@qles.dev</p>
 
         <form onSubmit={handleSubmit} className="form-container">
           <div className="form-field">
@@ -97,6 +112,7 @@ export default function ContactPage() {
             {t("contact.form.sendMessage")}
           </button>
         </form>
+        <Toaster richColors />
       </div>
     </div>
   );

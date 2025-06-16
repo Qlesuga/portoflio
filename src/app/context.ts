@@ -6,7 +6,6 @@ const CreateWindowContex = createContext(
     children: React.ReactNode,
     title: string | undefined = undefined,
   ) => {
-    console.log(titleID, children, title);
     return;
   },
 );

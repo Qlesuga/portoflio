@@ -92,8 +92,6 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
       x: screenWidth / 2 - componentWidth / 2,
       y: screenHeight / 2 - componentHeigh / 2,
     };
-    console.log(center);
-    console.log(screenWidth, "x", screenHeight);
     setPosition(center);
   }, []);
 
