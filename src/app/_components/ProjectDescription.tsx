@@ -18,7 +18,7 @@ type ProjectInfo = {
   images: string[];
 };
 
-type ProjectID = "familylynk" | "jajowall";
+type ProjectID = "familylynk" | "jajowall" | "bajojajosr";
 
 const Projects: Record<ProjectID, ProjectInfo> = {
   familylynk: {
@@ -73,14 +73,11 @@ const Projects: Record<ProjectID, ProjectInfo> = {
     techStack: [
       { name: "TypeScript", color: "220, 38, 38" },
       { name: "Next.js", color: "5, 150, 105" },
+      { name: "React", color: "5, 150, 105" },
       { name: "Prisma", color: "5, 150, 105" },
       { name: "next-auth", color: "5, 150, 105" },
-      { name: "FontAwesome", color: "5, 150, 105" },
-      { name: "FullCalendar", color: "5, 150, 105" },
-      { name: "bcrypt", color: "5, 150, 105" },
-      { name: "react-qr-code", color: "5, 150, 105" },
-      { name: "react-toastify", color: "5, 150, 105" },
       { name: "Docker", color: "109, 40, 217" },
+      { name: "PostgreSQL", color: "109, 40, 217" },
     ],
     images: [
       "/familylynk/image1.png",
@@ -132,6 +129,53 @@ const Projects: Record<ProjectID, ProjectInfo> = {
       { name: "opencv", color: "5, 150, 105" },
     ],
     images: ["/jajowall.gif"],
+  },
+  bajojajosr: {
+    name: "BajoJajo Sr",
+    shortDescription: "twitch song request",
+    description:
+      "BajoJajo SR is a lightweight, open-source Twitch bot designed to handle song requests during livestreams. Built with simplicity and efficiency in mind, it allows both viewers and moderators to manage music playback with a set of easy-to-use chat commands.",
+    information: [
+      {
+        category: "status",
+        value: "Developing",
+      },
+      {
+        category: "type",
+        value: "Web Application",
+      },
+      {
+        category: "source code",
+        value: (
+          <a
+            style={{ textDecoration: "underline" }}
+            href="https://github.com/Qlesuga/BajoJajo_Sr"
+          >
+            github.com/Qlesuga/bajojajo_sr
+          </a>
+        ),
+      },
+      {
+        category: "started",
+        value: "2025",
+      },
+    ],
+    techStack: [
+      { name: "TypeScript", color: "220, 38, 38" },
+      { name: "Next.js", color: "5, 150, 105" },
+      { name: "React", color: "5, 150, 105" },
+      { name: "Prisma", color: "5, 150, 105" },
+      { name: "tRPC", color: "5, 150, 105" },
+      { name: "next-auth", color: "5, 150, 105" },
+      { name: "Docker", color: "109, 40, 217" },
+      { name: "Redis", color: "109, 40, 217" },
+      { name: "PostgreSQL", color: "109, 40, 217" },
+    ],
+    images: [
+      "/bajojajosr/image1.png",
+      "/bajojajosr/image2.png",
+      "/bajojajosr/image3.png",
+    ],
   },
 };
 

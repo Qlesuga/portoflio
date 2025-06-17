@@ -54,7 +54,7 @@ const Folders: Record<AvaiablePaths, icon[]> = {
       name: "bajojajo sr",
       titleID: "imageViewer",
       icon: "/smoleg.png",
-      component: <ImageWindow imageSrc="/smoleg.png" />,
+      component: <ProjectDescription projectID="bajojajosr" />,
     },
   ],
 };
