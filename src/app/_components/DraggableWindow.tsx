@@ -45,11 +45,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
 
     const rect = windowRef.current.getBoundingClientRect();
     dragging.current = true;
-    setIsDragging(true);
-    if (zIndex.current > currentZIndex) {
-      zIndex.current = zIndex.current + 1;
-      setCurrentZIndex(zIndex.current);
-    }
+
     rel.current = {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
@@ -58,6 +54,13 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onMouseUp);
     e.preventDefault();
+  };
+
+  const changeFocus = () => {
+    if (zIndex.current > currentZIndex) {
+      zIndex.current = zIndex.current + 1;
+      setCurrentZIndex(zIndex.current);
+    }
   };
 
   const onMouseMove = (e: MouseEvent | globalThis.MouseEvent) => {
@@ -112,6 +115,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
         zIndex: currentZIndex,
         overflowY: "hidden",
       }}
+      onClick={changeFocus}
     >
       <div
         style={{
