@@ -7,6 +7,7 @@ import {
   CarouselPrevious,
 } from "~/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { useState } from "react";
 
 type ProjectInfo = {
   name: string;
@@ -140,6 +141,7 @@ interface ProjectDescription {
 
 export default function ProjectDescription({ projectID }: ProjectDescription) {
   const project = Projects[projectID];
+  const [selectedImage, setSelectedImage] = useState<null | number>(null);
 
   return (
     <div
@@ -155,6 +157,57 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
         backgroundColor: "#121212",
       }}
     >
+      {selectedImage != null ? (
+        <div
+          className="absolute flex justify-center items-center size-full overflow-y-hidden ml-[-16px] mt-[-4px] z-1"
+          style={{
+            background: "rgba(0,0,0,0.5)",
+          }}
+          onClick={() => setSelectedImage(null)}
+        >
+          {project.images.length == 1 ? (
+            /*eslint-disable-next-line @next/next/no-img-element*/
+            <img
+              src={project.images[selectedImage] ?? ""}
+              className="relative w-[85%]"
+              alt="image"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            />
+          ) : (
+            <Carousel
+              opts={{
+                loop: true,
+              }}
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              className="w-[85%]"
+              style={{ zIndex: 1 }}
+            >
+              <CarouselContent>
+                {project.images.map((_, i) => {
+                  const len = project.images.length;
+                  const curr = (i + selectedImage) % len;
+                  const image = project.images[curr];
+                  return (
+                    <CarouselItem key={image}>
+                      {/*eslint-disable-next-line @next/next/no-img-element*/}
+                      <img src={image} alt="image" />
+                    </CarouselItem>
+                  );
+                })}
+              </CarouselContent>
+              <CarouselPrevious style={{ backgroundColor: "#222" }} />
+              <CarouselNext style={{ backgroundColor: "#222" }} />
+            </Carousel>
+          )}
+        </div>
+      ) : (
+        ""
+      )}
+
       <div
         style={{
           marginBottom: "20px",
@@ -207,12 +260,14 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
           Project Information
         </h3>
         {project.images.length == 1 ? (
-          <Image
+          /*eslint-disable-next-line @next/next/no-img-element*/
+          <img
             src={project.images[0] ?? ""}
-            layout="responsive"
-            height={50}
-            width={50}
+            height={150}
             alt="image"
+            onClick={() => {
+              setSelectedImage(0);
+            }}
           />
         ) : (
           <Carousel
@@ -224,10 +279,10 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
                 delay: 5000,
               }),
             ]}
-            style={{ height: 170 }}
+            style={{ height: 150 }}
           >
             <CarouselContent>
-              {project.images.map((image) => {
+              {project.images.map((image, i) => {
                 return (
                   <CarouselItem key={image}>
                     <Image
@@ -236,6 +291,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
                       height={50}
                       width={50}
                       alt="image"
+                      onClick={() => setSelectedImage(i)}
                     />
                   </CarouselItem>
                 );
@@ -249,6 +305,9 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
             />
           </Carousel>
         )}
+        <p className="text-center" style={{ borderBottom: "1px solid #eee" }}>
+          Click on image to make it bigger
+        </p>
         <div style={{ marginTop: 4 }}>
           {project.information.map((info) => {
             return (

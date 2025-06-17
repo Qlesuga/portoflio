@@ -110,6 +110,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
         userSelect: "none",
         boxShadow: "2px 2px 10px rgba(0,0,0,0.3)",
         zIndex: currentZIndex,
+        overflowY: "hidden",
       }}
     >
       <div

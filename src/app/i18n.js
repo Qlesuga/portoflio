@@ -2,111 +2,107 @@
 
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
 
-i18n
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    fallbackLng: "en",
-    debug: false,
-    interpolation: {
-      escapeValue: false,
-    },
-    resources: {
-      en: {
-        translation: {
-          skills: {
-            title: "Skills",
-            proficient: {
-              title: "Proficient Programming Languages",
-              description:
-                "Languages I've used in larger projects with hands-on experience",
-            },
-            familiar: {
-              title: "Familiar Programming Languages",
-              description:
-                "Languages I’ve played around with in smaller projects",
-            },
-            libaries: {
-              title: "Libraries/Frameworks",
-              description:
-                "Stuff I use to build things on the front-end, back-end, styling, you name it",
-            },
-            tools: {
-              title: "Software/Tools",
-              description:
-                "Tools I use all the time—whether it’s for coding, designing, running apps, or managing data",
-            },
-          },
-          contact: {
-            title: "Contact Form",
+i18n.use(initReactI18next).init({
+  fallbackLng: "en",
+  debug: false,
+  interpolation: {
+    escapeValue: false,
+  },
+  resources: {
+    en: {
+      translation: {
+        skills: {
+          title: "Skills",
+          proficient: {
+            title: "Proficient Programming Languages",
             description:
-              "Have a question or want to get in touch? Fill out the form below or contact me directly, and I will get back to you as soon as possible.",
-            form: {
-              nameLabel: "Name",
-              messageLabel: "Message",
-              sendMessage: "Send Message",
-            },
+              "Languages I've used in larger projects with hands-on experience",
           },
-          imageViewer: {
-            title: "Image Viewer",
-            imageSize: "image size",
-            resizedImageSize: "resized image size",
-            scale: "scale",
+          familiar: {
+            title: "Familiar Programming Languages",
+            description:
+              "Languages I’ve played around with in smaller projects",
           },
-          textEditor: {
-            title: "Text Editor",
+          libaries: {
+            title: "Libraries/Frameworks",
+            description:
+              "Stuff I use to build things on the front-end, back-end, styling, you name it",
+          },
+          tools: {
+            title: "Software/Tools",
+            description:
+              "Tools I use all the time—whether it’s for coding, designing, running apps, or managing data",
           },
         },
-      },
-      pl: {
-        translation: {
-          skills: {
-            title: "Umiejętności",
-            proficient: {
-              title: "Języki Programowania w których jestem biegły",
-              description:
-                "Języki, których używałem w większych projektach i mam z nimi praktyczne doświadczenie",
-            },
-            familiar: {
-              title: "Języki, z którymi miałem Styczność",
-              description:
-                "Języki, z którymi miałem styczność w mniejszych projektach",
-            },
-            libaries: {
-              title: "Biblioteki/Frameworki",
-              description:
-                "Rzeczy, których używam do tworzenia aplikacji front-end, back-end, stylowanie, co sobie wymyśle",
-            },
-            tools: {
-              title: "Oprogramowanie/Narzędzia",
-              description:
-                "Narzędzia, z których regularnie korzystam — do kodowania, projektowania, uruchamiania aplikacji czy zarządzania danymi",
-            },
+        contact: {
+          title: "Contact Form",
+          description:
+            "Have a question or want to get in touch? Fill out the form below or contact me directly, and I will get back to you as soon as possible.",
+          form: {
+            nameLabel: "Name",
+            messageLabel: "Message",
+            sendMessage: "Send Message",
           },
-          contact: {
-            title: "Formularz Kontaktowy",
-            description:
-              "Masz pytanie lub chcesz się skontaktować? Wypełnij poniższy formularz lub skontaktuj się ze mną bezpośrednio, a odezwę się tak szybko, jak to możliwe.",
-            form: {
-              nameLabel: "Nazwa",
-              messageLabel: "Wiadomość",
-              sendMessage: "Wyślij Wiadomość",
-            },
-          },
-          imageViewer: {
-            title: "Przeglądarka obrazów",
-            imageSize: "rozmiar obrazu",
-            resizedImageSize: "rozmiar przeskalowanego obrazu",
-            scale: "skala",
-          },
-          textEditor: {
-            title: "Edytor Tekstu",
-          },
+        },
+        imageViewer: {
+          title: "Image Viewer",
+          imageSize: "image size",
+          resizedImageSize: "resized image size",
+          scale: "scale",
+        },
+        textEditor: {
+          title: "Text Editor",
         },
       },
     },
-  });
+    pl: {
+      translation: {
+        skills: {
+          title: "Umiejętności",
+          proficient: {
+            title: "Języki Programowania w których jestem biegły",
+            description:
+              "Języki, których używałem w większych projektach i mam z nimi praktyczne doświadczenie",
+          },
+          familiar: {
+            title: "Języki, z którymi miałem Styczność",
+            description:
+              "Języki, z którymi miałem styczność w mniejszych projektach",
+          },
+          libaries: {
+            title: "Biblioteki/Frameworki",
+            description:
+              "Rzeczy, których używam do tworzenia aplikacji front-end, back-end, stylowanie, co sobie wymyśle",
+          },
+          tools: {
+            title: "Oprogramowanie/Narzędzia",
+            description:
+              "Narzędzia, z których regularnie korzystam — do kodowania, projektowania, uruchamiania aplikacji czy zarządzania danymi",
+          },
+        },
+        contact: {
+          title: "Formularz Kontaktowy",
+          description:
+            "Masz pytanie lub chcesz się skontaktować? Wypełnij poniższy formularz lub skontaktuj się ze mną bezpośrednio, a odezwę się tak szybko, jak to możliwe.",
+          form: {
+            nameLabel: "Nazwa",
+            messageLabel: "Wiadomość",
+            sendMessage: "Wyślij Wiadomość",
+          },
+        },
+        imageViewer: {
+          title: "Przeglądarka obrazów",
+          imageSize: "rozmiar obrazu",
+          resizedImageSize: "rozmiar przeskalowanego obrazu",
+          scale: "skala",
+        },
+        textEditor: {
+          title: "Edytor Tekstu",
+        },
+      },
+    },
+  },
+});
 
 export default i18n;
