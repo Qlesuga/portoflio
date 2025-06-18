@@ -203,7 +203,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
     >
       {selectedImage != null ? (
         <div
-          className="absolute flex justify-center items-center size-full overflow-y-hidden ml-[-16px] mt-[-4px] z-1"
+          className="cursor-pointer absolute flex justify-center items-center size-full overflow-y-hidden ml-[-16px] mt-[-4px] z-1"
           style={{
             background: "rgba(0,0,0,0.5)",
           }}
@@ -213,7 +213,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
             /*eslint-disable-next-line @next/next/no-img-element*/
             <img
               src={project.images[selectedImage] ?? ""}
-              className="relative w-[85%]"
+              className="relative w-[85%] cursor-auto"
               alt="image"
               onClick={(e) => {
                 e.stopPropagation();
@@ -227,7 +227,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
               onClick={(e) => {
                 e.stopPropagation();
               }}
-              className="w-[85%]"
+              className="w-[85%] cursor-auto"
               style={{ zIndex: 1 }}
             >
               <CarouselContent>
@@ -243,8 +243,14 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
                   );
                 })}
               </CarouselContent>
-              <CarouselPrevious style={{ backgroundColor: "#222" }} />
-              <CarouselNext style={{ backgroundColor: "#222" }} />
+              <CarouselPrevious
+                style={{ backgroundColor: "#222" }}
+                className="cursor-pointer"
+              />
+              <CarouselNext
+                style={{ backgroundColor: "#222" }}
+                className="cursor-pointer"
+              />
             </Carousel>
           )}
         </div>
@@ -312,6 +318,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
             onClick={() => {
               setSelectedImage(0);
             }}
+            className="cursor-pointer"
           />
         ) : (
           <Carousel
@@ -336,16 +343,19 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
                       width={50}
                       alt="image"
                       onClick={() => setSelectedImage(i)}
+                      className="cursor-pointer"
                     />
                   </CarouselItem>
                 );
               })}
             </CarouselContent>
             <CarouselPrevious
-              style={{ marginLeft: 30, backgroundColor: "#222" }}
+              style={{ backgroundColor: "#222" }}
+              className="cursor-pointer ml-7"
             />
             <CarouselNext
-              style={{ marginRight: 30, backgroundColor: "#222" }}
+              style={{ backgroundColor: "#222" }}
+              className="cursor-pointer mr-7"
             />
           </Carousel>
         )}

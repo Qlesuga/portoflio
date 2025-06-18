@@ -46,7 +46,7 @@ const icons: icon[] = [
   {
     name: "priavte",
     titleID: "private",
-    title: "private",
+    title: "File Viewer - private",
     icon: "/folder.svg",
     component: (
       <PasswordProtected passwordID="PriavteFolder">

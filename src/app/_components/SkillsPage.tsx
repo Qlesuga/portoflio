@@ -79,19 +79,22 @@ export default function SkillsPage() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent: "center",
+        height: 730,
+        padding: "0 16px",
+        borderRadius: "0 0 9px 9px",
+        fontFamily: "Robot",
+        backgroundColor: "#121212",
+        color: "white",
       }}
     >
-      <h1 className="skills-title" style={{ marginBottom: 0 }}>
-        {t("skills.title")}
-      </h1>
+      <h1 className="text-4xl">{t("skills.title")}</h1>
       <div
         style={{
-          minWidth: 1280,
-          minHeight: 640,
+          width: 1180,
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-around",
-          width: "100%",
           alignItems: "center",
         }}
       >
@@ -183,8 +186,6 @@ export default function SkillsPage() {
           style={{
             width: 670,
             height: 670,
-            top: -15,
-            left: -15,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -198,8 +199,8 @@ export default function SkillsPage() {
             return (
               <div
                 key={`circle-${i}`}
-                className="ball"
                 style={{
+                  borderRadius: "100%",
                   height: circle.radius * 2,
                   width: circle.radius * 2,
                   boxSizing: "border-box",
@@ -209,8 +210,9 @@ export default function SkillsPage() {
               >
                 <div
                   key={`orbit-{i}`}
-                  className="ball"
                   style={{
+                    borderRadius: "100%",
+
                     height: circle.radius * 2,
                     width: circle.radius * 2,
                     border: `2px rgba(${circle.color},0.3) dashed`,
@@ -228,8 +230,8 @@ export default function SkillsPage() {
                   return (
                     <div
                       key={`ball-${i}-${j}`}
-                      className="ball"
                       style={{
+                        borderRadius: "100%",
                         position: "absolute",
                         left: x - BALL_SIZE / 2,
                         top: y - BALL_SIZE / 2,
