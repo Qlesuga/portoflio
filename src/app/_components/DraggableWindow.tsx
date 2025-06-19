@@ -68,22 +68,20 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
 
-    const rect = windowRef.current.getBoundingClientRect();
-    console.log(rect);
+    const y = Math.max(
+      -rel.current.y,
+      Math.min(screenHeight - rel.current.y, e.clientY - rel.current.y),
+    );
+    const x = Math.max(
+      -rel.current.x,
+      Math.min(screenWidth - rel.current.y, e.clientX - rel.current.x),
+    );
 
     setPosition({
-      x: Math.min(
-        Math.max(0, e.clientX - rel.current.x),
-        screenWidth - rect.width,
-      ),
-      y: Math.min(
-        Math.max(0, e.clientY - rel.current.y),
-        screenHeight - rect.height,
-      ),
+      x: x,
+      y: y,
     });
   };
-
-  console.log(position);
 
   const onMouseUp = () => {
     dragging.current = false;
