@@ -31,17 +31,7 @@ const Circles: Circle[] = [
     translationKey: "skills.tools",
     color: "109, 40, 217",
     radius: 295,
-    skills: [
-      "Git",
-      "Docker",
-      "Redis",
-      "MongoDB",
-      "PGSQL",
-      "MSSQL",
-      "Figma",
-      "Linux",
-      "Prisma",
-    ],
+    skills: ["Git", "Docker", "Redis", "MongoDB", "PGSQL", "Linux", "Prisma"],
   },
 ];
 
@@ -67,7 +57,7 @@ export default function SkillsPage() {
     return { x: x, y: y };
   }
 
-  const BALL_ORBIT_SPEED = 0.2;
+  const BALL_ORBIT_SPEED = 0.1;
   const calculateSpinSpeed = (radius: number) => {
     return (2 * Math.PI * radius) / 100 / BALL_ORBIT_SPEED;
   };
@@ -102,7 +92,7 @@ export default function SkillsPage() {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 8,
+            gap: 12,
             justifyContent: "center",
             alignItems: "center",
             width: 500,

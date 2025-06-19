@@ -162,8 +162,11 @@ const Projects: Record<ProjectID, ProjectInfo> = {
     ],
     techStack: [
       { name: "TypeScript", color: "220, 38, 38" },
+      { name: "Python", color: "220, 38, 38" },
       { name: "Next.js", color: "5, 150, 105" },
+      { name: "FastAPI", color: "5, 150, 105" },
       { name: "React", color: "5, 150, 105" },
+      { name: "yt-dlp", color: "5, 150, 105" },
       { name: "Prisma", color: "5, 150, 105" },
       { name: "tRPC", color: "5, 150, 105" },
       { name: "next-auth", color: "5, 150, 105" },

@@ -32,7 +32,7 @@ i18n.use(initReactI18next).init({
           tools: {
             title: "Software/Tools",
             description:
-              "Tools I use all the time—whether it’s for coding, designing, running apps, or managing data",
+              "Other software I use that doesn't fit in any categorie above",
           },
         },
         contact: {
@@ -78,7 +78,7 @@ i18n.use(initReactI18next).init({
           tools: {
             title: "Oprogramowanie/Narzędzia",
             description:
-              "Narzędzia, z których regularnie korzystam — do kodowania, projektowania, uruchamiania aplikacji czy zarządzania danymi",
+              "Inne oprogramowania których używam które nie pasują do kategori powyżej",
           },
         },
         contact: {

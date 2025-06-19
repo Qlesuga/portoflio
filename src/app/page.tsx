@@ -105,7 +105,7 @@ export default function App() {
   useEffect(() => {
     let mouseDownTime: number | null = null;
     let playMouseIn = true;
-    const CLICK_THRESHOLD = 150; // ms
+    const CLICK_THRESHOLD = 135;
     const VOLUME = 0.1;
 
     const handleMouseDown = () => {

@@ -36,12 +36,6 @@ const navItems: NavItem[] = [
     color: "#8b5cf6",
   },
   {
-    id: "about",
-    icon: User,
-    label: "About",
-    color: "#f59e0b",
-  },
-  {
     id: "github",
     icon: Github,
     label: "GitHub",
