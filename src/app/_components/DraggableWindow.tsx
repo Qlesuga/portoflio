@@ -121,12 +121,11 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
         border: "2px solid #444",
         borderRadius: 12,
         background: "#333",
-        userSelect: "none",
         boxShadow: "2px 2px 10px rgba(0,0,0,0.3)",
         zIndex: currentZIndex,
         overflowY: "hidden",
       }}
-      onClick={changeFocus}
+      onMouseDown={changeFocus}
     >
       <div
         style={{
@@ -140,6 +139,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          userSelect: "none",
           cursor: isDragging ? "grabbing" : "grab",
         }}
         onMouseDown={onMouseDown}
@@ -170,6 +170,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
           width: "100%",
           height: "calc(100% - 36px)",
           borderRadius: "0 0 16px 16px",
+          cursor: "auto",
         }}
       >
         {children}

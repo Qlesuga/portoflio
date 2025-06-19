@@ -16,6 +16,7 @@ type ProjectInfo = {
   techStack: { name: string; color: string }[];
   information: { category: string; value: string | React.ReactNode }[];
   images: string[];
+  additionalSections: { title: string; content: string | React.ReactNode }[];
 };
 
 type ProjectID = "familylynk" | "jajowall" | "bajojajosr";
@@ -86,6 +87,65 @@ const Projects: Record<ProjectID, ProjectInfo> = {
       "/familylynk/image4.png",
       "/familylynk/image5.png",
     ],
+    additionalSections: [
+      {
+        title: "What would I do diffrently",
+        content: (
+          <ol className="list-disc ml-8 text-base">
+            <li>
+              Use convex for real time data synchronization - It is right tool
+              for the job (credits to{" "}
+              <a
+                href="https://www.youtube.com/@t3dotgg"
+                target="_blank"
+                className="text-blue-500"
+              >
+                Theo
+              </a>{" "}
+              for showing me this)
+            </li>
+            <li>
+              Use authentication providers instead of credentials - It is just
+              more secure, also automatic email verification
+            </li>
+            <li>
+              Instead of deep pasing values as props use react contex or redux
+              store - Cleaner and more readable code
+            </li>
+            <li>
+              Use react suspense to show loading state of components instead of
+              blocking whole website - Better user experience
+            </li>
+            <li>
+              Fetch every data that will be needed for rendering category - It
+              may take more time but in the end the user experience will be
+              higher because of the smoothness of experience, taken from the
+              experience of{" "}
+              <a
+                href="https://www.youtube.com/@t3dotgg"
+                target="_blank"
+                className="text-blue-500"
+              >
+                Theo
+              </a>
+              {" (yep, this guy again) "}
+              while creating{" "}
+              <a
+                href="https://www.ping.gg/home"
+                target="_blank"
+                className="text-blue-500"
+              >
+                ping.gg
+              </a>
+            </li>
+            <li>
+              Just use tRPC for next.js apps - Type safe frontend ~ backend
+              communication is amazing
+            </li>
+          </ol>
+        ),
+      },
+    ],
   },
   jajowall: {
     name: "JajoWall",
@@ -129,6 +189,7 @@ const Projects: Record<ProjectID, ProjectInfo> = {
       { name: "opencv", color: "5, 150, 105" },
     ],
     images: ["/jajowall.gif"],
+    additionalSections: [],
   },
   bajojajosr: {
     name: "BajoJajo Sr",
@@ -179,6 +240,7 @@ const Projects: Record<ProjectID, ProjectInfo> = {
       "/bajojajosr/image2.png",
       "/bajojajosr/image3.png",
     ],
+    additionalSections: [],
   },
 };
 
@@ -194,8 +256,10 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
     <div
       style={{
         lineHeight: "1.6",
-        padding: "16px",
         paddingTop: 4,
+        paddingLeft: 16,
+        paddingRight: 16,
+        paddingBottom: 8,
         height: "650px",
         width: "1000px",
         overflow: "scroll",
@@ -261,11 +325,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
         ""
       )}
 
-      <div
-        style={{
-          marginBottom: "20px",
-        }}
-      >
+      <div>
         <h1
           style={{
             fontSize: "2.5em",
@@ -393,24 +453,23 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
         </div>
       </div>
 
-      <div style={{ borderBottom: "1px solid #a2a9b1", paddingBottom: 12 }}>
+      <div
+        style={{
+          borderBottom: "1px solid #a2a9b1",
+          marginTop: 12,
+          paddingBottom: 12,
+        }}
+      >
         <p>{project.description}</p>
       </div>
       <div>
-        <h3
-          style={{
-            fontSize: "1.3em",
-            margin: "5px 0 5px 0",
-          }}
-        >
-          Technology Stack
-        </h3>
+        <h3 className="text-3xl pt-2 mb-2">Technology Stack</h3>
         <div
           style={{
             display: "flex",
             flexWrap: "wrap",
             gap: "10px",
-            margin: "15px 0",
+            marginBottom: 16,
           }}
         >
           {project.techStack.map((technology) => (
@@ -420,16 +479,35 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
                 color: "white",
                 padding: "5px 10px",
                 borderRadius: "15px",
-                fontSize: "0.9em",
                 border: `1px solid rgba(${technology.color},0.8)`,
               }}
               key={technology.name}
+              className="text-sm"
             >
               {technology.name}
             </span>
           ))}
         </div>
       </div>
+      {project.additionalSections.map((section) => (
+        <div key={`section-${section.title}`}>
+          <h3
+            style={{
+              borderTop: "1px solid #a2a9b1",
+            }}
+            className="text-3xl pt-2 mb-2"
+          >
+            {section.title}
+          </h3>
+          <div
+            style={{
+              flexWrap: "wrap",
+            }}
+          >
+            <span>{section.content}</span>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

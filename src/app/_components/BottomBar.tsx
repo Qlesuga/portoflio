@@ -1,6 +1,6 @@
 import type React from "react";
 import { useContext, useState } from "react";
-import { Mail, User, Github, ChartNoAxesColumn, MailOpen } from "lucide-react";
+import { Mail, Github, ChartNoAxesColumn, MailOpen } from "lucide-react";
 import "./bottomBar.css";
 import ContactPage from "./ContactPage";
 import SkillsPage from "./SkillsPage";

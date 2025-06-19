@@ -71,7 +71,6 @@
 
 .icon-container.hovered {
   transform: scale(1.4);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .nav-icon {
