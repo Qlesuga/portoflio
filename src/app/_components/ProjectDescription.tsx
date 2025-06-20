@@ -93,8 +93,8 @@ const Projects: Record<ProjectID, ProjectInfo> = {
         content: (
           <ol className="list-disc ml-8 text-base">
             <li>
-              Use convex for real time data synchronization - It is right tool
-              for the job (credits to{" "}
+              Use Convex for real-time data synchronization – {"It's"} just the
+              right tool for the job. (Credits to{" "}
               <a
                 href="https://www.youtube.com/@t3dotgg"
                 target="_blank"
@@ -102,45 +102,39 @@ const Projects: Record<ProjectID, ProjectInfo> = {
               >
                 Theo
               </a>{" "}
-              for showing me this)
+              for showcasing it.)
             </li>
             <li>
-              Use authentication providers instead of credentials - It is just
-              more secure, also automatic email verification
+              Leverage authentication providers instead of manual credentials –
+              More secure, with built-in features like automatic email
+              verification.
             </li>
             <li>
-              Instead of deep pasing values as props use react contex or redux
-              store - Cleaner and more readable code
+              Avoid deeply passing props; use React Context or Redux – Makes the
+              codebase cleaner and more maintainable.
             </li>
             <li>
-              Use react suspense to show loading state of components instead of
-              blocking whole website - Better user experience
+              Use React Suspense for loading states instead of blocking the
+              entire page – Results in a smoother and more responsive user
+              experience.
             </li>
             <li>
-              Fetch every data that will be needed for rendering category - It
-              may take more time but in the end the user experience will be
-              higher because of the smoothness of experience, taken from the
-              experience of{" "}
+              Pre-fetch all data needed for rendering a category upfront –
+              Although it may increase initial load time, it dramatically
+              improves perceived performance and overall UX. Learned this from{" "}
               <a
                 href="https://www.youtube.com/@t3dotgg"
                 target="_blank"
                 className="text-blue-500"
               >
-                Theo
+                {"Theo's"}
               </a>
               {" (yep, this guy again) "}
-              while creating{" "}
-              <a
-                href="https://www.ping.gg/home"
-                target="_blank"
-                className="text-blue-500"
-              >
-                ping.gg
-              </a>
+              while working on ping.gg.
             </li>
             <li>
-              Just use tRPC for next.js apps - Type safe frontend ~ backend
-              communication is amazing
+              Use tRPC in Next.js apps – Type-safe, end-to-end communication
+              between frontend and backend is a game-changer.
             </li>
           </ol>
         ),
@@ -187,9 +181,27 @@ const Projects: Record<ProjectID, ProjectInfo> = {
       { name: "windowsAPI", color: "5, 150, 105" },
       { name: "pywin32", color: "5, 150, 105" },
       { name: "opencv", color: "5, 150, 105" },
+      { name: "Spy++", color: "109, 40, 217" },
     ],
     images: ["/jajowall.gif"],
-    additionalSections: [],
+    additionalSections: [
+      {
+        title: "What would I do diffrently",
+        content: (
+          <ol className="list-disc ml-8 text-base">
+            <li>
+              Choose C# or C over Python for low-level API interactions – Python
+              {"wasn't"} the best fit for low-level tasks. In the future,{" "}
+              {"I'd"} prefer using a more suitable language like C# or C.
+            </li>
+            <li>
+              Design a better UI – The user interface could have been much more
+              intuitive and polished. time.
+            </li>
+          </ol>
+        ),
+      },
+    ],
   },
   bajojajosr: {
     name: "BajoJajo Sr",
@@ -240,7 +252,30 @@ const Projects: Record<ProjectID, ProjectInfo> = {
       "/bajojajosr/image2.png",
       "/bajojajosr/image3.png",
     ],
-    additionalSections: [],
+    additionalSections: [
+      {
+        title: "What would I do diffrently",
+        content: (
+          <ol className="list-disc ml-8 text-base">
+            <li>
+              Start with the riskiest part first – I would begin with
+              integrating the YouTube API and deploying it on the server early,
+              to identify potential blockers upfront. YouTube’s anti-bot
+              measures forced me to make poor architectural decisions and switch
+              implementations multiple times.
+            </li>
+            <li>
+              Research libraries more thoroughly – The yt-dlp JavaScript library
+              turned out to be a poor choice. It lacked support for setting
+              cookies, which is essential to bypass {"YouTube's"} detection. If
+              I had done better research, I would have used the official yt-dlp
+              Python implementation from the start and built a Python-based API
+              around it.
+            </li>
+          </ol>
+        ),
+      },
+    ],
   },
 };
 
@@ -463,7 +498,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
         <p>{project.description}</p>
       </div>
       <div>
-        <h3 className="text-3xl pt-2 mb-2">Technology Stack</h3>
+        <h3 className="text-3xl pt-2 mb-2">Technology used</h3>
         <div
           style={{
             display: "flex",

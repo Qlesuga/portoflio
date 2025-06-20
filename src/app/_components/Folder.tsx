@@ -39,7 +39,8 @@ const Folders: Record<AvaiablePaths, icon[]> = {
   "/home/klu/Desktop/projects": [
     {
       name: "jajowall",
-      titleID: "imageViewer",
+      titleID: "",
+      title: "Projectpedia - jajowall",
       icon: "/smoleg.png",
       component: <ProjectDescription projectID="jajowall" />,
     },
@@ -52,7 +53,8 @@ const Folders: Record<AvaiablePaths, icon[]> = {
     },
     {
       name: "bajojajo sr",
-      titleID: "imageViewer",
+      titleID: "",
+      title: "Projectpedia - bajojajo sr",
       icon: "/smoleg.png",
       component: <ProjectDescription projectID="bajojajosr" />,
     },
