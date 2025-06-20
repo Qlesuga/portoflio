@@ -60,11 +60,11 @@ const Projects: Record<ProjectID, ProjectInfo> = {
       },
       {
         category: "started",
-        value: "2023",
+        value: "October 2023",
       },
       {
         category: "ended",
-        value: "2023",
+        value: "November 2023",
       },
       {
         category: "team size",
@@ -168,11 +168,11 @@ const Projects: Record<ProjectID, ProjectInfo> = {
       },
       {
         category: "started",
-        value: "2023",
+        value: "Febuary 2023",
       },
       {
         category: "ended",
-        value: "2023",
+        value: "April 2023",
       },
     ],
     techStack: [
@@ -211,7 +211,7 @@ const Projects: Record<ProjectID, ProjectInfo> = {
     information: [
       {
         category: "status",
-        value: "Developing",
+        value: "Maintenance",
       },
       {
         category: "type",
@@ -230,7 +230,7 @@ const Projects: Record<ProjectID, ProjectInfo> = {
       },
       {
         category: "started",
-        value: "2025",
+        value: "Jan 2025",
       },
     ],
     techStack: [
@@ -269,8 +269,7 @@ const Projects: Record<ProjectID, ProjectInfo> = {
               turned out to be a poor choice. It lacked support for setting
               cookies, which is essential to bypass {"YouTube's"} detection. If
               I had done better research, I would have used the official yt-dlp
-              Python implementation from the start and built a Python-based API
-              around it.
+              Python implementation from the start.
             </li>
           </ol>
         ),
@@ -312,9 +311,10 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
           onClick={() => setSelectedImage(null)}
         >
           {project.images.length == 1 ? (
-            /*eslint-disable-next-line @next/next/no-img-element*/
-            <img
+            <Image
               src={project.images[selectedImage] ?? ""}
+              height={1920}
+              width={1080}
               className="relative w-[85%] cursor-auto"
               alt="image"
               onClick={(e) => {
@@ -337,10 +337,18 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
                   const len = project.images.length;
                   const curr = (i + selectedImage) % len;
                   const image = project.images[curr];
+                  if (!image) {
+                    return;
+                  }
+
                   return (
                     <CarouselItem key={image}>
-                      {/*eslint-disable-next-line @next/next/no-img-element*/}
-                      <img src={image} alt="image" />
+                      <Image
+                        height={1080}
+                        width={1920}
+                        src={image}
+                        alt="image"
+                      />
                     </CarouselItem>
                   );
                 })}
@@ -408,10 +416,11 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
           Project Information
         </h3>
         {project.images.length == 1 ? (
-          /*eslint-disable-next-line @next/next/no-img-element*/
-          <img
+          <Image
             src={project.images[0] ?? ""}
             height={150}
+            width={200}
+            layout="responsive"
             alt="image"
             onClick={() => {
               setSelectedImage(0);
@@ -437,8 +446,8 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
                     <Image
                       src={image}
                       layout="responsive"
-                      height={50}
-                      width={50}
+                      height={1920}
+                      width={1080}
                       alt="image"
                       onClick={() => setSelectedImage(i)}
                       className="cursor-pointer"
