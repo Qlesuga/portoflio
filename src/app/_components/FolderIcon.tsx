@@ -1,5 +1,6 @@
 import { useContext, useRef, type ReactNode } from "react";
 import { CreateWindowContex } from "../context";
+import Image from "next/image";
 
 interface DesktopIconProps {
   selectIcon: (name: string) => void;
@@ -56,10 +57,11 @@ export default function FolderIcon({
       onDoubleClick={() => createDraggableWindow(titleID, component, title)}
       onMouseDown={() => selectIcon(name)}
     >
-      {/*eslint-disable-next-line @next/next/no-img-element*/}
-      <img
+      <Image
         alt={name}
-        height={36}
+        height={40}
+        width={180}
+        className="h-[36px] w-auto"
         src={icon}
         style={{
           objectFit: "contain",

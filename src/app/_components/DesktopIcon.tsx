@@ -7,6 +7,7 @@ import {
   type ReactNode,
 } from "react";
 import { CreateWindowContex } from "../context";
+import Image from "next/image";
 
 interface Position {
   x: number;
@@ -134,9 +135,11 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
       onMouseUp={onMouseUp}
     >
       {/*eslint-disable-next-line @next/next/no-img-element*/}
-      <img
+      <Image
         alt={name}
         height={36}
+        width={180}
+        className="h-[36px] w-auto"
         src={icon}
         style={{
           objectFit: "contain",

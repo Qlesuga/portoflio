@@ -18,6 +18,7 @@ import { TextEditor } from "./_components/TextEditor.tsx";
 import { PasswordProtected } from "./_components/PasswordProtected.tsx";
 import { Folder } from "./_components/Folder.tsx";
 import { CreateWindowContex } from "./context.ts";
+import Head from "next/head";
 
 interface WindowConfig {
   titleID: string;
@@ -74,6 +75,10 @@ export default function App() {
   const [windows, setWindows] = useState<WindowConfig[]>([]);
   const [selectedIcon, setSelectedIcon] = useState<number | null>(null);
 
+  const clickInSound = useRef<HTMLAudioElement>(null);
+  const clickOutSound = useRef<HTMLAudioElement>(null);
+  const clickSound = useRef<HTMLAudioElement>(null);
+
   const selectIcon = (name: string) => {
     const iconIndex = icons.findIndex((icon) => icon.name === name);
     setSelectedIcon(iconIndex);
@@ -103,10 +108,19 @@ export default function App() {
   };
 
   useEffect(() => {
+    clickInSound.current = new Audio("/click_in.wav");
+    clickOutSound.current = new Audio("/click_out.wav");
+    clickSound.current = new Audio("/click.wav");
+
+    const VOLUME = 0.1;
+
+    clickInSound.current.volume = VOLUME;
+    clickOutSound.current.volume = VOLUME;
+    clickSound.current.volume = VOLUME;
+
     let mouseDownTime: number | null = null;
     let playMouseIn = true;
     const CLICK_THRESHOLD = 135;
-    const VOLUME = 0.1;
 
     const handleMouseDown = () => {
       mouseDownTime = Date.now();
@@ -114,9 +128,8 @@ export default function App() {
 
       setTimeout(() => {
         if (playMouseIn && mouseDownTime !== null) {
-          const audio = new Audio("/click_in.wav");
-          audio.volume = VOLUME;
-          audio.play().catch(() => {
+          const audio = clickInSound.current;
+          audio!.play().catch(() => {
             return;
           });
         }
@@ -128,15 +141,13 @@ export default function App() {
         const clickDuration = Date.now() - mouseDownTime;
         if (clickDuration <= CLICK_THRESHOLD) {
           playMouseIn = false;
-          const audio = new Audio("/click.wav");
-          audio.volume = VOLUME;
-          audio.play().catch(() => {
+          const audio = clickSound.current;
+          audio!.play().catch(() => {
             return;
           });
         } else {
-          const audio = new Audio("/click_out.wav");
-          audio.volume = VOLUME;
-          audio.play().catch(() => {
+          const audio = clickOutSound.current;
+          audio!.play().catch(() => {
             return;
           });
         }

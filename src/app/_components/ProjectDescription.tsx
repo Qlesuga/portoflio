@@ -418,6 +418,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
         {project.images.length == 1 ? (
           <Image
             src={project.images[0] ?? ""}
+            property="true"
             height={150}
             width={200}
             layout="responsive"
@@ -444,6 +445,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
                 return (
                   <CarouselItem key={image}>
                     <Image
+                      property="true"
                       src={image}
                       layout="responsive"
                       height={1920}
