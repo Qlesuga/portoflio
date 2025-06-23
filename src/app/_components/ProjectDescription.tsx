@@ -11,6 +11,7 @@ import { useState } from "react";
 import { BajoJajoSr } from "./bajojajoSr/data";
 import { FamilyLynkData } from "./familylynk/data";
 import { JajoWallData } from "./jajowall/data";
+import { useTranslation } from "react-i18next";
 
 export type ProjectInfo = {
   name: string;
@@ -24,10 +25,10 @@ export type ProjectInfo = {
 
 type ProjectID = "familylynk" | "jajowall" | "bajojajosr";
 
-const Projects: Record<ProjectID, ProjectInfo> = {
+const Projects: Record<ProjectID, () => ProjectInfo> = {
   familylynk: FamilyLynkData,
-  jajowall: BajoJajoSr,
-  bajojajosr: JajoWallData,
+  jajowall: JajoWallData,
+  bajojajosr: BajoJajoSr,
 };
 
 interface ProjectDescription {
@@ -35,7 +36,8 @@ interface ProjectDescription {
 }
 
 export default function ProjectDescription({ projectID }: ProjectDescription) {
-  const project = Projects[projectID];
+  const { t } = useTranslation();
+  const project = Projects[projectID]();
   const [selectedImage, setSelectedImage] = useState<null | number>(null);
 
   return (
@@ -221,7 +223,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
           </Carousel>
         )}
         <p className="text-center" style={{ borderBottom: "1px solid #eee" }}>
-          Click on image to make it bigger
+          {t("projects.clickOnImage")}
         </p>
         <div style={{ marginTop: 4 }}>
           {project.information.map((info) => {
@@ -261,7 +263,9 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
         <p>{project.description}</p>
       </div>
       <div>
-        <h3 className="text-3xl pt-2 mb-2">Technology used</h3>
+        <h3 className="text-3xl pt-2 mb-2">
+          {t("projects.sections.technologyUsed")}
+        </h3>
         <div
           style={{
             display: "flex",

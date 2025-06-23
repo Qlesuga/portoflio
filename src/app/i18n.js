@@ -12,6 +12,36 @@ i18n.use(initReactI18next).init({
   resources: {
     en: {
       translation: {
+        months: {
+          long: {
+            1: "January",
+            2: "February",
+            3: "March",
+            4: "April",
+            5: "May",
+            6: "June",
+            7: "July",
+            8: "August",
+            9: "September",
+            10: "October",
+            11: "November",
+            12: "December",
+          },
+          short: {
+            1: "Jan",
+            2: "Feb",
+            3: "Mar",
+            4: "Apr",
+            5: "May",
+            6: "Jun",
+            7: "Jul",
+            8: "Aug",
+            9: "Sep",
+            10: "Oct",
+            11: "Nov",
+            12: "Dec",
+          },
+        },
         skills: {
           title: "Skills",
           proficient: {
@@ -22,7 +52,7 @@ i18n.use(initReactI18next).init({
           familiar: {
             title: "Familiar Programming Languages",
             description:
-              "Languages I’ve played around with in smaller projects",
+              "Languages I've played around with in smaller projects",
           },
           libaries: {
             title: "Libraries/Frameworks",
@@ -54,10 +84,112 @@ i18n.use(initReactI18next).init({
         textEditor: {
           title: "Text Editor",
         },
+        projects: {
+          status: {
+            archived: "Archived",
+            maintenance: "Maintenance",
+            active: "Active",
+            development: "In Development",
+          },
+          clickOnImage: "Click on image above to make it bigger",
+          categories: {
+            status: "status",
+            type: "type",
+            websiteLink: "website link",
+            sourceCode: "source code",
+            started: "started",
+            ended: "ended",
+            teamSize: "team size",
+          },
+          types: {
+            desktopApplication: "Desktop Application",
+            webApplication: "Web Application",
+            mobileApplication: "Mobile Application",
+            library: "Library",
+            tool: "Tool",
+          },
+          sections: {
+            whatWouldIDoMoshaicly: "What would I do differently",
+            technologyUsed: "Technology used",
+          },
+          jajowall: {
+            name: "JajoWall",
+            shortDescription: "wallpaper manipulator",
+            description:
+              "JajoWall is simple wallpaper manager that allows user to set .mp4/.gif files as wallpaper with audio support. Nothing more, nothing less",
+            differences: {
+              item1:
+                "Choose C# or C over Python for low-level API interactions – Python wasn't the best fit for low-level tasks. In the future, I'd prefer using a more suitable language like C# or C.",
+              item2:
+                "Design a better UI – The user interface could have been much more polished.",
+            },
+          },
+          familylynk: {
+            name: "Familylynk",
+            shortDescription: "family organization app",
+            description:
+              "FamiLynk is a web application built with Next.js and TypeScript that helps organize family life. The app allows family members to share various types of information, such as calendars, notes, chores, and recipes.",
+            differences: {
+              item1:
+                "Use Convex for real-time data synchronization – It's just the right tool for the job. (Credits to <1>Theo</1> for showcasing it.)",
+              item2:
+                "Leverage authentication providers instead of manual credentials – More secure, with built-in features like automatic email verification.",
+              item3:
+                "Avoid deeply passing props; use React Context or Redux – Makes the codebase cleaner and more maintainable.",
+              item4:
+                "Use React Suspense for loading states instead of blocking the entire page – Results in a smoother and more responsive user experience.",
+              item5:
+                "Pre-fetch all data needed for rendering a category upfront – Although it may increase initial load time, it dramatically improves perceived performance and overall UX. Learned this from <1>Theo's</1> (yep, this guy again) while working on ping.gg.",
+              item6:
+                "Use tRPC in Next.js apps – Type-safe, end-to-end communication between frontend and backend is a game-changer.",
+            },
+          },
+          bajojajosr: {
+            name: "BajoJajo Sr",
+            description:
+              "BajoJajo SR is a lightweight, open-source Twitch bot designed to handle song requests during livestreams. Built with simplicity in mind, it allows both viewers and moderators to manage music playback with a set of easy-to-use chat commands.",
+            differences: {
+              item1:
+                "Start with the riskiest part first – I would begin with integrating the YouTube API and deploying it on the server early, to identify potential blockers upfront. YouTube's anti-bot measures forced me to make poor architectural decisions and switch implementations multiple times.",
+              item2:
+                "Research libraries more thoroughly – The yt-dlp JavaScript library turned out to be a poor choice. It lacked support for setting cookies, which is essential to bypass YouTube's detection. If I had done better research, I would have used the official yt-dlp Python implementation from the start.",
+            },
+          },
+        },
       },
     },
     pl: {
       translation: {
+        months: {
+          long: {
+            1: "Styczeń",
+            2: "Luty",
+            3: "Marzec",
+            4: "Kwiecień",
+            5: "Maj",
+            6: "Czerwiec",
+            7: "Lipiec",
+            8: "Sierpień",
+            9: "Wrzesień",
+            10: "Październik",
+            11: "Listopad",
+            12: "Grudzień",
+          },
+          short: {
+            1: "Sty",
+            2: "Lut",
+            3: "Mar",
+            4: "Kwi",
+            5: "Maj",
+            6: "Cze",
+            7: "Lip",
+            8: "Sie",
+            9: "Wrz",
+            10: "Paź",
+            11: "Lis",
+            12: "Gru",
+          },
+        },
         skills: {
           title: "Umiejętności",
           proficient: {
@@ -99,6 +231,78 @@ i18n.use(initReactI18next).init({
         },
         textEditor: {
           title: "Edytor Tekstu",
+        },
+        projects: {
+          status: {
+            archived: "Zarchiwizowany",
+            maintenance: "Konserwacja",
+            active: "Aktywny",
+            development: "W trakcie rozwoju",
+          },
+          categories: {
+            status: "status",
+            type: "typ",
+            websiteLink: "link do strony",
+            sourceCode: "kod źródłowy",
+            started: "rozpoczęty",
+            ended: "zakończony",
+            teamSize: "wielkość zespołu",
+          },
+          types: {
+            desktopApplication: "Aplikacja Desktopowa",
+            webApplication: "Aplikacja Webowa",
+            mobileApplication: "Aplikacja Mobilna",
+            library: "Biblioteka",
+            tool: "Narzędzie",
+          },
+          sections: {
+            whatWouldIDoMoshaicly: "Co zrobiłbym inaczej",
+            technologyUsed: "Użyte Technologie",
+          },
+          clickOnImage: "Kliknij na obraz powyżej by go powiększyć",
+          jajowall: {
+            name: "JajoWall",
+            shortDescription: "manipulator tapet",
+            description:
+              "JajoWall to prosty menedżer tapet, który pozwala użytkownikowi ustawić pliki .mp4/.gif jako tapetę z obsługą dźwięku. Nic więcej, nic mniej",
+            differences: {
+              item1:
+                "Wybrałbym C# lub C zamiast Pythona do interakcji z niskopoziomowymi API – Python nie był najlepszym wyborem do zadań niskopoziomowych ponieważ nie takie jest jego główne zastosowanie. W przyszłości wolałbym użyć bardziej odpowiedniego języka jak C# lub C.",
+              item2:
+                "Zaprojektowałbym lepszy interfejs użytkownika – Interfejs mógł być znacznie bardziej dopracowany.",
+            },
+          },
+          familylynk: {
+            name: "Familylynk",
+            shortDescription: "aplikacja do organizacji życia rodzinnego",
+            description:
+              "FamiLynk to aplikacja webowa zbudowana w Next.js i TypeScript, która pomaga organizować życie rodzinne. Aplikacja pozwala członkom rodziny dzielić się różnymi informacjami, takimi jak kalendarze, notatki, obowiązki domowe i przepisy.",
+            differences: {
+              item1:
+                "Użyłbym Convex do synchronizacji danych w czasie rzeczywistym – ktoś kiedyś powiedział 'use the right tool for the job', nie wiem kto ale staram się tego trzymać. (Podziękowania dla <1>Theo</1> za przedstawienie tego narzędzia.)",
+              item2:
+                "Wykorzystałbym dostawców uwierzytelniania zamiast ręcznych danych logowania – Bardziej bezpieczne, z wbudowanymi funkcjami jak automatyczna weryfikacja e-mail.",
+              item3:
+                "Unikałbym głębokiego przekazywania propsów; użyłbym React Context lub Redux – Sprawia, że kod jest czystszy i łatwiejszy w utrzymaniu.",
+              item4:
+                "Użyłbym React Suspense do stanów ładowania zamiast blokowania całej strony – Skutkuje płynniejszym i bardziej responsywnym doświadczeniem użytkownika.",
+              item5:
+                "Wstępnie pobrałbym wszystkie dane potrzebne do renderowania kategorii z góry – Chociaż może to zwiększyć początkowy czas ładowania, drastycznie poprawia postrzeganą wydajność i ogólne UX. Wziąłem te metode od <1>Theo</1> (tak, znowu ten gość) podczas pracy nad ping.gg.",
+              item6:
+                "Używałbym tRPC w aplikacjach Next.js – Type-safe, end-to-end komunikacja między frontendem a backendem jest super.",
+            },
+          },
+          bajojajosr: {
+            name: "BajoJajo Sr",
+            description:
+              "BajoJajo SR to lekki, open-source bot Twitch zaprojektowany do obsługi próśb o piosenki podczas transmisji na żywo. Zbudowany z myślą o prostocie, pozwala zarówno widzom jak i moderatorom zarządzać odtwarzaniem muzyki za pomocą zestawu łatwych w użyciu komend czatu.",
+            differences: {
+              item1:
+                "Zacząłbym od najbardziej ryzykownej części jako pierwszej – Rozpocząłbym od integracji YouTube API i zhostowania go na serwerze, aby zidentyfikować potencjalne blokady z góry. Walka anty-botowa YouTube zmusiły mnie do podejmowania złych decyzji podczas metod hostowania oraz wielokrotnej zmiany implementacji.",
+              item2:
+                "Dokładniej zbadałbym biblioteki – Biblioteka yt-dlp JavaScript okazała się złym wyborem. Brakowało jej wsparcia dla ustawiania cookies, co jest niezbędne do ominięcia wykrywania YouTube. Gdybym przeprowadził lepsze badania, użyłbym oficjalnej implementacji yt-dlp Python od początku.",
+            },
+          },
         },
       },
     },

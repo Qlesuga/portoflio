@@ -1,55 +1,65 @@
-import JajoWallDiffrances from "../jajowall/diffrance";
+import BajoJajoSrDiffrances from "../bajojajoSr/diffrance";
 import type { ProjectInfo } from "../ProjectDescription";
+import { useTranslation } from "react-i18next";
 
-const Data: ProjectInfo = {
-  name: "JajoWall",
-  shortDescription: "wallpaper manipulator",
-  description:
-    "JajoWall is simple wallpaper manager that allows user to set .mp4/.gif files as wallpaper with audio support. Nothing more, nothing less",
-  information: [
-    {
-      category: "status",
-      value: "Archived",
-    },
-    {
-      category: "type",
-      value: "Desktop Application",
-    },
-    {
-      category: "source code",
-      value: (
-        <a
-          style={{ textDecoration: "underline" }}
-          href="https://github.com/Qlesuga/jajowall"
-        >
-          github.com/Qlesuga/jajowall
-        </a>
-      ),
-    },
-    {
-      category: "started",
-      value: "Febuary 2023",
-    },
-    {
-      category: "ended",
-      value: "April 2023",
-    },
-  ],
-  techStack: [
-    { name: "python", color: "220, 38, 38" },
-    { name: "PyQt6", color: "5, 150, 105" },
-    { name: "windowsAPI", color: "5, 150, 105" },
-    { name: "pywin32", color: "5, 150, 105" },
-    { name: "opencv", color: "5, 150, 105" },
-    { name: "Spy++", color: "109, 40, 217" },
-  ],
-  images: ["/jajowall.gif"],
-  additionalSections: [
-    {
-      title: "What would I do diffrently",
-      content: <JajoWallDiffrances />,
-    },
-  ],
-};
+function useBajoJajoSrData(): ProjectInfo {
+  const { t } = useTranslation();
 
-export { Data as BajoJajoSr };
+  return {
+    name: t("projects.bajojajosr.name"),
+    shortDescription: "twitch song request",
+    description: t("projects.bajojajosr.description"),
+    information: [
+      {
+        category: t("projects.categories.status"),
+        value: t("projects.status.maintenance"),
+      },
+      {
+        category: t("projects.categories.type"),
+        value: t("projects.types.webApplication"),
+      },
+      {
+        category: t("projects.categories.sourceCode"),
+        value: (
+          <a
+            style={{ textDecoration: "underline" }}
+            href="https://github.com/Qlesuga/BajoJajo_Sr"
+          >
+            github.com/Qlesuga/bajojajo_sr
+          </a>
+        ),
+      },
+      {
+        category: t("projects.categories.started"),
+        value: `${t("months.short.1")} 2025`,
+      },
+    ],
+    techStack: [
+      { name: "TypeScript", color: "220, 38, 38" },
+      { name: "Python", color: "220, 38, 38" },
+      { name: "Next.js", color: "5, 150, 105" },
+      { name: "FastAPI", color: "5, 150, 105" },
+      { name: "React", color: "5, 150, 105" },
+      { name: "yt-dlp", color: "5, 150, 105" },
+      { name: "Prisma", color: "5, 150, 105" },
+      { name: "tRPC", color: "5, 150, 105" },
+      { name: "next-auth", color: "5, 150, 105" },
+      { name: "Docker", color: "109, 40, 217" },
+      { name: "Redis", color: "109, 40, 217" },
+      { name: "PostgreSQL", color: "109, 40, 217" },
+    ],
+    images: [
+      "/bajojajosr/image1.png",
+      "/bajojajosr/image2.png",
+      "/bajojajosr/image3.png",
+    ],
+    additionalSections: [
+      {
+        title: t("projects.sections.whatWouldIDoMoshaicly"),
+        content: <BajoJajoSrDiffrances />,
+      },
+    ],
+  };
+}
+
+export { useBajoJajoSrData as BajoJajoSr };

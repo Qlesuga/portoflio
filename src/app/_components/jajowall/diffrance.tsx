@@ -1,15 +1,12 @@
+import { useTranslation } from "react-i18next";
+
 export default function JajoWallDiffrances() {
+  const { t } = useTranslation();
+
   return (
     <ol className="list-disc ml-8 text-base">
-      <li>
-        Choose C# or C over Python for low-level API interactions – Python
-        {"wasn't"} the best fit for low-level tasks. In the future, {"I'd"}{" "}
-        prefer using a more suitable language like C# or C.
-      </li>
-      <li>
-        Design a better UI – The user interface could have been much more
-        intuitive and polished. time.
-      </li>
+      <li>{t("projects.jajowall.differences.item1")}</li>
+      <li>{t("projects.jajowall.differences.item2")}</li>
     </ol>
   );
 }
