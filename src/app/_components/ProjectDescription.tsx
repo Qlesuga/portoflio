@@ -8,11 +8,11 @@ import {
 } from "~/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { useState } from "react";
-import FamilyLynkDiffrance from "./familylynk/diffrence";
-import JajoWallDiffrances from "./jajowall/diffrance";
-import BajoJajoSrDiffrances from "./bajojajoSr/diffrance";
+import { BajoJajoSr } from "./bajojajoSr/data";
+import { FamilyLynkData } from "./familylynk/data";
+import { JajoWallData } from "./jajowall/data";
 
-type ProjectInfo = {
+export type ProjectInfo = {
   name: string;
   shortDescription: string;
   description: string;
@@ -25,184 +25,9 @@ type ProjectInfo = {
 type ProjectID = "familylynk" | "jajowall" | "bajojajosr";
 
 const Projects: Record<ProjectID, ProjectInfo> = {
-  familylynk: {
-    name: "Familylynk",
-    shortDescription: "family organization app",
-    description:
-      "FamiLynk is a web application built with Next.js and TypeScript that helps organize family life. The app allows family members to share various types of information, such as calendars, notes, chores, and recipes.",
-    information: [
-      {
-        category: "status",
-        value: "Maintenance",
-      },
-      {
-        category: "type",
-        value: "Web Application",
-      },
-      {
-        category: "website link",
-        value: (
-          <a
-            style={{ textDecoration: "underline" }}
-            href="https://hakhiros.vercel.app/"
-          >
-            hakhiros.vercel.app
-          </a>
-        ),
-      },
-      {
-        category: "source code",
-        value: (
-          <a
-            style={{ textDecoration: "underline" }}
-            href="https://github.com/Yndh/FamiLynk"
-          >
-            github.com/Yndh/FamiLynk
-          </a>
-        ),
-      },
-      {
-        category: "started",
-        value: "October 2023",
-      },
-      {
-        category: "ended",
-        value: "November 2023",
-      },
-      {
-        category: "team size",
-        value: "4",
-      },
-    ],
-    techStack: [
-      { name: "TypeScript", color: "220, 38, 38" },
-      { name: "Next.js", color: "5, 150, 105" },
-      { name: "React", color: "5, 150, 105" },
-      { name: "Prisma", color: "5, 150, 105" },
-      { name: "next-auth", color: "5, 150, 105" },
-      { name: "Docker", color: "109, 40, 217" },
-      { name: "PostgreSQL", color: "109, 40, 217" },
-    ],
-    images: [
-      "/familylynk/image1.png",
-      "/familylynk/image2.png",
-      "/familylynk/image3.png",
-      "/familylynk/image4.png",
-      "/familylynk/image5.png",
-    ],
-    additionalSections: [
-      {
-        title: "What would I do diffrently",
-        content: <FamilyLynkDiffrance />,
-      },
-    ],
-  },
-  jajowall: {
-    name: "JajoWall",
-    shortDescription: "wallpaper manipulator",
-    description:
-      "JajoWall is simple wallpaper manager that allows user to set .mp4/.gif files as wallpaper with audio support. Nothing more, nothing less",
-    information: [
-      {
-        category: "status",
-        value: "Archived",
-      },
-      {
-        category: "type",
-        value: "Desktop Application",
-      },
-      {
-        category: "source code",
-        value: (
-          <a
-            style={{ textDecoration: "underline" }}
-            href="https://github.com/Qlesuga/jajowall"
-          >
-            github.com/Qlesuga/jajowall
-          </a>
-        ),
-      },
-      {
-        category: "started",
-        value: "Febuary 2023",
-      },
-      {
-        category: "ended",
-        value: "April 2023",
-      },
-    ],
-    techStack: [
-      { name: "python", color: "220, 38, 38" },
-      { name: "PyQt6", color: "5, 150, 105" },
-      { name: "windowsAPI", color: "5, 150, 105" },
-      { name: "pywin32", color: "5, 150, 105" },
-      { name: "opencv", color: "5, 150, 105" },
-      { name: "Spy++", color: "109, 40, 217" },
-    ],
-    images: ["/jajowall.gif"],
-    additionalSections: [
-      {
-        title: "What would I do diffrently",
-        content: <JajoWallDiffrances />,
-      },
-    ],
-  },
-  bajojajosr: {
-    name: "BajoJajo Sr",
-    shortDescription: "twitch song request",
-    description:
-      "BajoJajo SR is a lightweight, open-source Twitch bot designed to handle song requests during livestreams. Built with simplicity and efficiency in mind, it allows both viewers and moderators to manage music playback with a set of easy-to-use chat commands.",
-    information: [
-      {
-        category: "status",
-        value: "Maintenance",
-      },
-      {
-        category: "type",
-        value: "Web Application",
-      },
-      {
-        category: "source code",
-        value: (
-          <a
-            style={{ textDecoration: "underline" }}
-            href="https://github.com/Qlesuga/BajoJajo_Sr"
-          >
-            github.com/Qlesuga/bajojajo_sr
-          </a>
-        ),
-      },
-      {
-        category: "started",
-        value: "Jan 2025",
-      },
-    ],
-    techStack: [
-      { name: "TypeScript", color: "220, 38, 38" },
-      { name: "Python", color: "220, 38, 38" },
-      { name: "Next.js", color: "5, 150, 105" },
-      { name: "FastAPI", color: "5, 150, 105" },
-      { name: "React", color: "5, 150, 105" },
-      { name: "yt-dlp", color: "5, 150, 105" },
-      { name: "Prisma", color: "5, 150, 105" },
-      { name: "tRPC", color: "5, 150, 105" },
-      { name: "next-auth", color: "5, 150, 105" },
-      { name: "Docker", color: "109, 40, 217" },
-      { name: "Redis", color: "109, 40, 217" },
-      { name: "PostgreSQL", color: "109, 40, 217" },
-    ],
-    images: [
-      "/bajojajosr/image1.png",
-      "/bajojajosr/image2.png",
-      "/bajojajosr/image3.png",
-    ],
-    additionalSections: [
-      {
-        title: "What would I do diffrently",
-        content: <BajoJajoSrDiffrances />,
-      },
-    ],
-  },
+  familylynk: FamilyLynkData,
+  jajowall: BajoJajoSr,
+  bajojajosr: JajoWallData,
 };
 
 interface ProjectDescription {
