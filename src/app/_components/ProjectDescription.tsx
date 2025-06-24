@@ -50,7 +50,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
         paddingBottom: 8,
         height: "650px",
         width: "1000px",
-        overflow: "scroll",
+        overflowY: "scroll",
         borderRadius: "0 0 9px 9px",
         color: "white",
         backgroundColor: "#121212",
