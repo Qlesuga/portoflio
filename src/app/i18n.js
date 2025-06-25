@@ -198,7 +198,7 @@ i18n.use(initReactI18next).init({
               "Języki, których używałem w większych projektach i mam z nimi praktyczne doświadczenie",
           },
           familiar: {
-            title: "Języki, z którymi miałem Styczność",
+            title: "Języki, z którymi jestem zaznajomiony",
             description:
               "Języki, z którymi miałem styczność w mniejszych projektach",
           },

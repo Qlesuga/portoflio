@@ -13,7 +13,7 @@ const Circles: Circle[] = [
     translationKey: "skills.proficient",
     color: "220, 38, 38",
     radius: 100,
-    skills: ["Typescript", "Javascript", "Python"],
+    skills: ["TypeScript", "JavaScript", "Python"],
   },
   {
     translationKey: "skills.familiar",
