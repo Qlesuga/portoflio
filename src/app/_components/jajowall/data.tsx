@@ -22,8 +22,8 @@ const useJajoWallData = (): ProjectInfo => {
         category: t("projects.categories.sourceCode"),
         value: (
           <a
-            style={{ textDecoration: "underline" }}
             href="https://github.com/Qlesuga/jajowall"
+            className="text-blue-500"
           >
             github.com/Qlesuga/jajowall
           </a>

@@ -32,10 +32,7 @@ const useFamilyLynkData = (): ProjectInfo => {
       {
         category: t("projects.categories.sourceCode"),
         value: (
-          <a
-            style={{ textDecoration: "underline" }}
-            href="https://github.com/Yndh/FamiLynk"
-          >
+          <a className="text-blue-500" href="https://github.com/Yndh/FamiLynk">
             github.com/Yndh/FamiLynk
           </a>
         ),

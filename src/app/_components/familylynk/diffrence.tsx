@@ -4,7 +4,7 @@ export default function FamilyLynkDiffrance() {
   const { t } = useTranslation();
 
   return (
-    <ol className="list-disc ml-8 text-base">
+    <ol className="list-disc ml-8 space-y-1 text-base">
       <li>
         <Trans i18nKey="projects.familylynk.differences.item1">
           Use Convex for real-time data synchronization – It&apos;s just the

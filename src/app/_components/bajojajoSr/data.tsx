@@ -22,7 +22,7 @@ function useBajoJajoSrData(): ProjectInfo {
         category: t("projects.categories.sourceCode"),
         value: (
           <a
-            style={{ textDecoration: "underline" }}
+            className="text-blue-500"
             href="https://github.com/Qlesuga/BajoJajo_Sr"
           >
             github.com/Qlesuga/bajojajo_sr
@@ -41,6 +41,7 @@ function useBajoJajoSrData(): ProjectInfo {
       { name: "FastAPI", color: "5, 150, 105" },
       { name: "React", color: "5, 150, 105" },
       { name: "yt-dlp", color: "5, 150, 105" },
+      { name: "ffmpeg", color: "5, 150, 105" },
       { name: "Prisma", color: "5, 150, 105" },
       { name: "tRPC", color: "5, 150, 105" },
       { name: "next-auth", color: "5, 150, 105" },
