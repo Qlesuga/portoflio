@@ -1,5 +1,6 @@
 import type { ProjectInfo } from "../ProjectDescription";
 import { useTranslation } from "react-i18next";
+import BuildFeatures from "./build";
 
 const useLily58Data = (): ProjectInfo => {
   const { t } = useTranslation();
@@ -21,7 +22,7 @@ const useLily58Data = (): ProjectInfo => {
         category: t("projects.categories.schema"),
         value: (
           <a
-            style={{ textDecoration: "underline" }}
+            className="text-blue-500"
             href="https://github.com/kata0510/Lily58"
           >
             github.com/kata0510/Lily58
@@ -39,7 +40,12 @@ const useLily58Data = (): ProjectInfo => {
     ],
     techStack: [{ name: "zmk", color: "109, 40, 217" }],
     images: ["/lily58.png"],
-    additionalSections: [],
+    additionalSections: [
+      {
+        title: "Build Features",
+        content: <BuildFeatures />,
+      },
+    ],
   };
 };
 

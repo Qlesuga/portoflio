@@ -159,6 +159,14 @@ i18n.use(initReactI18next).init({
             shortDescription: "custom keyboard",
             description:
               "This project is a fully customized build of the Lily58, a 58-key, open-source split ergonomic mechanical keyboard designed for comfort, portability, and programmability. The goal was to create a personalized keyboard setup perfect for me for daily use in programmingand and good enought compability while gaming.",
+            build: {
+              item1: "Hot-swap Lily58 Pro PCBs",
+              item2: "Dual Nice!Nano for Bluetooth wireless",
+              item3: "Akko Penguin Silent switches",
+              item4: "low-profiel PBT keycaps from <1>keychron</1>",
+              item5:
+                "Dual nice!view for layer/battery status and cool spining diamond",
+            },
           },
         },
       },
@@ -312,6 +320,14 @@ i18n.use(initReactI18next).init({
             shortDescription: "customowa klawiatura",
             description:
               "Ten projekt to w pełni spersonalizowana wersja Lily58 — 58-klawiszowej, open-source, split, ergonomicznej klawiatury mechanicznej zaprojektowanej z myślą o wygodzie, mobilności i możliwości programowania. Celem było stworzenie spersonalizowanych klawiatur idealnego do codziennego programowania oraz wystarczająco dobrych do grania.",
+            build: {
+              item1: "Hot-swap Lily58 Pro PCB",
+              item2: "Podwójne Nice!Nano z wsparciem bluetooth",
+              item3: "Akko Penguin Silent switche",
+              item4: "nisko profilowe keycapy PBT od <1>keychrona</1>",
+              item5:
+                "Podwójne nice!view do wyświetlania warstw, baterii oraz fajnego kręconcego się kryształka",
+            },
           },
         },
       },
