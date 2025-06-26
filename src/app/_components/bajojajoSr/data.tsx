@@ -1,4 +1,4 @@
-import BajoJajoSrDiffrances from "../bajojajoSr/diffrance";
+import BajoJajoSrDiffrances from "./Diffrance";
 import type { ProjectInfo } from "../ProjectDescription";
 import { useTranslation } from "react-i18next";
 

@@ -1,5 +1,5 @@
 import type { ProjectInfo } from "../ProjectDescription";
-import FamilyLynkDiffrance from "./diffrence";
+import FamilyLynkDiffrance from "./Diffrence";
 import { useTranslation } from "react-i18next";
 
 const useFamilyLynkData = (): ProjectInfo => {

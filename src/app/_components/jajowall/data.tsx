@@ -1,4 +1,4 @@
-import JajoWallDiffrances from "../jajowall/diffrance";
+import JajoWallDiffrances from "./Diffrance";
 import type { ProjectInfo } from "../ProjectDescription";
 import { useTranslation } from "react-i18next";
 

@@ -1,6 +1,6 @@
 import type { ProjectInfo } from "../ProjectDescription";
 import { useTranslation } from "react-i18next";
-import BuildFeatures from "./build";
+import BuildFeatures from "./Build";
 
 const useLily58Data = (): ProjectInfo => {
   const { t } = useTranslation();
