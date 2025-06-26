@@ -1,6 +1,7 @@
 "use client";
 
 import i18n from "i18next";
+import { permission } from "process";
 import { initReactI18next } from "react-i18next";
 
 i18n.use(initReactI18next).init({
@@ -153,6 +154,91 @@ i18n.use(initReactI18next).init({
                 "Start with the riskiest part first – I would begin with integrating the YouTube API and deploying it on the server early, to identify potential blockers upfront. YouTube's anti-bot measures forced me to make poor architectural decisions and switch implementations multiple times.",
               item2:
                 "Research libraries more thoroughly – The yt-dlp JavaScript library turned out to be a poor choice. It lacked support for setting cookies, which is essential to bypass YouTube's detection. If I had done better research, I would have used the official yt-dlp Python implementation from the start.",
+            },
+            commands: {
+              title: "Command List",
+              list: {
+                sr: {
+                  param: "video id or url",
+                  permission: "None",
+                  description: "Add song to song queue",
+                },
+                voteskip: {
+                  param: "None",
+                  permission: "None",
+
+                  description: "Vote on skipping current song",
+                },
+                skip: {
+                  param: "None",
+                  permission: "None",
+
+                  description: "Same as !voteskip",
+                },
+                current: {
+                  param: "None",
+                  permission: "None",
+
+                  description: "Write name of current song in chat",
+                },
+                queue: {
+                  param: "None",
+                  permission: "None",
+
+                  description: "Send link to song queue",
+                },
+                whenmysr: {
+                  param: "None",
+                  permission: "None",
+
+                  description: "Respond with the time your song will be played",
+                },
+                forceskip: {
+                  param: "None",
+                  permission: "Moderator",
+                  description: "skips current song",
+                },
+                play: {
+                  param: "None",
+                  permission: "Moderator",
+
+                  description: "starts player",
+                },
+                stop: {
+                  param: "None",
+                  permission: "Moderator",
+
+                  description: "stops player",
+                },
+                volume: {
+                  param: "volume in percentage",
+                  permission: "Moderator",
+
+                  description: "changes volume of player",
+                },
+                clear: {
+                  param: "None",
+                  permission: "Broadcaster",
+                  description: "clears song queue",
+                },
+                sron: {
+                  param: "None",
+                  permission: "Broadcaster",
+
+                  description: "turns on song request (every command)",
+                },
+                sroff: {
+                  param: "None",
+                  permission: "Broadcaster",
+
+                  description: "turns off song request (every command)",
+                },
+                srping: {
+                  param: "None",
+                  permission: "None",
+                  description: "Checks if bot is working",
+                },
+              },
             },
           },
           lily58: {
@@ -314,6 +400,82 @@ i18n.use(initReactI18next).init({
                 "Zacząłbym od najbardziej ryzykownej części jako pierwszej – Rozpocząłbym od integracji YouTube API i zhostowania go na serwerze, aby zidentyfikować potencjalne blokady z góry. Walka anty-botowa YouTube zmusiły mnie do podejmowania złych decyzji podczas metod hostowania oraz wielokrotnej zmiany implementacji.",
               item2:
                 "Dokładniej zbadałbym biblioteki – Biblioteka yt-dlp JavaScript okazała się złym wyborem. Brakowało jej wsparcia dla ustawiania cookies, co jest niezbędne do ominięcia wykrywania YouTube. Gdybym przeprowadził lepsze badania, użyłbym oficjalnej implementacji yt-dlp Python od początku.",
+            },
+            commands: {
+              title: "Lista Komend",
+              list: {
+                sr: {
+                  param: "id wideo albo url",
+                  permission: "Żadne",
+                  description: "Dodanie piosenki do kolejki",
+                },
+                voteskip: {
+                  param: "Brak",
+                  permission: "Żadne",
+                  description: "Zagłosowanie na pominięcie piosenki",
+                },
+                skip: {
+                  param: "Brak",
+                  permission: "Żadne",
+                  description: "To samo co !voteskip",
+                },
+                current: {
+                  param: "Brak",
+                  permission: "Żadne",
+                  description: "Bot odpiwiada z nazwą aktualnej piosenki",
+                },
+                queue: {
+                  param: "Brak",
+                  permission: "Żadne",
+                  description: "Bot wysyła link do kolejki",
+                },
+                whenmysr: {
+                  param: "Brak",
+                  permission: "Żadne",
+                  description:
+                    "Bot odpiwiada z czasem za ile twoja następna piosenka zostanie odtworzona ",
+                },
+                forceskip: {
+                  param: "Brak",
+                  permission: "Moderator",
+                  description: "Wymusza pominięcie aktualnej piosenki",
+                },
+                play: {
+                  param: "Brak",
+                  permission: "Moderator",
+                  description: "Puszcza odtwarzacz",
+                },
+                stop: {
+                  param: "Brak",
+                  permission: "Moderator",
+                  description: "Zatrzymuje odtwarzacz",
+                },
+                volume: {
+                  param: "głośność w procentach",
+                  permission: "Moderator",
+                  description: "Zmienia głośność odtwarzacza",
+                },
+                clear: {
+                  param: "Brak",
+                  permission: "Strimer",
+                  description: "Czyści kolejke",
+                },
+                sron: {
+                  param: "Brak",
+                  permission: "Strimer",
+                  description: "Włącza komendy song requesta",
+                },
+                sroff: {
+                  param: "Brak",
+                  permission: "Strimer",
+                  description: "Wyłącza komendy song requesta",
+                },
+                srping: {
+                  param: "Brak",
+                  permission: "Żadne",
+                  description: "Sprwadza czy bot jest odpalony na tym kanale",
+                },
+              },
             },
           },
           lily58: {

@@ -1,6 +1,7 @@
 import BajoJajoSrDiffrances from "./Diffrance";
 import type { ProjectInfo } from "../ProjectDescription";
 import { useTranslation } from "react-i18next";
+import Commands from "./Commads";
 
 function useBajoJajoSrData(): ProjectInfo {
   const { t } = useTranslation();
@@ -58,6 +59,10 @@ function useBajoJajoSrData(): ProjectInfo {
       {
         title: t("projects.sections.whatWouldIDoMoshaicly"),
         content: <BajoJajoSrDiffrances />,
+      },
+      {
+        title: t("projects.bajojajosr.commands.title"),
+        content: <Commands />,
       },
     ],
   };
