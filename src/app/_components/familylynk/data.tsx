@@ -6,7 +6,7 @@ const useFamilyLynkData = (): ProjectInfo => {
   const { t } = useTranslation();
 
   return {
-    name: t("projects.familylynk.name"),
+    name: "FamilyLynk",
     shortDescription: t("projects.familylynk.shortDescription"),
     description: t("projects.familylynk.description"),
     information: [

@@ -8,10 +8,11 @@ import {
 } from "~/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { useState } from "react";
-import { BajoJajoSr } from "./bajojajoSr/data";
+import { BajoJajoSrData } from "./bajojajoSr/data";
 import { FamilyLynkData } from "./familylynk/data";
 import { JajoWallData } from "./jajowall/data";
 import { useTranslation } from "react-i18next";
+import { lily58Data } from "./lily58/data";
 
 export type ProjectInfo = {
   name: string;
@@ -23,12 +24,13 @@ export type ProjectInfo = {
   additionalSections: { title: string; content: string | React.ReactNode }[];
 };
 
-type ProjectID = "familylynk" | "jajowall" | "bajojajosr";
+type ProjectID = "familylynk" | "jajowall" | "bajojajosr" | "lily58";
 
 const Projects: Record<ProjectID, () => ProjectInfo> = {
   familylynk: FamilyLynkData,
   jajowall: JajoWallData,
-  bajojajosr: BajoJajoSr,
+  bajojajosr: BajoJajoSrData,
+  lily58: lily58Data,
 };
 
 interface ProjectDescription {

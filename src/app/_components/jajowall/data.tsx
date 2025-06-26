@@ -6,7 +6,7 @@ const useJajoWallData = (): ProjectInfo => {
   const { t } = useTranslation();
 
   return {
-    name: t("projects.jajowall.name"),
+    name: "jajowall",
     shortDescription: t("projects.jajowall.shortDescription"),
     description: t("projects.jajowall.description"),
     information: [

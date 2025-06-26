@@ -90,6 +90,7 @@ i18n.use(initReactI18next).init({
             maintenance: "Maintenance",
             active: "Active",
             development: "In Development",
+            completed: "Completed",
           },
           clickOnImage: "Click on image above to make it bigger",
           categories: {
@@ -100,6 +101,7 @@ i18n.use(initReactI18next).init({
             started: "started",
             ended: "ended",
             teamSize: "team size",
+            schema: "schema",
           },
           types: {
             desktopApplication: "Desktop Application",
@@ -107,13 +109,13 @@ i18n.use(initReactI18next).init({
             mobileApplication: "Mobile Application",
             library: "Library",
             tool: "Tool",
+            hardware: "Hardware Project",
           },
           sections: {
             whatWouldIDoMoshaicly: "What would I do differently",
             technologyUsed: "Technology used",
           },
           jajowall: {
-            name: "JajoWall",
             shortDescription: "wallpaper manipulator",
             description:
               "JajoWall is simple wallpaper manager that allows user to set .mp4/.gif files as wallpaper with audio support. Nothing more, nothing less",
@@ -125,7 +127,6 @@ i18n.use(initReactI18next).init({
             },
           },
           familylynk: {
-            name: "Familylynk",
             shortDescription: "family organization app",
             description:
               "FamiLynk is a web application built with Next.js and TypeScript that helps organize family life. The app allows family members to share various types of information, such as calendars, notes, chores, and recipes.",
@@ -145,7 +146,6 @@ i18n.use(initReactI18next).init({
             },
           },
           bajojajosr: {
-            name: "BajoJajo Sr",
             description:
               "BajoJajo SR is a lightweight, open-source Twitch bot designed to handle song requests during livestreams. Built with simplicity in mind, it allows both viewers and moderators to manage music playback with a set of easy-to-use chat commands.",
             differences: {
@@ -154,6 +154,11 @@ i18n.use(initReactI18next).init({
               item2:
                 "Research libraries more thoroughly – The yt-dlp JavaScript library turned out to be a poor choice. It lacked support for setting cookies, which is essential to bypass YouTube's detection. If I had done better research, I would have used the official yt-dlp Python implementation from the start.",
             },
+          },
+          lily58: {
+            shortDescription: "custom keyboard",
+            description:
+              "This project is a fully customized build of the Lily58, a 58-key, open-source split ergonomic mechanical keyboard designed for comfort, portability, and programmability. The goal was to create a personalized keyboard setup perfect for me for daily use in programmingand and good enought compability while gaming.",
           },
         },
       },
@@ -238,15 +243,17 @@ i18n.use(initReactI18next).init({
             maintenance: "Konserwacja",
             active: "Aktywny",
             development: "W trakcie rozwoju",
+            completed: "Skończony",
           },
           categories: {
             status: "status",
             type: "typ",
             websiteLink: "link do strony",
             sourceCode: "kod źródłowy",
-            started: "rozpoczęty",
-            ended: "zakończony",
+            started: "rozpoczęcie",
+            ended: "zakończenie",
             teamSize: "wielkość zespołu",
+            schema: "schemat",
           },
           types: {
             desktopApplication: "Aplikacja Desktopowa",
@@ -254,6 +261,7 @@ i18n.use(initReactI18next).init({
             mobileApplication: "Aplikacja Mobilna",
             library: "Biblioteka",
             tool: "Narzędzie",
+            hardware: "Projekt Hardwarowy",
           },
           sections: {
             whatWouldIDoMoshaicly: "Co zrobiłbym inaczej",
@@ -261,7 +269,6 @@ i18n.use(initReactI18next).init({
           },
           clickOnImage: "Kliknij na obraz powyżej by go powiększyć",
           jajowall: {
-            name: "JajoWall",
             shortDescription: "manipulator tapet",
             description:
               "JajoWall to prosty menedżer tapet, który pozwala użytkownikowi ustawić pliki .mp4/.gif jako tapetę z obsługą dźwięku. Nic więcej, nic mniej",
@@ -273,7 +280,6 @@ i18n.use(initReactI18next).init({
             },
           },
           familylynk: {
-            name: "Familylynk",
             shortDescription: "aplikacja do organizacji życia rodzinnego",
             description:
               "FamiLynk to aplikacja webowa zbudowana w Next.js i TypeScript, która pomaga organizować życie rodzinne. Aplikacja pozwala członkom rodziny dzielić się różnymi informacjami, takimi jak kalendarze, notatki, obowiązki domowe i przepisy.",
@@ -293,7 +299,6 @@ i18n.use(initReactI18next).init({
             },
           },
           bajojajosr: {
-            name: "BajoJajo Sr",
             description:
               "BajoJajo SR to lekki, open-source bot Twitch zaprojektowany do obsługi próśb o piosenki podczas transmisji na żywo. Zbudowany z myślą o prostocie, pozwala zarówno widzom jak i moderatorom zarządzać odtwarzaniem muzyki za pomocą zestawu łatwych w użyciu komend czatu.",
             differences: {
@@ -302,6 +307,11 @@ i18n.use(initReactI18next).init({
               item2:
                 "Dokładniej zbadałbym biblioteki – Biblioteka yt-dlp JavaScript okazała się złym wyborem. Brakowało jej wsparcia dla ustawiania cookies, co jest niezbędne do ominięcia wykrywania YouTube. Gdybym przeprowadził lepsze badania, użyłbym oficjalnej implementacji yt-dlp Python od początku.",
             },
+          },
+          lily58: {
+            shortDescription: "customowa klawiatura",
+            description:
+              "Ten projekt to w pełni spersonalizowana wersja Lily58 — 58-klawiszowej, open-source, split, ergonomicznej klawiatury mechanicznej zaprojektowanej z myślą o wygodzie, mobilności i możliwości programowania. Celem było stworzenie spersonalizowanych klawiatur idealnego do codziennego programowania oraz wystarczająco dobrych do grania.",
           },
         },
       },

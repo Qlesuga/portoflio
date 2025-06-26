@@ -52,6 +52,13 @@ const Folders: Record<AvaiablePaths, icon[]> = {
       component: <ProjectDescription projectID="familylynk" />,
     },
     {
+      name: "lily58",
+      titleID: "",
+      title: "Projectpedia - lily58",
+      icon: "/lily58.png",
+      component: <ProjectDescription projectID="lily58" />,
+    },
+    {
       name: "bajojajo sr",
       titleID: "",
       title: "Projectpedia - bajojajo sr",

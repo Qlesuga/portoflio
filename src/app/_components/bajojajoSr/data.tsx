@@ -6,7 +6,7 @@ function useBajoJajoSrData(): ProjectInfo {
   const { t } = useTranslation();
 
   return {
-    name: t("projects.bajojajosr.name"),
+    name: "BajoJajo Sr",
     shortDescription: "twitch song request",
     description: t("projects.bajojajosr.description"),
     information: [
@@ -62,4 +62,4 @@ function useBajoJajoSrData(): ProjectInfo {
   };
 }
 
-export { useBajoJajoSrData as BajoJajoSr };
+export { useBajoJajoSrData as BajoJajoSrData };
