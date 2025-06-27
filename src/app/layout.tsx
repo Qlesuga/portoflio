@@ -15,11 +15,13 @@ export const metadata: Metadata = {
 const roboto = Roboto({
   subsets: ["latin"],
   variable: "--font-roboto",
+  display: "swap",
 });
 
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
+  display: "swap",
 });
 
 const protectedRoutes = [
