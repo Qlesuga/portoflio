@@ -2,7 +2,6 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import "./contactPage.css";
 import { useTranslation } from "react-i18next";
 import { api } from "~/trpc/react";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
 import i18n from "../i18n";
 import { Toaster } from "~/components/ui/sonner";
 import { toast } from "sonner";
@@ -11,7 +10,6 @@ import type { TRPCClientError } from "@trpc/client";
 
 export default function ContactPage() {
   const { t } = useTranslation();
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,14 +29,9 @@ export default function ContactPage() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!captchaToken) {
-      alert("Please complete the captcha.");
-      return;
-    }
 
     const status = sendEmail.mutateAsync({
       ...formData,
-      captchaToken: captchaToken,
       language: i18n.language,
     });
 
@@ -53,7 +46,6 @@ export default function ContactPage() {
       error: (err: TRPCClientError<AppRouter>) => `${err.message}`,
     });
 
-    console.log("Captcha token:", captchaToken);
     setFormData({ name: "", email: "", message: "" });
   };
 
@@ -104,10 +96,6 @@ export default function ContactPage() {
               className="form-textarea"
             />
           </div>
-          <HCaptcha
-            sitekey="885221c2-5b24-43a0-a20e-bcd2722edf48"
-            onVerify={setCaptchaToken}
-          />
           <button type="submit" className="submit-button">
             {t("contact.form.sendMessage")}
           </button>

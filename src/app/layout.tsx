@@ -5,6 +5,8 @@ import { Roboto, JetBrains_Mono } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
 
+import { BotIdClient } from "botid/client";
+
 export const metadata: Metadata = {
   title: "Qłes PC",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
@@ -20,6 +22,13 @@ const jetbrains = JetBrains_Mono({
   variable: "--font-jetbrains",
 });
 
+const protectedRoutes = [
+  {
+    path: "/api/trpc/email.sendEmial",
+    method: "POST",
+  },
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -28,6 +37,7 @@ export default function RootLayout({
       <head>
         <meta name="darkreader-lock" />
         <script src="https://hcaptcha.com/1/api.js" async defer />
+        <BotIdClient protect={protectedRoutes} />
       </head>
       <body className={`${roboto.variable} ${jetbrains.variable} dark`}>
         <TRPCReactProvider>{children}</TRPCReactProvider>

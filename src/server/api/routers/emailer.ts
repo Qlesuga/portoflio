@@ -1,14 +1,8 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { createTransport } from "nodemailer";
+import { checkBotId } from "botid/server";
 import { TRPCError } from "@trpc/server";
-
-type hCatpchaVerificationResponse = {
-  success: boolean;
-  challenge_ts: string;
-  hostname: string;
-  credit: boolean;
-};
 
 const transporter = createTransport({
   host: "smtp.hostinger.com",
@@ -28,39 +22,23 @@ export const emailRouter = createTRPCRouter({
         email: z.string().min(4).email(),
         message: z.string().min(10),
         language: z.string(),
-        captchaToken: z.string(),
       }),
     )
     .mutation(async ({ input }) => {
-      const params = new URLSearchParams();
-      params.append("secret", process.env.HCAPTCHA_SECRET ?? "");
-      params.append("response", input.captchaToken);
-      params.append("sitekey", "885221c2-5b24-43a0-a20e-bcd2722edf48");
+      const { isBot } = await checkBotId();
+      console.log(isBot);
 
-      const validateCaptcha = await fetch(
-        "https://api.hcaptcha.com/siteverify",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: params,
-        },
-      );
-
-      const captchaBody: hCatpchaVerificationResponse =
-        (await validateCaptcha.json()) as hCatpchaVerificationResponse;
-      if (!captchaBody?.success) {
-        let message = "captcha validation failed";
+      if (isBot) {
+        let message = "failed anti-bot detection";
         if (input.language == "pl") {
-          message = "weryfikacja captcha zakończona niepowodzeniem";
+          message = "nieudana weryfikacja anty botowa";
         }
-
         throw new TRPCError({
           code: "BAD_REQUEST",
           message: message,
         });
       }
+
       await transporter.sendMail({
         to: "contact@qles.dev",
         subject: `New Message on Portfolio from ${input.name}`,
