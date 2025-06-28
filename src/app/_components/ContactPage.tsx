@@ -16,7 +16,7 @@ export default function ContactPage() {
     message: "",
   });
 
-  const sendEmail = api.email.sendEmial.useMutation();
+  const sendEmail = api.email.sendEmail.useMutation();
 
   const handleChange = (
     e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,

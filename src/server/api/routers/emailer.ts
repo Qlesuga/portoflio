@@ -15,7 +15,7 @@ const transporter = createTransport({
 });
 
 export const emailRouter = createTRPCRouter({
-  sendEmial: publicProcedure
+  sendEmail: publicProcedure
     .input(
       z.object({
         name: z.string().min(3),
