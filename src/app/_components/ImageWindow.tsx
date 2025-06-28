@@ -1,4 +1,4 @@
-import { useState, type SyntheticEvent } from "react";
+import { useEffect, useRef, useState, type SyntheticEvent } from "react";
 import { useTranslation } from "react-i18next";
 
 interface ImageWindowProps {
@@ -13,18 +13,19 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
     width: 1,
     height: 1,
   });
+  const containerRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
 
-  function getFitScale(
+  const getFitScale = (
     imageWidth: number,
     imageHeight: number,
     containerWidth = 900,
     containerHeight = 558,
-  ) {
+  ) => {
     const scaleX = containerWidth / imageWidth;
     const scaleY = containerHeight / imageHeight;
     return Math.min(scaleX, scaleY);
-  }
+  };
 
   const handleImageLoad = (e: SyntheticEvent<HTMLImageElement, Event>) => {
     const { naturalWidth, naturalHeight } = e.currentTarget;
@@ -58,6 +59,23 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
     });
   };
 
+  useEffect(() => {
+    const handleScroll = (e: WheelEvent) => {
+      e.preventDefault();
+    };
+    if (containerRef.current) {
+      containerRef.current.addEventListener("wheel", handleScroll, {
+        passive: false,
+      });
+    }
+
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.removeEventListener("wheel", handleScroll);
+      }
+    };
+  }, []);
+
   return (
     <div
       style={{
@@ -70,6 +88,7 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
         color: "white",
         borderRadius: "inherit",
       }}
+      ref={containerRef}
     >
       <div
         style={{
