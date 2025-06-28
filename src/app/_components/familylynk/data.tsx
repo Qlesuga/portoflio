@@ -60,11 +60,11 @@ const useFamilyLynkData = (): ProjectInfo => {
       { name: "PostgreSQL", color: "109, 40, 217" },
     ],
     images: [
-      "/familylynk/image1.png",
-      "/familylynk/image2.png",
-      "/familylynk/image3.png",
-      "/familylynk/image4.png",
-      "/familylynk/image5.png",
+      "/familylynk/image1.webp",
+      "/familylynk/image2.webp",
+      "/familylynk/image3.webp",
+      "/familylynk/image4.webp",
+      "/familylynk/image5.webp",
     ],
     additionalSections: [
       {

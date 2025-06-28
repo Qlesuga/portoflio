@@ -42,6 +42,7 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
 
   const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
     e.preventDefault();
+    e.stopPropagation();
 
     let scale = 0;
     if (e.deltaY < 0) {

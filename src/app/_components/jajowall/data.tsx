@@ -46,7 +46,7 @@ const useJajoWallData = (): ProjectInfo => {
       { name: "opencv", color: "5, 150, 105" },
       { name: "Spy++", color: "109, 40, 217" },
     ],
-    images: ["/jajowall.gif"],
+    images: ["/jajowall.webp"],
     additionalSections: [
       {
         title: t("projects.sections.whatWouldIDoMoshaicly"),

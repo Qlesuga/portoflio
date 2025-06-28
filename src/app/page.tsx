@@ -18,7 +18,6 @@ import { TextEditor } from "./_components/TextEditor.tsx";
 import { PasswordProtected } from "./_components/PasswordProtected.tsx";
 import { Folder } from "./_components/Folder.tsx";
 import { CreateWindowContex } from "./context.ts";
-import Head from "next/head";
 
 interface WindowConfig {
   titleID: string;
@@ -41,7 +40,7 @@ const icons: icon[] = [
     name: "projects",
     titleID: "",
     title: "File Viewer - projects",
-    icon: "/folder_code.png",
+    icon: "/folder_code.webp",
     component: <Folder path="/home/klu/Desktop/projects" />,
   },
   {
@@ -58,14 +57,14 @@ const icons: icon[] = [
   {
     name: "password.txt",
     titleID: "textEditor",
-    icon: "/file.png",
+    icon: "/file.webp",
     component: <TextEditor fileID="password" />,
   },
   {
-    name: "wallpaper.png",
+    name: "wallpaper.webp",
     titleID: "imageViewer",
-    icon: "/default.png",
-    component: <ImageWindow imageSrc="/default.png" />,
+    icon: "/wallpaper.webp",
+    component: <ImageWindow imageSrc="/wallpaper.webp" />,
   },
 ];
 
