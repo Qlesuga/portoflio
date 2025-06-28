@@ -38,6 +38,12 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="darkreader-lock" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet"
+        />
         <script src="https://hcaptcha.com/1/api.js" async defer />
         <BotIdClient protect={protectedRoutes} />
       </head>
