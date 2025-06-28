@@ -88,6 +88,10 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
           width={imageSize.width}
           height={imageSize.height}
           onLoad={handleImageLoad}
+          className="max-w-none"
+          style={{
+            height: imageSize.height,
+          }}
         />
       </div>
       <div
