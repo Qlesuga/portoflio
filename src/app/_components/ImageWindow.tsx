@@ -14,6 +14,7 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
     height: 1,
   });
   const containerRef = useRef<HTMLDivElement>(null);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
 
   const getFitScale = (
@@ -100,6 +101,7 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
           overflow: "scroll",
         }}
         onWheel={handleWheel}
+        ref={imageContainerRef}
       >
         {/*eslint-disable-next-line @next/next/no-img-element*/}
         <img
@@ -108,9 +110,11 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
           width={imageSize.width}
           height={imageSize.height}
           onLoad={handleImageLoad}
-          className="max-w-none"
+          className="max-w-none relative"
           style={{
             height: imageSize.height,
+            left: imageSize.width > 900 ? (imageSize.width - 900) / 2 : 0,
+            top: imageSize.height > 580 ? (imageSize.height - 580) / 2 : 0,
           }}
         />
       </div>
