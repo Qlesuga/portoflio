@@ -73,7 +73,7 @@ export default function SkillsPage() {
         height: 730,
         padding: "0 16px",
         borderRadius: "0 0 9px 9px",
-        fontFamily: "Robot",
+        fontFamily: "var(--font-roboto)",
         backgroundColor: "#121212",
         color: "white",
       }}
