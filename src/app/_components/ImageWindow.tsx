@@ -44,19 +44,40 @@ export function ImageWindow({ imageSrc, altText }: ImageWindowProps) {
 
   const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
     e.preventDefault();
-    e.stopPropagation();
 
-    let scale = 0;
-    if (e.deltaY < 0) {
-      scale = imageScale * 1.1;
-    } else {
-      scale = imageScale / 1.1;
-    }
+    const imageEl = imageContainerRef.current!.querySelector("img");
+    if (!imageEl || !imageContainerRef.current) return;
 
-    setImageScale(scale);
+    const container = imageContainerRef.current;
+    const rect = imageEl.getBoundingClientRect();
+
+    const cursorX = e.clientX - rect.left;
+    const cursorY = e.clientY - rect.top;
+    const ratioX = cursorX / rect.width;
+    const ratioY = cursorY / rect.height;
+
+    const newScale = e.deltaY < 0 ? imageScale * 1.1 : imageScale / 1.1;
+
+    const newWidth = nativeImageSize.width * newScale;
+    const newHeight = nativeImageSize.height * newScale;
+
+    const oldScrollLeft = container.scrollLeft;
+    const oldScrollTop = container.scrollTop;
+
+    const newScrollLeft =
+      ratioX * newWidth - rect.width * ratioX + oldScrollLeft;
+    const newScrollTop =
+      ratioY * newHeight - rect.height * ratioY + oldScrollTop;
+
+    setImageScale(newScale);
     setImageSize({
-      width: nativeImageSize.width * scale,
-      height: nativeImageSize.height * scale,
+      width: newWidth,
+      height: newHeight,
+    });
+
+    requestAnimationFrame(() => {
+      container.scrollLeft = newScrollLeft;
+      container.scrollTop = newScrollTop;
     });
   };
 
