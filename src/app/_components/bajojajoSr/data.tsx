@@ -51,9 +51,9 @@ function useBajoJajoSrData(): ProjectInfo {
       { name: "PostgreSQL", color: "109, 40, 217" },
     ],
     images: [
-      "/bajojajosr/image1.png",
-      "/bajojajosr/image2.png",
-      "/bajojajosr/image3.png",
+      "/bajojajosr/image1.webp",
+      "/bajojajosr/image2.webp",
+      "/bajojajosr/image3.webp",
     ],
     additionalSections: [
       {

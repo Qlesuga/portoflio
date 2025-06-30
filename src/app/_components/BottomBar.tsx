@@ -25,7 +25,7 @@ const navItems: NavItem[] = [
   },
   {
     id: "projects",
-    icon: "/folder_code.png",
+    icon: "/folder_code.webp",
     label: "Projects",
   },
   {

@@ -39,7 +39,7 @@ const useLily58Data = (): ProjectInfo => {
       },
     ],
     techStack: [{ name: "zmk", color: "109, 40, 217" }],
-    images: ["/lily58.png"],
+    images: ["/lily58.webp"],
     additionalSections: [
       {
         title: "Build Features",
