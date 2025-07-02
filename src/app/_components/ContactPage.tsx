@@ -3,7 +3,6 @@ import "./contactPage.css";
 import { useTranslation } from "react-i18next";
 import { api } from "~/trpc/react";
 import i18n from "../i18n";
-import { Toaster } from "~/components/ui/sonner";
 import { toast } from "sonner";
 import type { AppRouter } from "~/server/api/root";
 import type { TRPCClientError } from "@trpc/client";
@@ -100,7 +99,6 @@ export default function ContactPage() {
             {t("contact.form.sendMessage")}
           </button>
         </form>
-        <Toaster richColors />
       </div>
     </div>
   );

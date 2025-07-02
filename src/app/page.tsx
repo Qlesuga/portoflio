@@ -18,6 +18,8 @@ import { TextEditor } from "./_components/TextEditor.tsx";
 import { PasswordProtected } from "./_components/PasswordProtected.tsx";
 import { Folder } from "./_components/Folder.tsx";
 import { CreateWindowContex } from "./context.ts";
+import { Toaster } from "~/components/ui/sonner";
+import { toast } from "sonner";
 
 interface WindowConfig {
   titleID: string;
@@ -162,6 +164,27 @@ export default function App() {
     };
   }, []);
 
+  const MIN_WIDTH = 1280;
+  const MIN_HEIGHT = 720;
+  const lastToastTime = useRef(0);
+  const COOLDOWN = 3000;
+
+  const checkSize = () => {
+    const { innerWidth, innerHeight } = window;
+    const shouldShow = innerWidth < MIN_WIDTH || innerHeight < MIN_HEIGHT;
+    const now = Date.now();
+    if (shouldShow && now - lastToastTime.current > COOLDOWN) {
+      toast.error("Please use a larger screen for the best experience.");
+      lastToastTime.current = now;
+    }
+  };
+
+  useEffect(() => {
+    checkSize();
+    window.addEventListener("resize", checkSize);
+    return () => window.removeEventListener("resize", checkSize);
+  }, []);
+
   return (
     <CreateWindowContex.Provider value={createDraggableWindow}>
       <div id="root" style={{ height: "100vh" }}>
@@ -203,6 +226,7 @@ export default function App() {
           </DraggableWindow>
         ))}
       </div>
+      <Toaster richColors />
     </CreateWindowContex.Provider>
   );
 }
