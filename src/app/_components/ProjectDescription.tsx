@@ -199,7 +199,7 @@ export default function ProjectDescription({ projectID }: ProjectDescription) {
             <CarouselContent>
               {project.images.map((image, i) => {
                 return (
-                  <CarouselItem key={image}>
+                  <CarouselItem key={image} className="h-[150px]">
                     <Image
                       property="true"
                       src={image}
