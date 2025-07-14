@@ -20,6 +20,8 @@ import { Folder } from "../_components/Folder.tsx";
 import { CreateWindowContex } from "../context.ts";
 import { Toaster } from "~/components/ui/sonner";
 import { toast } from "sonner";
+import { useParams } from "next/navigation";
+import ProjectDescription from "../_components/ProjectDescription.tsx";
 
 interface WindowConfig {
   titleID: string;
@@ -28,7 +30,7 @@ interface WindowConfig {
   children: React.ReactNode;
 }
 
-type icon = {
+type Icon = {
   name: string;
   icon: string;
   titleID: string;
@@ -37,7 +39,7 @@ type icon = {
   isSelected?: boolean;
 };
 
-const icons: icon[] = [
+const icons: Icon[] = [
   {
     name: "projects",
     titleID: "",
@@ -70,7 +72,83 @@ const icons: icon[] = [
   },
 ];
 
+type Path = {
+  titleID: string;
+  component: ReactNode;
+  title?: string;
+};
+
+const handledPaths: Record<string, Path> = {
+  projects: {
+    titleID: "projects",
+    component: <Folder path="/home/klu/Desktop/projects" />,
+    title: "File Viewer - projects",
+  },
+  "projects/jajowall": {
+    titleID: "jajowall",
+    component: <ProjectDescription projectID="jajowall" />,
+    title: "Projectpedia - jajowall",
+  },
+  "projects/familylynk": {
+    titleID: "familylynk",
+    component: <ProjectDescription projectID="familylynk" />,
+    title: "Projectpedia - familylynk",
+  },
+  "projects/lily58": {
+    titleID: "lily58",
+    component: <ProjectDescription projectID="lily58" />,
+    title: "Projectpedia - lily58",
+  },
+  "projects/bajojajo%20sr": {
+    titleID: "bajojajosr",
+    component: <ProjectDescription projectID="bajojajosr" />,
+    title: "Projectpedia - bajojajo sr",
+  },
+  private: {
+    titleID: "private",
+    component: (
+      <PasswordProtected passwordID="PriavteFolder">
+        <Folder path="/home/klu/Desktop/private" />
+      </PasswordProtected>
+    ),
+    title: "File Viewer - private",
+  },
+  "private/browser%20history.txt": {
+    titleID: "textEditor",
+    component: (
+      <PasswordProtected passwordID="PriavteFolder">
+        <TextEditor fileID="browserHistory" />,
+      </PasswordProtected>
+    ),
+  },
+  "private/notes.txt": {
+    titleID: "textEditor",
+    component: (
+      <PasswordProtected passwordID="PriavteFolder">
+        <TextEditor fileID="notesToSelf" />
+      </PasswordProtected>
+    ),
+  },
+  "private/smoleg": {
+    titleID: "imageViewer",
+    component: (
+      <PasswordProtected passwordID="PriavteFolder">
+        <ImageWindow imageSrc="/smoleg.webp" />
+      </PasswordProtected>
+    ),
+  },
+  password: {
+    titleID: "textEditor",
+    component: <TextEditor fileID="password" />,
+  },
+  wallpaper: {
+    titleID: "imageViewer",
+    component: <ImageWindow imageSrc="/wallpaper.webp" />,
+  },
+};
+
 export default function App() {
+  const params = useParams();
   const windowsZIndex = useRef(1000);
   const iconsZIndex = useRef(1);
   const [windows, setWindows] = useState<WindowConfig[]>([]);
@@ -163,6 +241,20 @@ export default function App() {
       document.removeEventListener("mouseup", handleMouseUp);
     };
   }, []);
+
+  useEffect(() => {
+    const slug = (params.slug as string[]) ?? [];
+    const path = slug.join("/");
+    console.log("Path:", path);
+    const handledPath = handledPaths[path];
+    if (!handledPath) return;
+
+    createDraggableWindow(
+      handledPath.titleID,
+      handledPath.component,
+      handledPath.title,
+    );
+  }, [params]);
 
   const MIN_WIDTH = 1280;
   const MIN_HEIGHT = 720;
