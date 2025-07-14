@@ -10,6 +10,22 @@ import { BotIdClient } from "botid/client";
 export const metadata: Metadata = {
   title: "Qłes PC",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
+  openGraph: {
+    title: "Qłes PC",
+    description: "Just Qłes simple portoflio. Or is it?",
+    url: "https://qles.dev",
+    siteName: "Qłes PC",
+    images: [
+      {
+        url: "/icon.webp",
+        width: 256,
+        height: 256,
+        alt: "Qłes PC Open Graph Image",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 const roboto = Roboto({
