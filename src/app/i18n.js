@@ -102,6 +102,7 @@ i18n.use(initReactI18next).init({
             started: "started",
             ended: "ended",
             teamSize: "team size",
+            otherDev: "team member take",
             schema: "schema",
           },
           types: {
@@ -145,6 +146,7 @@ i18n.use(initReactI18next).init({
               item6:
                 "Use tRPC in Next.js apps – Type-safe, end-to-end communication between frontend and backend is a game-changer.",
             },
+            yndhLink: "https://przyb.dev/en/projekty/familynk",
           },
           bajojajosr: {
             description:
@@ -348,6 +350,7 @@ i18n.use(initReactI18next).init({
             ended: "zakończenie",
             teamSize: "wielkość zespołu",
             schema: "schemat",
+            otherDev: "podusmowanie innego deva",
           },
           types: {
             desktopApplication: "Aplikacja Desktopowa",
@@ -391,6 +394,7 @@ i18n.use(initReactI18next).init({
               item6:
                 "Używałbym tRPC w aplikacjach Next.js – Type-safe, end-to-end komunikacja między frontendem a backendem jest super.",
             },
+            yndhLink: "https://przyb.dev/pl/projekty/familynk",
           },
           bajojajosr: {
             description:

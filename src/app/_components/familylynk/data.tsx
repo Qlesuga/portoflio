@@ -38,6 +38,18 @@ const useFamilyLynkData = (): ProjectInfo => {
         ),
       },
       {
+        category: t("projects.categories.otherDev"),
+        value: (
+          <a
+            className="text-blue-500"
+            href={t("projects.familylynk.yndhLink")}
+            target="_blank"
+          >
+            yndh
+          </a>
+        ),
+      },
+      {
         category: t("projects.categories.started"),
         value: `${t("months.short.10")} 2023`,
       },
