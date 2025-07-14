@@ -18,8 +18,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/icon.webp",
-        width: 256,
-        height: 256,
+        width: 96,
+        height: 96,
         alt: "Qłes PC Open Graph Image",
       },
     ],
