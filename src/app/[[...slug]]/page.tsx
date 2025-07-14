@@ -7,17 +7,17 @@ import {
   type MouseEvent,
   type ReactNode,
 } from "react";
-import DesktopIcon from "./_components/DesktopIcon.tsx";
-import DraggableWindow from "./_components/DraggableWindow.tsx";
-import TopBar from "./_components/Topbar.tsx";
-import BottomBar from "./_components/BottomBar.tsx";
-import "./i18n.js";
-import "./index.css";
-import { ImageWindow } from "./_components/ImageWindow.tsx";
-import { TextEditor } from "./_components/TextEditor.tsx";
-import { PasswordProtected } from "./_components/PasswordProtected.tsx";
-import { Folder } from "./_components/Folder.tsx";
-import { CreateWindowContex } from "./context.ts";
+import DesktopIcon from "../_components/DesktopIcon.tsx";
+import DraggableWindow from "../_components/DraggableWindow.tsx";
+import TopBar from "../_components/Topbar.tsx";
+import BottomBar from "../_components/BottomBar.tsx";
+import "../i18n.js";
+import "../index.css";
+import { ImageWindow } from "../_components/ImageWindow.tsx";
+import { TextEditor } from "../_components/TextEditor.tsx";
+import { PasswordProtected } from "../_components/PasswordProtected.tsx";
+import { Folder } from "../_components/Folder.tsx";
+import { CreateWindowContex } from "../context.ts";
 import { Toaster } from "~/components/ui/sonner";
 import { toast } from "sonner";
 
