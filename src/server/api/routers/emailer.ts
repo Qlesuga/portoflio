@@ -26,7 +26,6 @@ export const emailRouter = createTRPCRouter({
     )
     .mutation(async ({ input }) => {
       const { isBot } = await checkBotId();
-      console.log(isBot);
 
       if (isBot) {
         let message = "failed anti-bot detection";

@@ -245,8 +245,8 @@ export default function App() {
   useEffect(() => {
     const slug = (params.slug as string[]) ?? [];
     const path = slug.join("/");
-    console.log("Path:", path);
     const handledPath = handledPaths[path];
+
     if (!handledPath) return;
 
     createDraggableWindow(
