@@ -1,3 +1,5 @@
+/*
+
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { createTransport } from "nodemailer";
@@ -69,3 +71,5 @@ export const emailRouter = createTRPCRouter({
       };
     }),
 });
+
+*/

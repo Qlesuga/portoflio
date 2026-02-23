@@ -2,7 +2,7 @@ import type React from "react";
 import { useContext, useState } from "react";
 import { Mail, Github, ChartNoAxesColumn, MailOpen } from "lucide-react";
 import "./bottomBar.css";
-import ContactPage from "./ContactPage";
+//import ContactPage from "./ContactPage";
 import SkillsPage from "./SkillsPage";
 import Image from "next/image";
 import { CreateWindowContex } from "../context";
@@ -28,13 +28,13 @@ const navItems: NavItem[] = [
     icon: "/folder_code.webp",
     label: "Projects",
   },
-  {
+  /*{
     id: "contact",
     icon: Mail,
     iconOnHover: MailOpen,
     label: "Contact",
     color: "#8b5cf6",
-  },
+  },*/
   {
     id: "github",
     icon: Github,
@@ -50,9 +50,9 @@ export default function BottomBar() {
   const handleItemClick = (itemId: string) => {
     if (itemId === "github") {
       window.open("https://www.github.com/Qlesuga", "_blank");
-    } else if (itemId === "contact") {
+    } /*else if (itemId === "contact") {
       createDraggableWindow("contact", <ContactPage />);
-    } else if (itemId === "skills") {
+    }*/ else if (itemId === "skills") {
       createDraggableWindow("skills", <SkillsPage />);
     } else if (itemId == "projects") {
       createDraggableWindow(

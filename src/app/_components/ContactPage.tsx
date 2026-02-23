@@ -1,3 +1,4 @@
+/*
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import "./contactPage.css";
 import { useTranslation } from "react-i18next";
@@ -66,7 +67,7 @@ export default function ContactPage() {
               minLength={3}
               required
               value={formData.name}
-              onChange={handleChange}
+              onChange={handleChange}else if (itemId === "skills") {
               className="form-input"
             />
           </div>
@@ -103,3 +104,4 @@ export default function ContactPage() {
     </div>
   );
 }
+*/
